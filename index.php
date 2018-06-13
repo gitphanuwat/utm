@@ -200,7 +200,7 @@
     $(document).ready(function(){
 
 				//test facebook
-				$("#showfb").load('https://www.codeofaninja.com/demos/display-facebook-timeline-level-3/index.php?fb_page_id=262013900603203');
+				//$("#showfb").load('https://www.codeofaninja.com/demos/display-facebook-timeline-level-3/index.php?fb_page_id=262013900603203');
 
 					$("#dialog").dialog({
 							autoOpen: false,
@@ -215,7 +215,7 @@
 				$("#showData").load("loadperson.php?action=loadproduct");
 				$("#showDataInformation").load("loadnews.php?action=getNews",function(){
 		    });
-				$("#showfeed").load("loadfeed.php?action=loadfeed");
+				//$("#showfeed").load("loadfeed.php?action=loadfeed");
 		        //$("#showDataNews").load("loadnews.php?action=getNews");
 		    $.post( "counter.php?action=add");
 
