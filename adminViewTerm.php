@@ -63,12 +63,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ปีสำรวจข้อมูล
-                        <small>บริหารจัดการปีสำรวจข้อมูล</small>                   </h1>
+                        ผลผลิตรายปี
+                        <small>บริหารจัดการผลผลิตรายปี</small>                   </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li ><a href="#">จัดการระบบ</a></li>
-                        <li class="active">ปีสำรวจข้อมูล</li>
+                        <li class="active">ผลผลิตรายปี</li>
                     </ol>
               	</section>
 
@@ -78,7 +78,7 @@
                     	<div class="col-xs-12">
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">รายการปีสำรวจข้อมูลทั้งหมดของระบบ</h3>
+                                    <h3 class="box-title">รายการผลผลิตรายปีทั้งหมดของระบบ</h3>
                                     
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
@@ -88,7 +88,7 @@
                                     <form action="adminDataTerm.php?action=insert" method="post" enctype="multipart/form-data" name="form_package"  id="form_package" target="upload_target" onsubmit="clickupload();" >
                                      <div class="box box-primary">
                                        <div class="box-header">
-                                        	<h3 class="box-title">เพิ่มข้อมูลปีสำรวจข้อมูล</h3>
+                                        	<h3 class="box-title">เพิ่มข้อมูลผลผลิตรายปี</h3>
                                     	</div><!-- /.box-header -->
                                         
                                         <div class="box-body">

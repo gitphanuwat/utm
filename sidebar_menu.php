@@ -7,7 +7,7 @@
 		}
 		echo ">";
         	echo "<a href='index.php'>";
-            		echo "<i class='fa fa-th'></i> <span>Home</span>";
+            		echo "<i class='fa fa-th'></i> <span>หน้าหลัก</span>";
             echo "</a>";
         echo "</li>";
 
@@ -31,7 +31,7 @@
 				if($subpageName=="year"){
 					echo " class='active'";
 				}
-				echo "><a href='cf_year.php'><i class='fa fa-angle-double-right'></i> ปีรายงานผล</a></li>";
+				echo "><a href='cf_year.php'><i class='fa fa-angle-double-right'></i> ปีผลผลิต</a></li>";
 				echo "<li";
 				if($subpageName=="amphur"){
 					echo " class='active'";
@@ -79,6 +79,12 @@
 					echo " class='active'";
 				}
 				echo "><a href='adminplot.php'><i class='fa fa-angle-double-right'></i> พื้นที่การเกษตร</a></li>";
+				echo "<li";
+				if($subpageName=="quality"){
+					echo " class='active'";
+				}
+				echo "><a href='quality.php'><i class='fa fa-angle-double-right'></i> คุณภาพสินค้า</a></li>";
+
             echo "</ul>";
         echo "</li>";
 
@@ -257,7 +263,7 @@
 		}
 		echo ">";
         	echo "<a href='index.php'>";
-            		echo "<i class='fa fa-th'></i> <span>Home</span>";
+            		echo "<i class='fa fa-th'></i> <span>หน้าหลัก</span>";
             echo "</a>";
         echo "</li>";
 
@@ -283,6 +289,11 @@
 					echo " class='active'";
 				}
 				echo "><a href='adminplot.php'><i class='fa fa-angle-double-right'></i> พื้นที่การเกษตร</a></li>";
+				echo "<li";
+				if($subpageName=="quality"){
+					echo " class='active'";
+				}
+				echo "><a href='quality.php'><i class='fa fa-angle-double-right'></i> คุณภาพสินค้า</a></li>";
             echo "</ul>";
         echo "</li>";
 
@@ -437,7 +448,7 @@
 		}
 		echo ">";
         	echo "<a href='index.php'>";
-            		echo "<i class='fa fa-th'></i> <span>Home</span>";
+            		echo "<i class='fa fa-th'></i> <span>หน้าหลัก</span>";
             echo "</a>";
         echo "</li>";
 
@@ -462,6 +473,11 @@
 					echo " class='active'";
 				}
 				echo "><a href='adminplot.php'><i class='fa fa-angle-double-right'></i> พื้นที่การเกษตร</a></li>";
+				echo "<li";
+				if($subpageName=="quality"){
+					echo " class='active'";
+				}
+				echo "><a href='quality.php'><i class='fa fa-angle-double-right'></i> คุณภาพสินค้า</a></li>";
             echo "</ul>";
         echo "</li>";
 
@@ -594,7 +610,7 @@
 		}
 		echo ">";
         	echo "<a href='index.php'>";
-            		echo "<i class='fa fa-th'></i> <span>Home</span>";
+            		echo "<i class='fa fa-th'></i> <span>หน้าหลัก</span>";
             echo "</a>";
         echo "</li>";
 

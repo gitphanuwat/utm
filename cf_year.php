@@ -63,12 +63,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ปีรายงานผล (พ.ศ.)
-                        <small>บริหารจัดการปีรายงานผล</small>                   </h1>
+                        ปีผลผลิต (พ.ศ.)
+                        <small>บริหารจัดการปีผลผลิต</small>                   </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li ><a href="#">จัดการระบบ</a></li>
-                        <li class="active">ปีรายงานผล</li>
+                        <li class="active">ปีผลผลิต</li>
                     </ol>
               	</section>
 
@@ -88,13 +88,13 @@
                                     <form action="cfdata_year.php?action=insert" method="post" enctype="multipart/form-data" name="form_package"  id="form_package"  target="upload_target" onsubmit="clickupload();" >
                                      <div class="box box-primary">
                                        <div class="box-header">
-                                        	<h3 class="box-title">เพิ่มข้อมูลปีรายงานผล</h3>
+                                        	<h3 class="box-title">เพิ่มข้อมูลปีผลผลิต</h3>
                                     	</div><!-- /.box-header -->
 
                                         <div class="box-body">
                                         	<div id="box1">
                                             	<div class="form-group">
-                                                    <label >ปีรายงานผล</label>
+                                                    <label >ปีผลผลิต</label>
                                                     <input type="text" class="form-control" id="nameyear" name="nameyear" placeholder="ปี พ.ศ. ที่ดำเนินการ">
                                                     <span id="errYear" class="error"></span>
                                                 </div>

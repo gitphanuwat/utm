@@ -71,7 +71,7 @@
                         <small>ผลผลิตสับปะรด จังหวัดอุตรดิตถ์</small>
                     </h1>
                     <ol class="breadcrumb">
-                        <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
+                        <li><a href="index.php"><i class="fa fa-dashboard"></i> หน้าหลัก</a></li>
 						            <?php
 												if (@!$_SESSION["DUR_USER_ID"]){
 						              echo "<li class=\"active\">Information for Guest</li>";

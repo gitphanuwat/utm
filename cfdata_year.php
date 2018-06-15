@@ -169,7 +169,7 @@ if($_GET["action"]=="loadyear"){
 	echo '<table class="table table-hover">
     	<tr>
     		<th>ลำดับ</th>
-    		<th>ปีรายงานผล</th>
+    		<th>ปีผลผลิต</th>
             <th>แบบสำรวจข้อมูล</th>
     		<th>สถานะ</th>
             <th>Tools</th>

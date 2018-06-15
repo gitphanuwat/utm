@@ -84,7 +84,7 @@ if($_GET["action"]=="loadpoll"){
 							@$rownpoll=mysqli_num_rows($resultnpoll);
 
 							//echo $rowscore;
-							$bar=$rowscore*85/$rownpoll;
+							@$bar=$rowscore*85/$rownpoll;
 							//$bar=80;
 							$unit=$rowscore;
 							$sqlper="select tb_topic.idpoll".
