@@ -13,7 +13,7 @@
                 echo "<th width='100'>Tools</th>";
             echo "</tr>";
             $i=1;
-            $sql="select news_id , day_in , title , count_view from tb_news order by news_id desc";
+            $sql="select quality_id , day_in , title , count_view from tb_quality order by quality_id desc";
             $sql=$sql . " LIMIT 6 ";
             $result=mysqli_query($connect,$sql);
             while($row=mysqli_fetch_array($result)){
@@ -39,7 +39,7 @@
         $day_in=date("m/d/Y");
 
         if($id !=""){
-            $sql="select * from tb_news where news_id = $id";
+            $sql="select * from tb_quality where quality_id = $id";
             $result=mysqli_query($connect,$sql);
             $row=mysqli_fetch_array($result);
             $title=$row["title"];
@@ -51,7 +51,7 @@
         echo "<div class='box-header'>";
             echo "<h3 class='box-title'>รายการข่าวสาร</h3>";
         echo "</div>";
-        echo " <form action='adminDataNews.php?action=saveData' method='post'  onsubmit='clickupload();' >";
+        echo " <form action='quality_data.php?action=saveData' method='post'  onsubmit='clickupload();' >";
             echo "<div class='box-body'>";
                 echo "<div class='form-group'>";
                     echo "<label >หัวข้อ</label>";
@@ -100,13 +100,13 @@
                 echo "<th width='100'>Tools</th>";
             echo "</tr>";
             $i=1;
-            $sql="select autoid , file_name , file_value from tb_news_item where news_id = $id";
+            $sql="select autoid , file_name , file_value from tb_quality_item";
             $sql=$sql . " order by autoid";
             $result=mysqli_query($connect,$sql);
             while($row=mysqli_fetch_array($result)){
                 echo "<tr>";
                     echo "<td>$i</td>";
-                    echo "<td><a href='user/news/$row[2]' target='_blank'>$row[1]</a></td>";
+                    echo "<td><a href='user/quality/$row[2]' target='_blank'>$row[1]</a></td>";
                     echo "<td><a href='#$row[0]|$id' class='delItemsDoc'><span class='label label-danger'> ลบ </span></a></td>";
                 echo "</tr>";
                 $i++;
@@ -118,7 +118,7 @@
 
     if($_GET["action"]=="deleteDoc"){
         $id=$_POST["id"];
-        $sql="delete from tb_news_item where autoid = $id";
+        $sql="delete from tb_quality_item where autoid = $id";
         $result1=mysqli_query($connect,$sql);
         exit();
     }
@@ -135,7 +135,7 @@
                 echo "<label >เอกสารอ้างอิง</label>";
                 echo "<div id='showDoc'></div>";
             echo "</div>";
-            echo " <form id='frmDoc' action='adminDataNews.php?action=insertDoc' enctype='multipart/form-data' method='post'   onsubmit='clickuploadDoc();' >";
+            echo " <form id='frmDoc' action='quality_data.php?action=insertDoc' enctype='multipart/form-data' method='post'   onsubmit='clickuploadDoc();' >";
                 echo "<div class='form-group'>";
                     echo "<label >upload เอกสาร</label>";
                     echo "<input type='text' class='form-control' name='txtfile_name' placeholder='ชื่อเอกสาร'>";
@@ -192,14 +192,14 @@
                     $Str_file = explode(".",$file);
                     $carr = count($Str_file)-1;
                     $strname = $Str_file[$carr];
-                    $pname= "news_" . randomText(10) . "." . $strname;
-                    $target_path = "user/news/" . $pname;
+                    $pname= "quality_" . randomText(10) . "." . $strname;
+                    $target_path = "user/quality/" . $pname;
                     if(@move_uploaded_file($tempfile,$target_path)){
-                        $sql="insert into tb_news_item(news_id , file_name , file_value )";
+                        $sql="insert into tb_quality_item(quality_id , file_name , file_value )";
                         $sql=$sql . " values($id , '$txtfile_name' ,'$pname') ";
                         $result1=mysqli_query($connect,$sql);
                         $msgsuccess=1;
-												echo "<script language=\"javascript\">window.location.href = 'adminNews.php'</script>";
+												echo "<script language=\"javascript\">window.location.href = 'quality.php'</script>";
                     }else{
                         $msgerror=5;
                     }
@@ -213,7 +213,7 @@
     if($_GET["action"]=="getView"){
         $id=$_GET["id"];
 
-        $sql="select * from tb_news where news_id = $id";
+        $sql="select * from tb_quality where quality_id = $id";
         $result=mysqli_query($connect,$sql);
         $row=mysqli_fetch_array($result);
         $title=$row["title"];
@@ -226,13 +226,13 @@
         echo "<div class='box-body'>";
             echo "<p>วันที่ลงข่าว : $day_in</p>";
             echo "<p>$detail</p>";
-            $sql="select * from tb_news_item where news_id = $id order by autoid";
+            $sql="select * from tb_quality_item where quality_id = $id order by autoid";
             $result=mysqli_query($connect,$sql);
             $nRow=mysqli_num_rows($result);
             if($nRow !=0){
                 echo "<br><p><b>เอกสารอ้างอิง</b></p>";
                 while($row=mysqli_fetch_array($result)){
-                    echo "<p>&nbsp&nbsp<a href='user/news/$row[3]' target='_blank'>$row[2]</a></p>";
+                    echo "<p>&nbsp&nbsp<a href='user/quality/$row[3]' target='_blank'>$row[2]</a></p>";
                 }
             }
         echo "</div>";
@@ -242,7 +242,7 @@
     if($_GET["action"]=="delete"){
         $id=$_POST["id"];
 
-        $sql="delete from tb_news where news_id = $id";
+        $sql="delete from tb_quality where quality_id = $id";
         $result=mysqli_query($connect,$sql);
         exit();
     }
@@ -252,7 +252,7 @@
 
         $msgsuccess=0;
         $msgerror=0;
-        $actionPage="news";
+        $actionPage="quality";
         $PID=0;
 
         $id=$_POST["id"];
@@ -271,15 +271,15 @@
             }
 
             if($id !=""){
-                $sql="update tb_news set day_in='$day_in' , title='$txtTitle' ";
-                $sql=$sql . " , detail='$txtDetail' where news_id=$id ";
+                $sql="update tb_quality set day_in='$day_in' , title='$txtTitle' ";
+                $sql=$sql . " , detail='$txtDetail' where quality_id=$id ";
             }else{
-                $sql="insert into tb_news(day_in , title , detail , count_view ) ";
+                $sql="insert into tb_quality(day_in , title , detail , count_view ) ";
                 $sql=$sql . " value('$day_in' , '$txtTitle' , '$txtDetail'  , 0 )";
             }
             $result=mysqli_query($connect,$sql);
             $msgsuccess=1;
-					echo "<script language=\"javascript\">window.location.href = 'adminNews.php'</script>";
+					echo "<script language=\"javascript\">window.location.href = 'quality.php'</script>";
         }
     }
 

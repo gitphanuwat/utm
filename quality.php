@@ -7,8 +7,8 @@
 		exit();
 	}
 
-	$pageName="news";
-	$subpageName="News";
+	$pageName="quality";
+	$subpageName="quality";
 
 	if($_SESSION["DUR_USER_STATE"]=="ADMIN"){
 		$sql="select firstname,lastname,profile_pic , reg_day from tb_managers_user where id_user=" . $_SESSION["DUR_USER_ID"];
@@ -156,12 +156,12 @@
                 });
 
                 $("#boxView").hide();
-                $("#showData").load("adminDataNews.php?action=getData",function(){
+                $("#showData").load("quality_data.php?action=getData",function(){
                     $("#loadBar").fadeOut();
                 });
 
                 $("#butNew").click(function(){
-                    $("#dialog-from").load("adminDataNews.php?action=getForm",function(){
+                    $("#dialog-from").load("quality_data.php?action=getForm",function(){
                         $("#dialog").dialog( "option", "width", 450 );
                         $( "#dialog" ).dialog( "open" );
                     });
@@ -180,12 +180,12 @@
             }
 
             function stopUpload(success , error ,actionPage , id ){
-                if(actionPage=="news"){
+                if(actionPage=="quality"){
                     $("#loadForm").fadeOut();
 
                     if(success ==1){
                         $("#loadBar").fadeIn();
-                        $("#showData").load("adminDataNews.php?action=getData",function(){
+                        $("#showData").load("quality_data.php?action=getData",function(){
                             $("#loadBar").fadeOut();
                             $("#dialog").dialog( "close" );
                         });
@@ -198,7 +198,7 @@
                     //upload เอกสาร
                     $("#loadFormUpload").fadeOut();
                     if(success ==1){
-                        $("#showDoc").load("adminDataNews.php?action=getDocList&id="+id);
+                        $("#showDoc").load("quality_data.php?action=getDocList&id="+id);
                     }else{
                         if(error==1){
                             $("#boxMessageFormUpload").html("<font color='red'>กรุณากรอกชื่อเอกสารด้วย</font>");
@@ -218,8 +218,8 @@
                 yid=id.split("|");
 
                 if(confirm("ท่านต้องการลบรายการนี้หรือไม่ ?")){
-                    $.post("adminDataNews.php?action=deleteDoc",{id:yid[0]},function(){
-                        $("#showDoc").load("adminDataNews.php?action=getDocList&id="+yid[1]);
+                    $.post("quality_data.php?action=deleteDoc",{id:yid[0]},function(){
+                        $("#showDoc").load("quality_data.php?action=getDocList&id="+yid[1]);
                     });
                 }
             });
@@ -227,7 +227,7 @@
             $(document).on('click',".editItem",function(){
                 var id = $(this).attr("href");
                 id = id.replace("#","");
-                $("#dialog-from").load("adminDataNews.php?action=getForm&id="+id,function(){
+                $("#dialog-from").load("quality_data.php?action=getForm&id="+id,function(){
                     $("#dialog").dialog( "option", "width", 450 );
                     $( "#dialog" ).dialog( "open" );
                 });
@@ -238,8 +238,8 @@
                 id = id.replace("#","");
                 if(confirm("ท่านต้องการลบรายการนี้หรือไม่ ?")){
                     $("#loadBar").fadeIn();
-                    $.post("adminDataNews.php?action=delete",{id:id},function(){
-                        $("#showData").load("adminDataNews.php?action=getData",function(){
+                    $.post("quality_data.php?action=delete",{id:id},function(){
+                        $("#showData").load("quality_data.php?action=getData",function(){
                             $("#loadBar").fadeOut();
                         });
                     });
@@ -249,8 +249,8 @@
             $(document).on("click",".uploadItem",function(){
                 var id = $(this).attr("href");
                 id = id.replace("#","");
-                $("#dialog-from").load("adminDataNews.php?action=getFormUpload&id="+id,function(){
-                    $("#showDoc").load("adminDataNews.php?action=getDocList&id="+id);
+                $("#dialog-from").load("quality_data.php?action=getFormUpload&id="+id,function(){
+                    $("#showDoc").load("quality_data.php?action=getDocList&id="+id);
                     $("#dialog").dialog( "option", "width", 450 );
                     $( "#dialog" ).dialog( "open" );
                 });
@@ -259,7 +259,7 @@
             $(document).on("click",".viewItem",function(){
                 var id = $(this).attr("href");
                 id = id.replace("#","");
-                $("#boxView").load("adminDataNews.php?action=getView&id="+id,function(){
+                $("#boxView").load("quality_data.php?action=getView&id="+id,function(){
                     $("#boxView").show();
                 });
              });

@@ -9,7 +9,7 @@
 
 	$pageName="news";
 	$subpageName="News";
-	
+
 	if($_SESSION["DUR_USER_STATE"]=="ADMIN"){
 		$sql="select firstname,lastname,profile_pic , reg_day from tb_managers_user where id_user=" . $_SESSION["DUR_USER_ID"];
 		$result=mysqli_query($connect,$sql);
