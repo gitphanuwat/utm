@@ -49,7 +49,7 @@
         }
 
         echo "<div class='box-header'>";
-            echo "<h3 class='box-title'>รายการข่าวสาร</h3>";
+            echo "<h3 class='box-title'>รายการคุณภาพสินค้า</h3>";
         echo "</div>";
         echo " <form action='quality_data.php?action=saveData' method='post'  onsubmit='clickupload();' >";
             echo "<div class='box-body'>";
@@ -62,7 +62,7 @@
                     echo "<input type='text' id='datepicker' name='datepicker' class='form-control' value='$day_in'>";
                 echo "</div>";
                 echo "<div class='form-group'>";
-                    echo "<label >รายละเอียดข่าวสาร</label>";
+                    echo "<label >รายละเอียดข้อมูลคุณภาพ</label>";
                     echo "<textarea name='txtDetail' class='textarea' style='width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;''>$detail</textarea>";
                 echo "</div>";
             echo "</div>";
@@ -100,7 +100,7 @@
                 echo "<th width='100'>Tools</th>";
             echo "</tr>";
             $i=1;
-            $sql="select autoid , file_name , file_value from tb_quality_item";
+            $sql="select autoid , file_name , file_value from tb_quality_item where quality_id = $id";
             $sql=$sql . " order by autoid";
             $result=mysqli_query($connect,$sql);
             while($row=mysqli_fetch_array($result)){
@@ -116,12 +116,14 @@
         exit();
     }
 
-    if($_GET["action"]=="deleteDoc"){
+		if($_GET["action"]=="deleteDoc"){
         $id=$_POST["id"];
         $sql="delete from tb_quality_item where autoid = $id";
         $result1=mysqli_query($connect,$sql);
         exit();
     }
+
+
 
     if($_GET["action"]=="getFormUpload"){
 
@@ -135,7 +137,9 @@
                 echo "<label >เอกสารอ้างอิง</label>";
                 echo "<div id='showDoc'></div>";
             echo "</div>";
-            echo " <form id='frmDoc' action='quality_data.php?action=insertDoc' enctype='multipart/form-data' method='post'   onsubmit='clickuploadDoc();' >";
+            echo " <form action='quality_data.php?action=insertDoc' enctype='multipart/form-data' target='upload_target' method='post'  onsubmit='clickuploadDoc();' >";
+					//echo " <form action='admin_plot_dataform.php?action=insert' method='post' target='upload_target' onsubmit='clickSave();' >";
+
                 echo "<div class='form-group'>";
                     echo "<label >upload เอกสาร</label>";
                     echo "<input type='text' class='form-control' name='txtfile_name' placeholder='ชื่อเอกสาร'>";
@@ -146,12 +150,13 @@
                 echo "</div>";
                 echo "<div class='form-group'>";
                     echo "<button type='submit' class='btn btn-primary'>Upload</button>";
+										echo "<button type='button' class='btn btn-danger' id='butCancel'>Close</button>";
                     echo "<input name='id' type='hidden' value='$id' />";
             echo "</form><hr>";
         echo "</div>";
         echo "<div class='box-footer'>";
             echo "<div class='col-lg-12'>";
-                echo "<button type='button' class='btn btn-danger' id='butCancel'>Close</button>";
+								echo '<iframe id="upload_target" name="upload_target" src="#" style="display:none;"></iframe>';
                 echo "<div id='loadFormUpload' align='center'>";
                         echo "<img src='img/ajax-loader.gif' align='absmiddle' />";
                 echo "</div>";
@@ -166,7 +171,47 @@
         exit();
     }
 
-    if($_GET["action"]=="insertDoc"){
+		if($_GET["action"]=="insertDoc"){
+			$actionPage="doc";
+			$msgsuccess=0;
+			$msgerror=0;
+
+			$id=$_POST["id"];
+			$txtfile_name=$_POST["txtfile_name"];
+
+			if($txtfile_name==""){
+					$msgerror=1;
+			}else{
+				if($_FILES["fileField"]["error"]==4){
+						$msgerror=2;
+				}else{
+						$accept_type=array("application/pdf");
+						$file=$_FILES["fileField"]["name"];
+						$typefile=$_FILES["fileField"]["type"];
+						$sizefile=$_FILES["fileField"]["size"];
+						$tempfile=$_FILES["fileField"]["tmp_name"];
+						if(!in_array($typefile,$accept_type)){
+								$msgerror=3;
+						}else{
+								$Str_file = explode(".",$file);
+								$carr = count($Str_file)-1;
+								$strname = $Str_file[$carr];
+								$pname= "quality_" . randomText(10) . "." . $strname;
+								$target_path = "user/quality/" . $pname;
+								if(@move_uploaded_file($tempfile,$target_path)){
+										$sql="insert into tb_quality_item(quality_id , file_name , file_value )";
+										$sql=$sql . " values($id , '$txtfile_name' ,'$pname') ";
+										$result1=mysqli_query($connect,$sql);
+										$msgsuccess=1;
+								}else{
+										$msgerror=5;
+								}
+						}
+				}
+			}
+
+		}
+		if($_GET["action"]=="insertDoc1"){
         $msgsuccess=0;
         $msgerror=0;
         $actionPage="doc";
@@ -199,15 +244,11 @@
                         $sql=$sql . " values($id , '$txtfile_name' ,'$pname') ";
                         $result1=mysqli_query($connect,$sql);
                         $msgsuccess=1;
-												echo "<script language=\"javascript\">window.location.href = 'quality.php'</script>";
-                    }else{
-                        $msgerror=5;
                     }
 
                 }
             }
         }
-
     }
 
     if($_GET["action"]=="getView"){
@@ -224,7 +265,7 @@
             echo "<h3 class='box-title'>$title</h3>";
         echo "</div>";
         echo "<div class='box-body'>";
-            echo "<p>วันที่ลงข่าว : $day_in</p>";
+            echo "<p>วันที่บันทึก : $day_in</p>";
             echo "<p>$detail</p>";
             $sql="select * from tb_quality_item where quality_id = $id order by autoid";
             $result=mysqli_query($connect,$sql);
@@ -247,15 +288,17 @@
         exit();
     }
 
+
     if($_GET["action"]=="saveData"){
         date_default_timezone_set('UTC');
 
         $msgsuccess=0;
         $msgerror=0;
         $actionPage="quality";
-        $PID=0;
 
         $id=$_POST["id"];
+				$PID=$id;
+
         $datepicker=$_POST["datepicker"];
         $txtTitle=$_POST["txtTitle"];
         $txtDetail=$_POST["txtDetail"];
@@ -285,7 +328,7 @@
 
 
 
-	mysqli_close($connect);
+mysqli_close($connect);
 ?>
 
 <script language="javascript">

@@ -7,7 +7,7 @@
 		exit();
 	}
 
-	$pageName="quality";
+	$pageName="config";
 	$subpageName="quality";
 
 	if($_SESSION["DUR_USER_STATE"]=="ADMIN"){
@@ -47,7 +47,7 @@
 
 <body class="skin-blue">
 
-		<div style="font-size: 12px;" id="dialog" title="รายละเอียดข่าวประชาชัมพันธ์">
+		<div style="font-size: 12px;" id="dialog" title="รายละเอียดคุณภาพสินค้า">
 	        <div id="dialog-from" ></div>
 	    </div>
 
@@ -87,13 +87,13 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ข้อมูลข่าวสาร
-                        <small>ลงประกาศข่าวสารให้สมาชิก</small>
+                        คุณภาพสินค้า
+                        <small>คุณภาพสินค้าทางการเกษตร</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li ><a href="#">จัดการข้อมูลข่าวสาร</a></li>
-                        <li class="active">ข้อมูลข่าวสาร</li>
+                        <li ><a href="#">จัดการข้อมูลคุณภาพ</a></li>
+                        <li class="active">ข้อมูลคุณภาพ</li>
                     </ol>
               	</section>
 
@@ -103,7 +103,7 @@
                     	<div class="col-xs-12">
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">รายการข่าวสาร</h3>
+                                    <h3 class="box-title">รายการข้อมูลคุณภาพ</h3>
                                     <form class="navbar-form navbar-right" role="search">
 									  <button type="button" id="butNew" class="btn btn-primary">เพิ่มรายการ</button>
 									</form>
@@ -182,7 +182,6 @@
             function stopUpload(success , error ,actionPage , id ){
                 if(actionPage=="quality"){
                     $("#loadForm").fadeOut();
-
                     if(success ==1){
                         $("#loadBar").fadeIn();
                         $("#showData").load("quality_data.php?action=getData",function(){
@@ -199,14 +198,17 @@
                     $("#loadFormUpload").fadeOut();
                     if(success ==1){
                         $("#showDoc").load("quality_data.php?action=getDocList&id="+id);
+												$("#boxMessageFormUpload").html("<font color='green'>อัพโหลดไฟล์สมบูรณ์</font>");
                     }else{
                         if(error==1){
                             $("#boxMessageFormUpload").html("<font color='red'>กรุณากรอกชื่อเอกสารด้วย</font>");
                         }else if(error==2){
-                            $("#boxMessageFormUpload").html("<font color='red'>กรุณากรอกเอกสารด้วย</font>");
-                        }else if(error==3){
-                            $("#boxMessageFormUpload").html("<font color='red'>เอกสารที่ upload ต้องเป็น pdf file เท่านั้น</font>");
-                        }
+                            $("#boxMessageFormUpload").html("<font color='red'>กรุณาเลือกเอกสารด้วย</font>");
+													}else if(error==3){
+	                            $("#boxMessageFormUpload").html("<font color='red'>เอกสารที่ upload ต้องเป็น pdf file เท่านั้น</font>");
+													}else if(error==5){
+															$("#boxMessageFormUpload").html("<font color='red'>ไม่สามารถอัพโหลดไฟล์ได้</font>");
+													}
                     }
                 }
                 return true;
@@ -220,6 +222,7 @@
                 if(confirm("ท่านต้องการลบรายการนี้หรือไม่ ?")){
                     $.post("quality_data.php?action=deleteDoc",{id:yid[0]},function(){
                         $("#showDoc").load("quality_data.php?action=getDocList&id="+yid[1]);
+												$("#boxMessageFormUpload").html("");
                     });
                 }
             });
