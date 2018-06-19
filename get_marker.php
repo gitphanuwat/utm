@@ -8,15 +8,16 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 	mysqli_query($connect,"SET NAMES UTF8");
 ?>
 <?php
-$q="SELECT * FROM tb_plot";
-$qr=mysqli_db_query($connect,$q);
-while($rs=mysql_fetch_array($qr)){
+$q="select * from tb_plot";
+$qr=mysqli_query($connect,$q);
+while($rs=mysqli_fetch_array($qr)){
 	$json_data[]=array(
 		"idplot"=>$rs['idplot'],
 		"codeplot"=>$rs['codeplot'],
         "lat"=>$rs['lat'],
         "lng"=>$rs['lng'],
-        "zm"=>$rs['zm'],
+				"zm"=>$rs['zm'],
+				"picture"=>$rs['picture'],
 		 "comment"=>$rs['comment']
 	);
 }

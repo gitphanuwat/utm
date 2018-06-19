@@ -218,9 +218,12 @@
 				  function initMap() {
 							//var locations = <?php //print_r(json_encode($json_data)) ?>;
 							//var locations = <?php //echo $json ?>
-				      //var locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'uttaradit'},{lat: 17.833325, lng: 100.9597057, codeplot:'huaymun'}];
-							var locations = [{'lat': '17.6339275', 'lng': '100.1019697', 'codeplot':'uttaradit'},{lat: 17.833325, lng: 100.9597057, codeplot:'huaymun'}];
+							//var locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'aaaaa'},{lat: 17.833325, lng: 100.9597057, codeplot:'bbbbb'}];
+							//var locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'aaaaa'},{lat: 17.833325, lng: 100.9597057, codeplot:'bbbbb'}];
+							var locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'a1'},{lat: 17.833325, lng: 100.9597057, codeplot:'bbbbb'}];
+							//var locations = [{lat:17.6339275, lng:100.1019697, codeplot:'ccccc'},{lat:17.833325, lng:100.9597057, codeplot:'dddd'}];
 
+							//var locations = [{"idplot":"65","codeplot":"PN67-1","lat":"17.7505938","lng":"100.7300733","zm":"0","comment":"comment"},{"idplot":"66","codeplot":"PN65-1","lat":"17.833325","lng":"100.9597057","zm":"14","comment":""}];
 							//var locations = [{"idplot":"65","codeplot":"PN67-1","lat":"17.7505938","lng":"100.7300733","zm":"0","comment":"comment"},{"idplot":"66","codeplot":"PN65-1","lat":"17.833325","lng":"100.9597057","zm":"14","comment":""}];
 
 				      var uluru = {lat: 17.620664, lng: 100.097566};
