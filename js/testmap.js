@@ -32,7 +32,7 @@ function initialize() { // ฟังก์ชันแสดงแผนที�
                     my_Marker[i] = new GGM.Marker({ // สร้างตัว marker
                         position:markerLatLng,  // กำหนดไว้ที่เดียวกับจุดกึ่งกลาง
                         map: map, // กำหนดว่า marker นี้ใช้กับแผนที่ชื่อ instance ว่า map
-						icon: image,
+			                  icon: image,
                         title:obj_marker[i].codeplot // แสดง title เมื่อเอาเมาส์มาอยู่เหนือ
                     });
 
@@ -68,6 +68,7 @@ $(function(){
     //  callback ให้เรียกใช้ฟังก์ชันแสดง แผนที่ initialize
     $("<script/>", {
       "type": "text/javascript",
-      src: "http://maps.google.com/maps/api/js?v=3.0&sensor=true&language=th&callback=initialize"
+      src: "http://maps.google.com/maps/api/js?v=3.0&sensor=false&language=th&key=AIzaSyBknDfGljfct2xUrrNHfIrve6EakWTNwsc&callback=initialize"
+      //src: "http://maps.google.com/maps/api/js?v=3.0&sensor=true&language=th&callback=initialize"
     }).appendTo("body");
 });
