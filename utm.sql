@@ -1,15 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.4
--- https://www.phpmyadmin.net/
+-- version 4.4.10
+-- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Jun 15, 2018 at 10:31 AM
--- Server version: 10.1.28-MariaDB
--- PHP Version: 5.6.32
+-- Host: localhost:3306
+-- Generation Time: Jun 19, 2018 at 04:21 PM
+-- Server version: 5.5.42
+-- PHP Version: 5.6.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -80,7 +78,7 @@ CREATE TABLE `tb_amphur` (
   `amp_facebook` varchar(45) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   `amphur_shrt` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_amphur`
@@ -99,7 +97,7 @@ CREATE TABLE `tb_counter` (
   `id` int(11) NOT NULL,
   `day` date NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_counter`
@@ -141,7 +139,9 @@ INSERT INTO `tb_counter` (`id`, `day`, `total`) VALUES
 (33, '2018-06-12', 6),
 (34, '2018-06-13', 1),
 (35, '2018-06-14', 1),
-(36, '2018-06-15', 5);
+(36, '2018-06-15', 5),
+(37, '2018-06-17', 5),
+(38, '2018-06-19', 2);
 
 -- --------------------------------------------------------
 
@@ -159,7 +159,7 @@ CREATE TABLE `tb_durian` (
   `product_durian` varchar(11) DEFAULT NULL,
   `sale_durian` varchar(11) DEFAULT NULL,
   `etc` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -173,7 +173,7 @@ CREATE TABLE `tb_group` (
   `detail` varchar(50) DEFAULT NULL,
   `address` int(1) DEFAULT NULL,
   `keyman` varchar(50) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_group`
@@ -211,7 +211,7 @@ CREATE TABLE `tb_managers_user` (
   `password` varchar(20) NOT NULL,
   `profile_pic` varchar(20) NOT NULL,
   `reg_day` date NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_managers_user`
@@ -236,7 +236,7 @@ CREATE TABLE `tb_moo` (
   `m_tel` varchar(10) DEFAULT NULL,
   `m_website` varchar(50) DEFAULT NULL,
   `status` varchar(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_moo`
@@ -268,15 +268,16 @@ CREATE TABLE `tb_news` (
   `title` varchar(250) NOT NULL,
   `detail` mediumtext NOT NULL,
   `count_view` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_news`
 --
 
 INSERT INTO `tb_news` (`news_id`, `day_in`, `title`, `detail`, `count_view`) VALUES
-(1, '2016-03-14', 'ช่วงนำเข้าข้อมูลระบบ', 'สำรวจและนำเข้าข้อมูลเกษตรกร พื้นที่เพาะปลูก และผลผลิตทุเรียน', 8),
-(3, '2018-02-22', 'อัพเดทระบบสมาชิก', 'ระบบฐานข้อมูลได้อัพเดทระบบสมาชิก โดยสามารถเชื่อมโยงกับบัญชีเฟสบุ๊คได้ เพื่อความสะดวกในการเข้าใช้ระบบของสมาชิกรายบุคคล', 6);
+(2, '2016-03-14', 'ช่วงนำเข้าข้อมูลระบบ', 'สำรวจและนำเข้าข้อมูลเกษตรกร พื้นที่เพาะปลูก และผลผลิตทุเรียน', 8),
+(3, '2018-02-22', 'อัพเดทระบบสมาชิก', 'ระบบฐานข้อมูลได้อัพเดทระบบสมาชิก โดยสามารถเชื่อมโยงกับบัญชีเฟสบุ๊คได้ เพื่อความสะดวกในการเข้าใช้ระบบของสมาชิกรายบุคคล', 7),
+(4, '2018-06-17', 'แผปฉผปฉ()ฉ()แ', 'ฟหกฟหdฟหกฟหก', 0);
 
 -- --------------------------------------------------------
 
@@ -289,14 +290,17 @@ CREATE TABLE `tb_news_item` (
   `news_id` int(11) NOT NULL,
   `file_name` varchar(250) NOT NULL,
   `file_value` varchar(250) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_news_item`
 --
 
 INSERT INTO `tb_news_item` (`autoid`, `news_id`, `file_name`, `file_value`) VALUES
-(1, 2, 'asd', 'news_q684BJ77Rq.pdf');
+(1, 2, 'asd', 'news_q684BJ77Rq.pdf'),
+(2, 3, 'dfasfas', 'news_g5n9pEefC8.pdf'),
+(3, 4, 'fffff', 'news_W5gacsA4Z3.pdf'),
+(4, 4, 'fffff', 'news_AHrFsFkj7z.pdf');
 
 -- --------------------------------------------------------
 
@@ -310,12 +314,20 @@ CREATE TABLE `tb_plot` (
   `codeplot` varchar(10) DEFAULT NULL,
   `arear` varchar(200) DEFAULT NULL,
   `water` varchar(100) DEFAULT NULL,
-  `temp` varchar(20) DEFAULT NULL,
-  `damp` varchar(20) DEFAULT NULL,
-  `soil` varchar(100) DEFAULT NULL,
+  `lat` double DEFAULT NULL,
+  `lng` double DEFAULT NULL,
+  `zm` int(11) DEFAULT NULL,
   `picture` varchar(20) DEFAULT NULL,
   `comment` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_plot`
+--
+
+INSERT INTO `tb_plot` (`idplot`, `iduser`, `codeplot`, `arear`, `water`, `lat`, `lng`, `zm`, `picture`, `comment`) VALUES
+(65, 65, 'PN65-1', 'ภูเขา', 'ห้วย', 17.833325, 100.9597057, 12, 'icon1.png', ''),
+(66, 67, 'PN67-1', 'ลาบลุ่ม', 'บาดาล', 17.6316672, 100.1106332, 14, 'icon2.png', '');
 
 -- --------------------------------------------------------
 
@@ -329,7 +341,7 @@ CREATE TABLE `tb_poll` (
   `pollname` varchar(200) NOT NULL,
   `detail` text,
   `up_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_poll`
@@ -354,7 +366,7 @@ CREATE TABLE `tb_polluser` (
   `idtopic` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `idyear` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -367,7 +379,43 @@ CREATE TABLE `tb_problem` (
   `idyear` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `problem` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_quality`
+--
+
+CREATE TABLE `tb_quality` (
+  `quality_id` int(11) NOT NULL,
+  `day_in` date NOT NULL,
+  `title` varchar(250) NOT NULL,
+  `detail` mediumtext NOT NULL,
+  `count_view` int(11) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_quality`
+--
+
+INSERT INTO `tb_quality` (`quality_id`, `day_in`, `title`, `detail`, `count_view`) VALUES
+(1, '2016-03-14', 'คุณภาพสับปะรด', 'ตรวจคุณภาพสับปะรด', 8),
+(3, '2018-02-22', 'สิ่งบ่งชี้ทางภูมิศาสตร์ (GI) ', '<p>สินค้าสับปะรดห้วยมุ่นภายใต้โครงการสิ่งบ่งชี้ทางภูมิศาสตร์ (GI) ไทยเข้มแข็งสู่สากล</p>\r\n<p><b>“</b><b>สับปะรดห้วยมุ่น</b><b>” </b><b>เป็นสับปะรดสับปะรดพันธุ์ปัตตาเวียที่ถูกนำเข้ามาปลูกมากกว่า</b><b> </b><b>๕๐</b><b> </b><b>ปีมาแล้ว</b><b> </b><b>ในพื้นที่ตำบลห้วยมุ่น</b><b> </b><b>อำเภอน้ำปาด</b><b> </b><b>จังหวัดอุตรดิตถ์</b><b> </b><b>จนกลายเป็นพันธุ์ท้องถิ่น</b><b> </b><b>ด้วยสภาพภูมิประเทศเป็นหุบเขา</b><b> </b><b>อากาศที่หนาวเย็น</b><b> </b><b>ประกอบกับดินมีธาตุโพแทสเซียม</b><b> </b><b>และกำมะถันที่สับปะรดต้องการในระดับสูง</b><b> </b><b>ส่งผลให้สับปะรดมีลักษณะผิวบาง</b><b> </b><b>ตาตื้น</b><b> </b><b>เนื้อหนา</b><b> </b><b>สีเหมือนน้ำผึ้ง</b><b> </b><b>รสชาติหอมหวานแบบธรรมชาติ</b><b> </b><b>ฉ่ำน้ำ</b><b> </b><b>ไม่ระคายลิ้น</b><b> </b><b>และมีลักษณะรูปทรงกลม</b><b> </b><b>น้ำหนักผลระหว่าง</b><b> </b><b>๑</b><b>.</b><b>๕</b><b>-</b><b>๓</b><b>.</b><b>๕</b><b> </b><b>กิโลกรัม</b><b> </b><b>เปลือกผิวบาง</b><b> </b><b>ตาตื้น</b><b> </b><b>ผลดิบจะสีเขียวคล้ำ</b><b> </b><b>ผลแก่เต็มที่จะเปลี่ยนเป็นสีเหลืองอมส้ม</b></p>', 6),
+(4, '2018-06-17', 'daหกฟหdฟหกฟห121212', 'sdafasdfasdfasdf112121<br><ol><li>sdfasdfasdfasfas</li><li>asdfsad</li><li>fasdf</li><li>asdfasdfdsaf</li></ol>', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tb_quality_item`
+--
+
+CREATE TABLE `tb_quality_item` (
+  `autoid` int(11) NOT NULL,
+  `quality_id` int(11) NOT NULL,
+  `file_name` varchar(250) NOT NULL,
+  `file_value` varchar(250) NOT NULL
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -380,7 +428,7 @@ CREATE TABLE `tb_search` (
   `keyword` varchar(200) CHARACTER SET utf8 NOT NULL,
   `sdate` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `etc` varchar(100) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -396,7 +444,7 @@ CREATE TABLE `tb_tambon` (
   `tam_tel` varchar(10) DEFAULT NULL,
   `tam_website` varchar(50) DEFAULT NULL,
   `status` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_tambon`
@@ -419,7 +467,7 @@ CREATE TABLE `tb_topic` (
   `detail` text,
   `score` int(11) NOT NULL DEFAULT '0',
   `up_date` date DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=40 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_topic`
@@ -455,7 +503,7 @@ CREATE TABLE `tb_type` (
   `detail` text,
   `picture` varchar(20) DEFAULT NULL,
   `comment` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_type`
@@ -500,7 +548,7 @@ CREATE TABLE `tb_user` (
   `update_time` datetime DEFAULT NULL,
   `cf_userlevel` varchar(1) DEFAULT NULL,
   `cf_slevel` int(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_user`
@@ -528,7 +576,7 @@ CREATE TABLE `tb_userwork` (
   `work4` varchar(20) DEFAULT NULL,
   `work5` varchar(20) DEFAULT NULL,
   `work6` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -541,7 +589,7 @@ CREATE TABLE `tb_year` (
   `nameyear` varchar(4) NOT NULL,
   `document` varchar(50) DEFAULT NULL,
   `status` varchar(1) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_year`
@@ -652,6 +700,18 @@ ALTER TABLE `tb_problem`
   ADD PRIMARY KEY (`idproblem`);
 
 --
+-- Indexes for table `tb_quality`
+--
+ALTER TABLE `tb_quality`
+  ADD PRIMARY KEY (`quality_id`);
+
+--
+-- Indexes for table `tb_quality_item`
+--
+ALTER TABLE `tb_quality_item`
+  ADD PRIMARY KEY (`autoid`);
+
+--
 -- Indexes for table `tb_search`
 --
 ALTER TABLE `tb_search`
@@ -703,139 +763,126 @@ ALTER TABLE `tb_year`
 --
 ALTER TABLE `cf_log`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `cf_log_userlogin`
 --
 ALTER TABLE `cf_log_userlogin`
   MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tbl_event`
 --
 ALTER TABLE `tbl_event`
   MODIFY `event_id` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tb_amphur`
 --
 ALTER TABLE `tb_amphur`
-  MODIFY `idamphur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `idamphur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_counter`
 --
 ALTER TABLE `tb_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
-
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT for table `tb_durian`
 --
 ALTER TABLE `tb_durian`
-  MODIFY `iddurian` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=67;
-
+  MODIFY `iddurian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `tb_group`
 --
 ALTER TABLE `tb_group`
-  MODIFY `idgroup` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
+  MODIFY `idgroup` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_information`
 --
 ALTER TABLE `tb_information`
   MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT;
-
 --
 -- AUTO_INCREMENT for table `tb_managers_user`
 --
 ALTER TABLE `tb_managers_user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `tb_moo`
 --
 ALTER TABLE `tb_moo`
-  MODIFY `idmoo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
-
+  MODIFY `idmoo` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=26;
 --
 -- AUTO_INCREMENT for table `tb_news`
 --
 ALTER TABLE `tb_news`
-  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `news_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_news_item`
 --
 ALTER TABLE `tb_news_item`
-  MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
+  MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `tb_plot`
 --
 ALTER TABLE `tb_plot`
-  MODIFY `idplot` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
-
+  MODIFY `idplot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
 --
 -- AUTO_INCREMENT for table `tb_poll`
 --
 ALTER TABLE `tb_poll`
-  MODIFY `idpoll` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
-
+  MODIFY `idpoll` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tb_polluser`
 --
 ALTER TABLE `tb_polluser`
-  MODIFY `idpolluser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=256;
-
+  MODIFY `idpolluser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=256;
 --
 -- AUTO_INCREMENT for table `tb_problem`
 --
 ALTER TABLE `tb_problem`
-  MODIFY `idproblem` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `idproblem` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `tb_quality`
+--
+ALTER TABLE `tb_quality`
+  MODIFY `quality_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `tb_quality_item`
+--
+ALTER TABLE `tb_quality_item`
+  MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_search`
 --
 ALTER TABLE `tb_search`
-  MODIFY `idsearch` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=100;
-
+  MODIFY `idsearch` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
 --
 -- AUTO_INCREMENT for table `tb_tambon`
 --
 ALTER TABLE `tb_tambon`
-  MODIFY `idtambon` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
+  MODIFY `idtambon` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT for table `tb_topic`
 --
 ALTER TABLE `tb_topic`
-  MODIFY `idtopic` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
-
+  MODIFY `idtopic` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `tb_type`
 --
 ALTER TABLE `tb_type`
-  MODIFY `idtype` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
-
+  MODIFY `idtype` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
-
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
 --
 -- AUTO_INCREMENT for table `tb_userwork`
 --
 ALTER TABLE `tb_userwork`
-  MODIFY `iduserwork` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=52;
-
+  MODIFY `iduserwork` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
 --
 -- AUTO_INCREMENT for table `tb_year`
 --
 ALTER TABLE `tb_year`
-  MODIFY `idyear` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
+  MODIFY `idyear` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=7;
 --
 -- Constraints for dumped tables
 --
@@ -845,7 +892,6 @@ ALTER TABLE `tb_year`
 --
 ALTER TABLE `tb_topic`
   ADD CONSTRAINT `fk_topic_poll` FOREIGN KEY (`idpoll`) REFERENCES `tb_poll` (`idpoll`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
