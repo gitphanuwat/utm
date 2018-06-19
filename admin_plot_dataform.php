@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include('config/config.php');
-	
+
 	if($_GET["action"]=="getFromMember"){
 		$iduser=$_GET["iduser"];
 
@@ -38,19 +38,19 @@
                 echo "</div>";
 
             	echo "<div class='form-group'>";
-            		echo "<label>อุณหภูมิ</label>";
-                    echo "<input type='text' class='form-control' id='temp' name='temp' >";
+            		echo "<label>ละติจูด</label>";
+                    echo "<input type='text' class='form-control' id='lat' name='lat' >";
                 echo "</div>";
 
             	echo "<div class='form-group'>";
-            		echo "<label>ความชื้น</label>";
-                    echo "<input type='text' class='form-control' id='damp' name='damp' >";
+            		echo "<label>ลองจิจูด</label>";
+                    echo "<input type='text' class='form-control' id='lng' name='lng' >";
                 echo "</div>";
 
-            	echo "<div class='form-group'>";
-            		echo "<label>ลักษณะดิน</label>";
-                    echo "<input type='text' class='form-control' id='soil' name='soil' >";
-                echo "</div>";
+								echo "<div class='form-group'>";
+	            		echo "<label>Zoom</label>";
+	                    echo "<input type='text' class='form-control' id='zm' name='zm' >";
+	                echo "</div>";
 
             	echo "<div class='form-group'>";
             		echo "<label>อื่นๆ</label>";
@@ -88,9 +88,9 @@
 		$codeplot=$_POST["codeplot"];
 		$arear=$_POST["arear"];
 		$water=$_POST["water"];
-		$temp=$_POST["temp"];
-		$damp=$_POST["damp"];
-		$soil=$_POST["soil"];
+		$lat=$_POST["lat"];
+		$lng=$_POST["lng"];
+		$zm=$_POST["zm"];
 		$comment=$_POST["comment"];
 
 		if($codeplot==""){
@@ -99,11 +99,11 @@
 
 				$sql="INSERT INTO tb_plot( `iduser` ";
 				$sql=$sql . ", `codeplot`, `arear` ";
-				$sql=$sql . ", `water`, `temp`, `damp`, `soil`, `comment`)";
+				$sql=$sql . ", `water`, `lat`, `lng`, `zm`, `comment`)";
 
 				$sql=$sql . " VALUES ('$iduser' ";
 				$sql=$sql . " , '$codeplot', '$arear' ";
-				$sql=$sql . " , '$water', '$temp', '$damp', '$soil', '$comment');";
+				$sql=$sql . " , '$water', '$lat', '$lng', '$zm', '$comment');";
 
 			$result=mysqli_query($connect,$sql);
 			$msgsuccess=1;

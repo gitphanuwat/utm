@@ -42,7 +42,7 @@
 </head>
 
 <body class="skin-blue">
-    <div style="font-size: 12px;" id="dialog" title="ข้อมูลผลผลิต">
+    <div style="font-size: 12px;" id="dialog" title="ข้อมูลพื้นที่การเกษตร">
         <div id="dialog-from" ></div>
     </div>
 		<?php
@@ -72,7 +72,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ข้อมูลผลผลิต
+                        ข้อมูลพื้นที่การเกษตร
 												<?php if($_SESSION["DUR_USER_STATE"]=="MANAGER"){echo " (กลุ่ม : ".$_SESSION["DUR_USER_GROUP_NAME"].")";}?>
                         <small><div id="lblHeadTitle"></div></small></h1>
                     </h1>
@@ -149,7 +149,7 @@
                              <!-- ส่วนของการแสดงผล -->
                              <div class="box" id="boxSearch">
                                 <div class="box-header">
-                                    <h3 class="box-title">ข้อมูลผลผลิตของเกษตรกร</h3>
+                                    <h3 class="box-title">ข้อมูลพื้นที่การเกษตรของเกษตรกร</h3>
                                 </div>
                                 <div class="box-body table-responsive no-padding">
                                 <iframe id="upload_target" name="upload_target" src="#" style="display:none;"></iframe>
