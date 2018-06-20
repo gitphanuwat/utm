@@ -17,7 +17,7 @@ while($rs=mysqli_fetch_array($qr)){
         "lat"=>$rs['lat'],
         "lng"=>$rs['lng'],
 				"zm"=>$rs['zm'],
-				"picture"=>$rs['picture'],
+				"icon"=>$rs['icon'],
 		 "comment"=>$rs['comment']
 	);
 }

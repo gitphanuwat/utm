@@ -140,10 +140,11 @@ h6,
   display: block;
   margin-top: 5px;
 }
-/* All images should be responsive */
+/* All images should be responsive
 img {
   max-width: 100% !important;
 }
+*/
 .sort-highlight {
   background: #f4f4f4;
   border: 1px dashed #ddd;

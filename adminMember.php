@@ -201,6 +201,16 @@
                 $("#dialog").dialog( "close" );
             });
 
+						$(document).on('click','.btnpic',function(){
+							var id=$(this).attr("href");
+							id=id.replace("#","");
+							//$("#showpic").html("123456789"+id,function(){
+							$("#showpic").load("adminDataMember.php?action=uppic&id="+id,function(){
+									//$("#dialog").dialog( "option", "width", 400 );
+									//$( "#dialog" ).dialog( "open" );
+							});
+            });
+
             function clickupload(){
                 $("#loadInfo").fadeIn();
                 return true;

@@ -9,7 +9,7 @@ function initialize() { // ฟังก์ชันแสดงแผนที�
     // กำหนดจุดเริ่มต้นของแผนที่
     var my_Latlng  = new GGM.LatLng(17.831354775692716,100.52513862426758);
     // กำหนด DOM object ที่จะเอาแผนที่ไปแสดง ที่นี้คือ div id=map_canvas
-    var my_DivObj=$("#map_canvas")[0];
+    var my_DivObj=$("#gmap")[0];
     // กำหนด Option ของแผนที่
     var myOptions = {
         zoom: 9, // กำหนดขนาดการ zoom
@@ -28,7 +28,7 @@ function initialize() { // ฟังก์ชันแสดงแผนที�
 		    var image ;
          $.each(obj_marker,function(i,k){  // วนลูปแสดงการปักหมุด
                     var markerLatLng=new GGM.LatLng(obj_marker[i].lat,obj_marker[i].lng);
-					image = "icon/"+obj_marker[i].picture
+					image = "icon/"+obj_marker[i].icon
                     my_Marker[i] = new GGM.Marker({ // สร้างตัว marker
                         position:markerLatLng,  // กำหนดไว้ที่เดียวกับจุดกึ่งกลาง
                         map: map, // กำหนดว่า marker นี้ใช้กับแผนที่ชื่อ instance ว่า map

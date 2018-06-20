@@ -25,9 +25,29 @@
 
 		}
 		echo '<iframe id="upload_target" name="upload_target" src="#" style="display:none;"></iframe>';
-		echo " <form action='adminDataMemberFrom.php?action=insert' method='post' target='upload_target' onsubmit='clickSave();' >";
+		echo " <form action='adminDataMember.php?action=uppic' method='post' enctype='multipart/form-data' target='upload_target' onsubmit='clickSavepic();' >";
+		echo "<div class='box-body'>";
+			echo "<div class='form-group'>";
+			echo "<label>รูปประจำตัว</label>";
+			echo "<div class='row'>";
+				echo "<div class='col-lg-3'>";
+					echo "<div id='showpic'><img src='user/profile_pic/user1.png' width='100'></div>";
+								echo "<div id='loadDialogpic' align='center'>";
+									echo "<img src='img/ajax-loader.gif' align='absmiddle' />";
+								echo "</div>";
+				echo "</div>";
+				echo "<div class='col-lg-9'>";
+				echo "<input type='file' name='fileField' id='fileField' >";
+				echo "<input type='text' name='id' id='id' value=$id >";
+					echo '<button type="submit" class="btn btn-info" >Save</button>';
+				echo "</div>";
+			echo "</div>";
+			echo "</div>";
+			echo "</div>";
+			echo "</form>";
 
-            echo "<div class='box-body'>";
+
+		echo " <form action='adminDataMemberFrom.php?action=insert' method='post' target='upload_target' onsubmit='clickSave();' >";
             	echo "<div class='form-group'>";
             		echo "<label>คำนำหน้า<font color=\"red\">*</font></label>";
             		echo "<div class='row'>";
@@ -241,6 +261,7 @@
 
 		echo "<script type='text/javascript'>
 			$(document).ready(function(){
+				$('#loadDialogpic').fadeOut();
 				var prefix=$('#cboPrefix').val();
 				if(prefix==4){
 					$('#txtPrefix').show();
@@ -273,6 +294,12 @@
 
 			function clickSave(){
           $('#loadDialog').fadeIn();
+          return true;
+      }
+
+			function clickSavepic(){
+				alert('testpic');
+          $('#loadDialogpic').fadeIn();
           return true;
       }
 

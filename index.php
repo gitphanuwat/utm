@@ -88,6 +88,21 @@
 
                     <?php include('stat_box.php'); ?>
 
+	<!-- for google maps -->
+										<div class="row">
+												<section class="col-lg-12">
+													<div class="box box-solid">
+															<div class="box-header">
+																	<i class="fa fa-bar-chart-o"></i>
+																	<h3 class="box-title">เกษตรกร</h3>
+															</div><!-- /.box-header -->
+															<div class="box-body">
+																 <div id="gmap" style="width: 100%; height: 400px"><div align="center"><img src="img/ajax-loader.gif" align="absmiddle"><br>Map Loading...</div></div>
+															</div><!-- /.box-body -->
+														</div><!-- /.box -->
+												</section><!-- /.content -->
+									</div><!-- /.box -->
+
                     <!-- Main row -->
                     <div class="row">
                         <!-- Left col -->
@@ -177,89 +192,13 @@
 												</section><!-- /.content -->
 									</div><!-- /.box -->
 
-<!-- for google maps -->
-									<div class="row">
-											<section class="col-lg-12 connectedSortable">
-												<div class="box box-solid">
-														<div class="box-header">
-																<i class="fa fa-bar-chart-o"></i>
-																<h3 class="box-title">เกษตรกร</h3>
-														</div><!-- /.box-header -->
-														<div class="box-body">
-															 <div id="map" style="height: 300px;"><div align="center"><img src="img/ajax-loader.gif" align="absmiddle"><br>Facebook Loading...</div></div>
-														</div><!-- /.box-body -->
-													</div><!-- /.box -->
-											</section><!-- /.content -->
-								</div><!-- /.box -->
-
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
-        <!-- add new calendar event modal -->
-				<?php
-				$q="select * from tb_plot";
-				$qr=mysqli_query($connect,$q);
-				while($rs=mysqli_fetch_array($qr)){
-					$json_data[]=array(
-						"idplot"=>$rs['idplot'],
-						"codeplot"=>$rs['codeplot'],
-				        "lat"=>$rs['lat'],
-				        "lng"=>$rs['lng'],
-								"zm"=>$rs['zm'],
-								"picture"=>$rs['picture'],
-						 "comment"=>$rs['comment']
-					);
-				}
-				$json= json_encode($json_data);
-				echo $json;
-				?>
-
-				<script type="text/javascript">
-				var locations;  // สำหรับเก็บค่าพิกัดและข้อมูลจากฐานข้อมูล
-				var map; // กำหนดตัวแปร map ไว้ด้านนอกฟังก์ชัน เพื่อให้สามารถเรียกใช้งาน จากส่วนอื่นได้
-
-				  function initMap() {
-						$.getJSON( "get_marker.php", function( data ) {
-							locations=data;
-							//locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'aaaaa'},{lat: 17.833325, lng: 100.9597057, codeplot:'bbbbb'}];
-							//var locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'aaaaa'},{lat: 17.833325, lng: 100.9597057, codeplot:'bbbbb'}];
-							//var locations = [{lat: 17.6339275, lng: 100.1019697, codeplot:'a1'},{lat: 17.833325, lng: 100.9597057, codeplot:'bbbbb'}];
-							//var locations = [{lat:17.6339275, lng:100.1019697, codeplot:'ccccc'},{lat:17.833325, lng:100.9597057, codeplot:'dddd'}];
-
-							//var locations = [{"idplot":"65","codeplot":"PN67-1","lat":"17.7505938","lng":"100.7300733","zm":"0","comment":"comment"},{"idplot":"66","codeplot":"PN65-1","lat":"17.833325","lng":"100.9597057","zm":"14","comment":""}];
-							//var locations = [{"idplot":"65","codeplot":"PN67-1","lat":"17.7505938","lng":"100.7300733","zm":"0","comment":"comment"},{"idplot":"66","codeplot":"PN65-1","lat":"17.833325","lng":"100.9597057","zm":"14","comment":""}];
-
-							//locations=[{"idplot":"65","codeplot":"PN65-1","lat":"17.833325","lng":"100.9597057","zm":"12","picture":"icon1.png","comment":""},{"idplot":"66","codeplot":"PN67-1","lat":"17.6316672","lng":"100.1106332","zm":"14","picture":"icon2.png","comment":""}]
-				      var uluru = {lat: 17.620664, lng: 100.097566};
-				      var map = new google.maps.Map(document.getElementById('map'), {
-				        zoom: 8,
-				        center: uluru
-				      });
-							//$.each(obj_marker,function(i,k){  // วนลูปแสดงการปักหมุด
-				      $.each( locations, function( index, value ){
-				          var utm = {lat: locations[index].lat, lng: locations[index].lng};
-				          var contentString = locations[index].codeplot;
-				          var infowindow = new google.maps.InfoWindow({
-				            content: contentString,
-				            maxWidth: 200
-				          });
-				          var marker = new google.maps.Marker({
-				            position: utm,
-				            map: map,
-				            title: locations[index].codeplot
-				          });
-				          marker.addListener('click', function() {
-				            infowindow.open(map, marker);
-				          });
-				      });//foreach
-						});
-				  }
-
-				  </script>
-				  <script async defer
-				  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBknDfGljfct2xUrrNHfIrve6EakWTNwsc&callback=initMap">
-				  </script>
+        <!-- google maps -->
+				<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+				<script src="js/testmap.js"></script>
 
 </body>
 </html>

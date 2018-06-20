@@ -8,27 +8,24 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 	mysqli_query($connect,"SET NAMES UTF8");
 
 // ดึงข้อมูลจากฐานข้อมูล ตามค่า id ของสถานที่ ที่ส่งมา
-$q="SELECT * FROM  tb_plot WHERE
-idplot='".$_GET['placeID']."'";
+$q="SELECT * FROM  tb_plot,tb_user WHERE
+tb_plot.idplot='".$_GET['placeID']."' and tb_plot.iduser = tb_user.iduser";
 $qr=@mysqli_query($connect,$q);
 $rs=@mysqli_fetch_array($qr);
 ?>
 <!--จัดรูปแบบ ที่ต้องการแสดงตามต้องการ -->
-<table width="250" border="0" cellspacing="2" cellpadding="0" align="left">
+<table width="200" height="100">
   <tr align="left">
-    <td width="10" rowspan="4">
-    <img src="icon/<?php echo $rs['picture']?>"
-     width="130" height="80">
+    <td width="100" rowspan="4">
+    <img src="user/profile_pic/<?php echo $rs['picture']?>"
+     class="img-circle" width="80">
     </td>
-    <td width="10">&nbsp;</td>
-    <td width="264"><?php echo $rs['codeplot']?></td>
+    <td><?php echo $rs['codeplot']?></td>
   </tr>
   <tr align="left">
-    <td>&nbsp;</td>
-    <td>กลุ่มงาน: <?php echo $rs['arear']?></td>
+    <td>เกษตรกร:<br> <?php echo $rs['firstname'].' '.$rs['lastname']?></td>
   </tr>
   <tr align="left">
-    <td>&nbsp;</td>
     <td>
     <?php if($rs['comment']!=""){?>
     <a href='<?php echo $rs['comment'];?>' title='ลิงค์ไปยังเฟสบุ๊ค' target="_blank"><span class="label label-primary">Facebook</span></a>
@@ -39,7 +36,6 @@ $rs=@mysqli_fetch_array($qr);
     </td>
   </tr>
   <tr>
-    <td>&nbsp;</td>
     <td align="right">
     <a href='#<?php echo $rs['idplot'];?>' title='แสดงข้อมูล' class='showdetail'><span class="label label-info">รายละเอียด</span></a>
     </td>
