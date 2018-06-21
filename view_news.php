@@ -6,8 +6,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?php echo $PageTitle ?></title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -32,7 +35,7 @@
 		<?php
 			include('header.php');
 		?>
-        
+
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="left-side sidebar-offcanvas">
@@ -42,7 +45,7 @@
                     <div class="user-panel">
                     <?php include('user_panel.php');?>
                     </div>
-                    
+
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <?php
@@ -77,7 +80,7 @@
 
                     <!-- Main row -->
                     <div class="row">
-                        <section class="col-lg-12 connectedSortable"> 
+                        <section class="col-lg-12 connectedSortable">
                             <div class="box box-solid bg-gray">
                                  <div class="box-header" style="color:#666">
                                     <i class="ion ion-clipboard"></i>
@@ -86,7 +89,7 @@
                                 <div class="box-body border-radius-none">
                                     <div id="showDetail" style="margin:auto;padding:10px;"></div>
 								</div>
-                            </div><!-- /.box -->                            
+                            </div><!-- /.box -->
                         </section><!-- right col -->
                     </div><!-- /.row (main row) -->
 
@@ -133,9 +136,8 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
-		
+
         $("#showDetail").load("loadnews.php?action=getNewsDetail&id=<?php echo $_GET['id'] ?>");
     });
-    
-</script>
 
+</script>

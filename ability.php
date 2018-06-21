@@ -1,17 +1,20 @@
 <?php
 	session_start();
 	include('config/config.php');
-	
-	
+
+
 	$pageName="stat";
 	$subpageName="ability";
-		
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?php echo $PageTitle ?></title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -38,7 +41,7 @@
                     <div class="user-panel">
                     <?php include('user_panel.php');?>
                     </div>
-                    
+
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <?php
@@ -48,7 +51,7 @@
                 </section>
                 <!-- /.sidebar -->
             </aside>
-            
+
             <!-- ส่วนของเนื้อหา -->
             <aside class="right-side">
                 <!-- Content Header (Page header) -->
@@ -81,7 +84,7 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
 
-           
+
         </div><!-- ./wrapper -->
 
         <!-- add new calendar event modal -->
@@ -98,12 +101,12 @@
         <!-- AdminLTE App -->
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="js/AdminLTE/demo.js" type="text/javascript"></script>        
+        <script src="js/AdminLTE/demo.js" type="text/javascript"></script>
         <!-- Bootstrap WYSIHTML5 -->
         <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
         <!-- iCheck -->
         <script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
-        
+
         <script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
         <script type="text/javascript">
 			$(document).ready(function(){
@@ -116,7 +119,6 @@
   				var idterm = this.value;
 				$("#showData").load("statistics_load.php?action=loadstat",{idterm:idterm});
 			});
-	
+
 
 		</script>
-		

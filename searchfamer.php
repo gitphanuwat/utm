@@ -3,13 +3,16 @@
 	include('config/config.php');
 	$pageName="search";
     $subpageName="searchfamer";
-	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?php echo $PageTitle ?></title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
         <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
@@ -35,7 +38,7 @@
 		<?php
 			include('header.php');
 		?>
-        
+
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="left-side sidebar-offcanvas">
@@ -95,7 +98,7 @@
 
 			$sql=$sql . " left join tb_tambon on tb_moo.idtambon=tb_tambon.idtambon";
 			$sql=$sql . " left join tb_amphur on tb_tambon.idamphur=tb_amphur.idamphur";
-			
+
 			$sql=$sql . " where (tb_user.firstname like '%$search%' or tb_user.lastname like '%$search%')";
 
     		//$sql="select iduser , prefix , firstname , lastname ,cf_aca_position , email , `status`";
@@ -106,7 +109,7 @@
 				$prefix=$cf_aca_position[$row[7]];
                 $prefix=$prefix . CreatePrefix($row[8]);
     			$name=$prefix . $row[2] . " " . $row[3];
-    			
+
     			$url=randomText(200);
     			echo "<tr>";
     			echo "<td>$i</td>";
@@ -161,14 +164,14 @@
         <!-- AdminLTE App -->
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
 
-        <script type="text/javascript"> 
+        <script type="text/javascript">
             $(document).ready(function(){
                 $("#boxSearch").hide();
 
                 $("#butCancel").click(function(){
                     $("#txtSearch").val('');
                 });
-                
+
 
 
             });

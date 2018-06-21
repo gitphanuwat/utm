@@ -15,8 +15,11 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?php echo $PageTitle ?></title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -201,33 +204,39 @@
                 $("#dialog").dialog( "close" );
             });
 
-						$(document).on('click','.btnpic',function(){
-							var id=$(this).attr("href");
-							id=id.replace("#","");
-							//$("#showpic").html("123456789"+id,function(){
-							$("#showpic").load("adminDataMember.php?action=uppic&id="+id,function(){
-									//$("#dialog").dialog( "option", "width", 400 );
-									//$( "#dialog" ).dialog( "open" );
-							});
-            });
-
             function clickupload(){
                 $("#loadInfo").fadeIn();
                 return true;
             }
 
-            function stopUpload(success , error){
+            function stopUpload(success , error , box, id){
                     if(success ==1){
-                        $("#dialog").dialog( "close" );
+											if(box==2){
+												$("#showpic").load("adminDataMemberFrom.php?action=getPic",{id:id});
+												$("#loadDialogpic").html("อัพโหลดภาพเรียบร้อยแล้ว");
+											}else{
+												$("#dialog").dialog( "close" );
                         $("#loadRegistered").fadeIn();
                         $("#boxRegistered").load("adminDataMember.php?action=getRegistered" ,function(){
-                            $("#loadRegistered").fadeOut();
+                          $("#loadRegistered").fadeOut();
                         });
+											}
                     }else{
-                        if(error==1){
-                            $("#uploadDialog_process").html("<font color='red'>กรุณากรอกข้อมูลให้ครบ</font>");
-														$('#loadDialog').fadeOut();
-                        }
+												if(box==2){
+													if(error==1){
+															$("#loadDialogpic").html("<font color='red'>กรุณาเลือกภาพ</font>");
+													}
+													if(error==2){
+															$("#loadDialogpic").html("<font color='red'>ชนิดภาพไม่ถูกต้อง</font>");
+													}
+													if(error==3){
+															$("#loadDialogpic").html("<font color='red'>อัพโหลดไฟล์ไม่สมบูรณ์</font>");
+													}
+												}else{
+													if(error==1){
+															$("#uploadDialog_process").html("<font color='red'>กรุณากรอกข้อมูลให้ครบ</font>");
+													}
+												}
                     }
                 return true;
             }
