@@ -1,16 +1,19 @@
 <?php
 	session_start();
 	include('config/config.php');
-	
+
 	$pageName="search";
     $subpageName="searchdetail";
-	
+
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title><?php echo $PageTitle ?></title>
+<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+
 
 	<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
@@ -35,7 +38,7 @@
 		<?php
 			include('header.php');
 		?>
-        
+
         <div class="wrapper row-offcanvas row-offcanvas-left">
             <!-- Left side column. contains the logo and sidebar -->
             <aside class="left-side sidebar-offcanvas">
@@ -43,7 +46,7 @@
                 <section class="sidebar">
                     <!-- Sidebar user panel -->
                     <div class="user-panel"><?php include('user_panel.php');?></div>
-                    
+
                     <!-- sidebar menu: : style can be found in sidebar.less -->
                     <ul class="sidebar-menu">
                         <?php
@@ -74,7 +77,7 @@
                     <!-- Main row -->
                     <div class="row">
                         <div class="col-xs-12">
-                            
+
                             <!-- ส่วนของงานหลัก  -->
                             <div class="box box-solid box-primary">
                                 <div class="box-header">
@@ -82,18 +85,18 @@
                                     <div class="pull-right box-tools">
                                         <button class="btn btn-primary btn-sm pull-right" data-widget='collapse' data-toggle="tooltip"  style="margin-right: 5px;"><i class="fa fa-minus"></i></button>
                                     </div><!-- /. tools -->
-    
+
                                     <i class="fa fa-cloud"></i>
                                     <h3 class="box-title">เงื่อนไขค้นหา</h3>
                                 </div>
-                                
+
                                 <div class="box-body">
                                 <div class="row">
                                 <div class="col-xs-4">
                                     <div class="form-group">
                                         <label>คำค้น</label>
                                         <input type="text" class="form-control" id="txtSearch" placeholder="ชื่อ สกุล">
-                                        
+
                                             <label>เลือกอำเภอ</label>
                                             <div id="showamphur">
                                             <select class="form-control">
@@ -120,7 +123,7 @@
                                     <button class="btn btn-success" type="button" id="butSearch">Search</button>
                                     <button class="btn btn-default" type="button" id="butCancel">Cancel</button>
                                 </div>
-                          
+
                             </div>
                              <!-- จบส่วนงานหลัก -->
 
@@ -136,7 +139,7 @@
                              </div>
                              <!--จบการแสดงผล -->
                         </div>
-                       
+
                     </div><!-- /.row (main row) -->
 
                 </section><!-- /.content -->
@@ -173,7 +176,7 @@
         <!-- AdminLTE App -->
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
 
-        <script type="text/javascript"> 
+        <script type="text/javascript">
             $(document).ready(function(){
                 $("#boxSearch").hide();
 
@@ -195,7 +198,7 @@
                 });
 
             });
-			
+
 			$(document).on('click','.naviPN', function() {
 				var Search = $("#txtSearch").val();
 					var fac_id = $("#select_fac_id").val();
@@ -221,4 +224,3 @@
 			});
 
         </script>
-

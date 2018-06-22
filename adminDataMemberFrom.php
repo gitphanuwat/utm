@@ -18,6 +18,7 @@
 			$db_idamphur=$row["idamphur"];
 			$db_tel=$row["tel"];
 			$db_email=$row["email"];
+			$db_pic=$row["picture"];
 			$db_idgroup=$row["idgroup"];
 			$db_cf_userlevel=$row["cf_userlevel"];
 			$db_username=$row["username"];
@@ -25,20 +26,20 @@
 
 		}
 		echo '<iframe id="upload_target" name="upload_target" src="#" style="display:none;"></iframe>';
-		echo " <form action='adminDataMember.php?action=uppic' method='post' enctype='multipart/form-data' target='upload_target' onsubmit='clickSavepic();' >";
+		echo '<form action="adminDataMemberFrom.php?action=update_pic" method="post" enctype="multipart/form-data"  target="upload_target" onsubmit="clickupload_pic();" >';
 		echo "<div class='box-body'>";
 			echo "<div class='form-group'>";
 			echo "<label>รูปประจำตัว</label>";
 			echo "<div class='row'>";
-				echo "<div class='col-lg-3'>";
-					echo "<div id='showpic'><img src='user/profile_pic/user1.png' width='100'></div>";
+				echo "<div class='col-lg-4'>";
+					echo "<div id='showpic'><img src='user/profile_pic/$db_pic' width='100'></div>";
 								echo "<div id='loadDialogpic' align='center'>";
 									echo "<img src='img/ajax-loader.gif' align='absmiddle' />";
 								echo "</div>";
 				echo "</div>";
-				echo "<div class='col-lg-9'>";
+				echo "<div class='col-lg-8'>";
 				echo "<input type='file' name='fileField' id='fileField' >";
-				echo "<input type='text' name='id' id='id' value=$id >";
+				echo "<input type='hidden' name='id' id='id' value=$id >";
 					echo '<button type="submit" class="btn btn-info" >Save</button>';
 				echo "</div>";
 			echo "</div>";
@@ -297,8 +298,7 @@
           return true;
       }
 
-			function clickSavepic(){
-				alert('testpic');
+			function clickupload_pic(){
           $('#loadDialogpic').fadeIn();
           return true;
       }
@@ -400,8 +400,60 @@
 		//exit();
 	}
 
+	if($_GET["action"]=="update_pic"){
+		$id=$_POST["id"];
+		$msgsuccess=0;
+		$msgerror=0;
+		$box=2;
+
+		if($_FILES["fileField"]["error"]==4){
+			$msgerror=1;
+		}else{
+			$accept_type=array("image/jpeg" , "image/gif" , "image/png");
+			$file=$_FILES["fileField"]["name"];
+			$typefile=$_FILES["fileField"]["type"];
+			$sizefile=$_FILES["fileField"]["size"];
+			$tempfile=$_FILES["fileField"]["tmp_name"];
+			if(!in_array($typefile,$accept_type)){
+				$msgerror=2;
+			}else{
+				$Str_file = explode(".",$file);
+				$carr = count($Str_file)-1;
+				$strname = $Str_file[$carr];
+				$pname= "pic_" . randomText(10) . "." . $strname;
+				$target_path = "user/profile_pic/" . $pname;
+				if(@move_uploaded_file($tempfile,$target_path)){
+						$sql="update tb_user set `picture`='$pname' where iduser=$id";
+					$result=mysqli_query($connect,$sql);
+					$msgsuccess=1;
+					if($_SESSION["DUR_USER_ID"]==$id){
+						$_SESSION["DUR_USER_PIC"]=$pname;
+					}
+				}else{
+					$msgerror=3;
+				}
+			}
+		}
+		sleep(1);
+	}
+
+	if($_GET["action"]=="getPic"){
+			$id=$_POST["id"];
+			$sql= "select `picture` from tb_user where iduser= " . $id;
+			$result=mysqli_query($connect,$sql);
+			$row=mysqli_fetch_array($result);
+			if($row[0]==""){
+				//$userPic1="https://graph.facebook.com/".$_SESSION["IASU_USER_FACEBOOK"]."/picture";
+				$userPic1="user/profile_pic/logo.jpg";
+			}else{
+				$userPic1="user/profile_pic/" . $row[0];
+			}
+		echo "<img src='$userPic1' width='115' height='115' class='img-rounded'/>";
+		exit();
+	}
+
 	mysqli_close($connect);
 ?>
 <script language="javascript">
-	window.top.window.stopUpload(<?php echo $msgsuccess ?> , <?php echo $msgerror ?> );
+		window.top.window.stopUpload(<?php echo $msgsuccess ?> , <?php echo $msgerror ?> , <?php echo $box ?> , <?php echo $id ?> );
 </script>

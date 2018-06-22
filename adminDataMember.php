@@ -322,43 +322,9 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 	}
 
 
-	if($_GET["action"]=="uppic"){
-		$id=$_POST["id"];
 
-		if($_FILES["fileField"]["error"]==4){
-			echo "รูปภาพไม่ถูกต้อง";
-		}else{
-			$accept_type=array("image/jpeg" , "image/gif" , "image/png");
-			$file=$_FILES["fileField"]["name"];
-			$typefile=$_FILES["fileField"]["type"];
-			$sizefile=$_FILES["fileField"]["size"];
-			$tempfile=$_FILES["fileField"]["tmp_name"];
-			if(!in_array($typefile,$accept_type)){
-				echo "ชนิดรูปภาพไม่ถูกต้อง";
-			}else{
-				$Str_file = explode(".",$file);
-				$carr = count($Str_file)-1;
-				$strname = $Str_file[$carr];
-				$pname= "pic_" . randomText(10) . "." . $strname;
-				$target_path = "user/profile_pic/" . $pname;
-				if(@move_uploaded_file($tempfile,$target_path)){
-						$sql="update tb_user set `picture`='$pname' ";
-					$sql=$sql . "  where iduser=" .$id;
-					$result=mysqli_query($connect,$sql);
-					echo "อัพโหลดสมบูรณ์";
-				}else{
-					echo "อัพโหลดล้มเหลว";
-				}
-			}
-		}
-		//$sql="delete from tb_userwork where iduser=$id";
-		//$result=mysqli_query($connect,$sql);
-		//echo "<img src='user/profile_pic/user2.png' width='100'>";
-		//echo "tttteeeeesssttt".$id;
-		exit();
-	}
 	mysqli_close($connect);
 ?>
 <script language="javascript">
-	window.top.window.stopUpload(<?php echo $msgsuccess ?> , <?php echo $msgerror ?> );
+window.top.window.stopUpload(<?php echo $msgsuccess ?> , <?php echo $msgerror ?> , <?php echo $box ?> , <?php echo $id ?> );
 </script>

@@ -1,9 +1,8 @@
 <?php
-		$_SESSION["DUR_USER_PIC"]=0;
-		$userPic="user/profile_pic/" .$_SESSION["DUR_USER_PIC"];
-
 if(!$_SESSION["DUR_USER_PIC"]){
 	$userPic="user/profile_pic/logo.png";
+}else{
+	$userPic="user/profile_pic/" .$_SESSION["DUR_USER_PIC"];
 }
 ?>
 
