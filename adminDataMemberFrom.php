@@ -395,6 +395,8 @@
 			}
 			$result=mysqli_query($connect,$sql);
 			$msgsuccess=1;
+			$box=1;
+			$id=$iduser;
 			//echo
 		}
 		//exit();

@@ -27,30 +27,29 @@
             		echo "<label>รหัสแปลง<font color=\"red\">*</font></label>";
                     echo "<input type='text' class='form-control' id='codeplot' name='codeplot' value=\"$plotcode\" readonly=\"readonly\">";
                 echo "</div>";
-            	echo "<div class='form-group'>";
-            		echo "<label>ลักษณะพื้นที่</label>";
-                    echo "<input type='text' class='form-control' id='arear' name='arear' >";
-                echo "</div>";
-
-            	echo "<div class='form-group'>";
-            		echo "<label>แหล่งน้ำ</label>";
-                    echo "<input type='text' class='form-control' id='water' name='water' >";
-                echo "</div>";
-
-            	echo "<div class='form-group'>";
-            		echo "<label>ละติจูด</label>";
-                    echo "<input type='text' class='form-control' id='lat' name='lat' >";
-                echo "</div>";
-
-            	echo "<div class='form-group'>";
-            		echo "<label>ลองจิจูด</label>";
-                    echo "<input type='text' class='form-control' id='lng' name='lng' >";
-                echo "</div>";
 
 								echo "<div class='form-group'>";
-	            		echo "<label>Zoom</label>";
-	                    echo "<input type='text' class='form-control' id='zm' name='zm' >";
+	            		echo "<label>ตำแหน่งพื้นที่ผลิต</label><div id='geo_data'><label ><font color='red'>- รอโหลดตำแหน่ง -</font></label></div>";
+									echo '<div id="map_canvas" style="width: 100%; height: 150px"><div align="center"><img src="img/ajax-loader.gif" align="absmiddle"><br>Map Loading...</div></div>';
 	                echo "</div>";
+
+            	echo "<div class='form-group'>";
+							echo '
+							<div class="row">
+								<div class="col col-md-5">
+										<label>ละติจูด</label>
+										<input type="text" class="form-control" id="lat" name="lat">
+								</div>
+								<div class="col col-md-5">
+										<label>ละติจูด</label>
+										<input type="text" class="form-control" id="lng" name="lng">
+								</div>
+								<div class="col col-md-2">
+										<label>ละติจูด</label>
+										<input type="text" class="form-control" id="zm" name="zm">
+								</div>
+							</div>';
+							echo "</div>";
 
             	echo "<div class='form-group'>";
             		echo "<label>อื่นๆ</label>";
@@ -68,6 +67,9 @@
             echo "</div>";
 
 		echo "</form>";
+
+		echo '<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<script src="js/geolocation.js"></script>';
 
 		echo "<script type='text/javascript'>
 

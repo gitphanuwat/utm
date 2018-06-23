@@ -42,6 +42,8 @@
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
 
+		<link rel="icon" href="user/profile_pic/icon.ico">
+
 </head>
 
 <body class="skin-blue">
@@ -168,6 +170,7 @@
                 </section><!-- /.content -->
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
+				
 </body>
 </html>
 <?php
