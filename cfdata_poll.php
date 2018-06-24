@@ -54,6 +54,7 @@
 		echo $row[1] . "|";
 		echo $row[2] . "|";
 		echo $row[3] . "|";
+		//echo $row[4] . "|";
 		//echo '5|4|3|2|';
 		exit();
 	}

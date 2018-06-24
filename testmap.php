@@ -4,7 +4,7 @@
   <style>
     /* Always set the map height explicitly to define the size of the div
      * element that contains the map. */
-    #gmap {
+    #map_canvas {
       height: 100%;
     }
     /* Optional: Makes the sample page fill the window. */
@@ -14,7 +14,7 @@
       padding: 0;
     }
 
-    #gmap {
+    #map_canvas {
       height: 500px;
       width: 800px;
     }
@@ -22,7 +22,7 @@
 </head><!--/head-->
 
 <body>
-    <div id="gmap"> </div>
+    <div id="map_canvas"> </div>
 </body>
 </html>
 

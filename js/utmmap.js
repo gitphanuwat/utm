@@ -43,7 +43,7 @@ function initialize() { // ฟังก์ชันแสดงแผนที�
                         }
                         infowindow[i] = new GGM.InfoWindow({
                           	content:$.ajax({
-                          	url:'placeDetailshow.php',//ใช้ ajax ใน jQuery ดึงข้อมูล
+                          	url:'placedetailshow.php',//ใช้ ajax ใน jQuery ดึงข้อมูล
                             data:'placeID='+obj_marker[i].idplot,  // ส่งค่าตัวแปร ไปดึงข้อมูลจากฐานข้อมูล
                             async:false
                             }).responseText
@@ -68,7 +68,8 @@ $(function(){
     //  callback ให้เรียกใช้ฟังก์ชันแสดง แผนที่ initialize
     $("<script/>", {
       "type": "text/javascript",
-      src: "http://maps.google.com/maps/api/js?v=3.0&sensor=false&language=th&key=AIzaSyBknDfGljfct2xUrrNHfIrve6EakWTNwsc&callback=initialize"
+      src: "//maps.googleapis.com/maps/api/js?key=AIzaSyCkw9kj6fQxsFQJ89BbuRqPRZ5c_SdoDqg&callback=initialize"
+      //src: "http://maps.google.com/maps/api/js?v=3.0&sensor=false&language=th&key=AIzaSyBknDfGljfct2xUrrNHfIrve6EakWTNwsc&callback=initialize"
       //src: "http://maps.google.com/maps/api/js?v=3.0&sensor=true&language=th&callback=initialize"
     }).appendTo("body");
 });

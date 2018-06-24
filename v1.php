@@ -15,7 +15,7 @@ function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(
           function(position) {
-              alert(position.coords.latitude, position.coords.longitude);
+            showPosition(position);
           },
           function(error){
               alert(error.message);

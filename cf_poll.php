@@ -93,7 +93,7 @@
                                                     <input type="text" class="form-control" id="pollname" name="pollname" placeholder="หัวข้อแบบสำรวจ">
                                                     <label>รายละเอียด</label>
                                                     <textarea type="text" class="form-control" id="detail" name="detail" placeholder="รายละเอียดข้อมูล"></textarea>
-                                                    <input type="hidden" class="form-control" id="up_date" name="up_date" placeholder="วันที่สำรวจ" value="<?php echo date("Y-m-d H:i:s");?>">
+                                                    <input type="text" class="form-control" id="up_date" name="up_date" placeholder="วันที่สำรวจ" value="<?php echo date("Y-m-d H:i:s");?>">
                                                     <span id="errpollname" class="error"></span>
                                                 </div>
                                             </div>  <!-- /end box1 -->
@@ -198,7 +198,7 @@
 					$("#idpoll").val(returnData[0]);
 					$("#pollname").val(returnData[2]);
 					$("#detail").val(returnData[3]);
-					$("#up_date").val(returnData[4]);
+					//$("#up_date").val(returnData[4]);
 					$("#box2").slideDown(300);
 				});
 			});

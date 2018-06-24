@@ -32,10 +32,12 @@
 			echo "<label>รูปประจำตัว</label>";
 			echo "<div class='row'>";
 				echo "<div class='col-lg-4'>";
-					echo "<div id='showpic'><img src='user/profile_pic/$db_pic' width='100'></div>";
-								echo "<div id='loadDialogpic' align='center'>";
-									echo "<img src='img/ajax-loader.gif' align='absmiddle' />";
-								echo "</div>";
+				if($db_pic==''){$pic='userprofile.png';}else{$pic=$db_pic;}
+					echo "<div id='showpic'><img src='user/profile_pic/$pic' width='100'></div>";
+					echo "<div id='loadDialogpic' align='center'>";
+					echo "<img src='img/ajax-loader.gif' align='absmiddle' />";
+					echo "</div>";
+				echo "<input type='hidden' id='txtPicture' name='txtPicture' value='$db_pic'>";
 				echo "</div>";
 				echo "<div class='col-lg-8'>";
 				echo "<input type='file' name='fileField' id='fileField' >";
@@ -252,6 +254,7 @@
             echo "<div class='box-footer'>";
             	echo "<button type='submit' class='btn btn-primary'>Save</button>&nbsp;";
                 echo "<button type='button' class='btn btn-danger' id='butCancel'>Cancel</button>";
+								echo "<input type='hidden' id='picture' name='picture' value='$db_pic'>";
                 echo "<input name='iduser' type='hidden' value='$id' />";
 				echo "<div id='uploadDialog_process' align='center'></div>";
 				echo "<div id='loadDialog' align='center'>";
@@ -302,10 +305,6 @@
           $('#loadDialogpic').fadeIn();
           return true;
       }
-
-			$(document).on('click','#butCancel',function(){
-					window.history.back();
-			});
 
 		</script>";
 		exit();
@@ -368,6 +367,7 @@
 		$cboFaculty=$_POST["cboFaculty"];
 		$txtTel=$_POST["txtTel"];
 		$txtEmail=$_POST["txtEmail"];
+		$txtPicture=$_SESSION["DUR_USER_PIC_TEMP"];
 		$cboPosition=$_POST["cboPosition"];
 		$cboUserlevel=$_POST["cboUserlevel"];
 		$txtusername=$_POST["txtusername"];
@@ -385,19 +385,19 @@
 			}else{
 				$sql="INSERT INTO tb_user( `prefix` ";
 				$sql=$sql . ", `firstname`, `lastname`, `hnumber` ";
-				$sql=$sql . ", `idmoo`, `idtambon`, `idamphur`, `tel`, `email` ";
+				$sql=$sql . ", `idmoo`, `idtambon`, `idamphur`, `tel`, `email`, `picture` ";
 				$sql=$sql . ", `idgroup`, `cf_userlevel`, `username`, `password`)";
 
 				$sql=$sql . " VALUES ('$Prefix' ";
 				$sql=$sql . " , '$txtFirstname', '$txtLastname', '$txtHnumber' ";
-				$sql=$sql . " , '$cboCourse', '$cboDepartment', '$cboFaculty', '$txtTel', '$txtEmail' ";
+				$sql=$sql . " , '$cboCourse', '$cboDepartment', '$cboFaculty', '$txtTel', '$txtEmail', '$txtPicture' ";
 				$sql=$sql . " , '$cboPosition', '$cboUserlevel', '$txtusername', '$txtpassword');";
+				$_SESSION["DUR_USER_PIC_TEMP"]='';
 			}
 			$result=mysqli_query($connect,$sql);
 			$msgsuccess=1;
 			$box=1;
 			$id=$iduser;
-			//echo
 		}
 		//exit();
 	}
@@ -406,35 +406,66 @@
 		$id=$_POST["id"];
 		$msgsuccess=0;
 		$msgerror=0;
-		$box=2;
 
-		if($_FILES["fileField"]["error"]==4){
-			$msgerror=1;
-		}else{
-			$accept_type=array("image/jpeg" , "image/gif" , "image/png");
-			$file=$_FILES["fileField"]["name"];
-			$typefile=$_FILES["fileField"]["type"];
-			$sizefile=$_FILES["fileField"]["size"];
-			$tempfile=$_FILES["fileField"]["tmp_name"];
-			if(!in_array($typefile,$accept_type)){
-				$msgerror=2;
-			}else{
-				$Str_file = explode(".",$file);
-				$carr = count($Str_file)-1;
-				$strname = $Str_file[$carr];
-				$pname= "pic_" . randomText(10) . "." . $strname;
-				$target_path = "user/profile_pic/" . $pname;
-				if(@move_uploaded_file($tempfile,$target_path)){
-						$sql="update tb_user set `picture`='$pname' where iduser=$id";
-					$result=mysqli_query($connect,$sql);
-					$msgsuccess=1;
-					if($_SESSION["DUR_USER_ID"]==$id){
-						$_SESSION["DUR_USER_PIC"]=$pname;
-					}
+		if($id !=""){
+				$box=2;
+				if($_FILES["fileField"]["error"]==4){
+					$msgerror=1;
 				}else{
-					$msgerror=3;
+					$accept_type=array("image/jpeg" , "image/gif" , "image/png");
+					$file=$_FILES["fileField"]["name"];
+					$typefile=$_FILES["fileField"]["type"];
+					$sizefile=$_FILES["fileField"]["size"];
+					$tempfile=$_FILES["fileField"]["tmp_name"];
+					if(!in_array($typefile,$accept_type)){
+						$msgerror=2;
+					}else{
+						$Str_file = explode(".",$file);
+						$carr = count($Str_file)-1;
+						$strname = $Str_file[$carr];
+						$pname= "pic_" . randomText(10) . "." . $strname;
+						$target_path = "user/profile_pic/" . $pname;
+						if(@move_uploaded_file($tempfile,$target_path)){
+								$sql="update tb_user set `picture`='$pname' where iduser=$id";
+							$result=mysqli_query($connect,$sql);
+							$msgsuccess=1;
+							if($_SESSION["DUR_USER_ID"]==$id){
+								$_SESSION["DUR_USER_PIC"]=$pname;
+							}
+						}else{
+							$msgerror=3;
+						}
+					}
 				}
-			}
+		}else{
+				$box=3;
+				if($_FILES["fileField"]["error"]==4){
+					$msgerror=1;
+				}else{
+					$accept_type=array("image/jpeg" , "image/gif" , "image/png");
+					$file=$_FILES["fileField"]["name"];
+					$typefile=$_FILES["fileField"]["type"];
+					$sizefile=$_FILES["fileField"]["size"];
+					$tempfile=$_FILES["fileField"]["tmp_name"];
+					if(!in_array($typefile,$accept_type)){
+						$msgerror=2;
+					}else{
+						$Str_file = explode(".",$file);
+						$carr = count($Str_file)-1;
+						$strname = $Str_file[$carr];
+						$pname= "pic_" . randomText(10) . "." . $strname;
+						$target_path = "user/profile_pic/" . $pname;
+						setcookie( "PIC_TEMP", $pname, time()+360, "/");
+						$_SESSION["DUR_USER_PIC_TEMP"]=$pname;
+						if(@move_uploaded_file($tempfile,$target_path)){
+							$msgsuccess=1;
+							//$msgerror=99;
+							//echo '<script>alert("'.$_SESSION["DUR_USER_PIC_TEMP"].'")</script>';
+						}else{
+							$msgerror=3;
+						}
+					}
+				}
 		}
 		sleep(1);
 	}
@@ -454,8 +485,23 @@
 		exit();
 	}
 
+	if($_GET["action"]=="getPictemp"){
+			//$sql= "select `picture` from tb_user where iduser= " . $id;
+			//$result=mysqli_query($connect,$sql);
+			//$row=mysqli_fetch_array($result);
+			//if($row[0]==""){
+				//$userPic1="https://graph.facebook.com/".$_SESSION["IASU_USER_FACEBOOK"]."/picture";
+				//$userPic1="user/profile_pic/logo.jpg";
+			//}else{
+				$userPic="user/profile_pic/".$_SESSION["DUR_USER_PIC_TEMP"];
+			//}
+			echo "<img src='$userPic' width='100' class='img-rounded'/>";
+			//echo $_SESSION["DUR_USER_PIC_TEMP"];
+		exit();
+	}
+
 	mysqli_close($connect);
 ?>
 <script language="javascript">
-		window.top.window.stopUpload(<?php echo $msgsuccess ?> , <?php echo $msgerror ?> , <?php echo $box ?> , <?php echo $id ?> );
+		window.top.window.stopUpload(<?php echo $msgsuccess ?> , <?php echo $msgerror ?> , <?php echo $box ?> , <?php echo $id ?>);
 </script>

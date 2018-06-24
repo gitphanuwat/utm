@@ -29,7 +29,7 @@
     <link href="css/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
 
 		<link rel="icon" href="user/profile_pic/icon.ico">
 
@@ -213,10 +213,17 @@
             }
 
             function stopUpload(success , error , box, id){
+							//alert('ppp');
                     if(success ==1){
 											if(box==2){
 												$("#showpic").load("adminDataMemberFrom.php?action=getPic",{id:id});
 												$("#loadDialogpic").html("อัพโหลดภาพเรียบร้อยแล้ว");
+											}else if(box==3){
+												$("#showpic").load("adminDataMemberFrom.php?action=getPictemp");
+												//$("#showpic").html("<image src='user/profile_pic/<?php //echo $_SESSION["DUR_USER_PIC_TEMP"]?>' width='100'>");
+												$("#txtPicture").val('<?php echo $_SESSION["DUR_USER_PIC_TEMP"]?>');
+												$("#picture").val('<?php $ss = $_SESSION["DUR_USER_PIC_TEMP"];echo $ss;?>');
+												$("#loadDialogpic").fadeOut();
 											}else{
 												$("#dialog").dialog( "close" );
                         $("#loadRegistered").fadeIn();

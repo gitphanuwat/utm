@@ -55,7 +55,8 @@
 			echo "<tr>";
     			echo "<th width='50'>ลำดับ</th>";
     			echo "<th>ชื่อ - สกุล</th>";
-				echo "<th>จำนวนแปลง</th>";
+					echo "<th>จำนวนแปลง</th>";
+					echo "<th>จำนวนไร่(รวม)</th>";
 				echo "<th width='100'>จัดการข้อมูล</th>";
     		echo "</tr>";
 
@@ -125,11 +126,16 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
     			echo "<td>$i</td>";
     			echo "<td><a href='profile.php?id=$row[0]' target='_blank' >".$prefix."$row[2] $row[3]</a></td>";
 
-				$sqlc="select count(*) from tb_plot where iduser=$row[0]";
-				$resultc=mysqli_query($connect,$sqlc);
-				$rowc=mysqli_fetch_array($resultc);
+					$sqlc="select count(*) from tb_plot where iduser=$row[0]";
+					$resultc=mysqli_query($connect,$sqlc);
+					$rowc=mysqli_fetch_array($resultc);
+					echo "<td>$rowc[0]</td>";
 
-				echo "<td>$rowc[0]</td>";
+					$sqld="select sum(area) from tb_plot where iduser=$row[0]";
+					$resultd=mysqli_query($connect,$sqld);
+					$rowd=mysqli_fetch_array($resultd);
+					echo "<td>$rowd[0]</td>";
+
 					echo "<td>";
 					if($_SESSION["DUR_USER_STATE"]=="USER"){
 						echo "&nbsp;&nbsp;&nbsp;<a href='#$row[0]' title='บันทึก' class='editItemRegistered' ><img src='img/save.png'></a></td>";
