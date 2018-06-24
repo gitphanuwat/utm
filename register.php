@@ -108,16 +108,36 @@ $(document).ready(function(){
 		$("#loadDialog").fadeOut();
 	});
 });
-function stopUpload(success , error){
-				if(success ==1){
-					$("#showform").html("<div class='margin text-center'><font color='blue'>++ ลงทะเบียนสมาชิกเรียบร้อย ++</font></div>");
-					$("#loginface").html("<div class='margin text-center'><a href='login.php'> ล็อกอินเข้าระบบ</a></div>");
-						$('#loadDialog').fadeOut();
 
+function stopUpload(success , error , box, id){
+	//alert('ppp');
+				if(success ==1){
+					if(box==2){
+						$("#showpic").load("adminDataMemberFrom.php?action=getPic",{id:id});
+						$("#loadDialogpic").html("อัพโหลดภาพเรียบร้อยแล้ว");
+					}else if(box==3){
+						$("#showpic").load("adminDataMemberFrom.php?action=getPictemp");
+						$("#loadDialogpic").fadeOut();
+					}else{
+						$("#showform").html("<div class='margin text-center'><font color='blue'>++ ลงทะเบียนสมาชิกเรียบร้อย ++</font></div>");
+						$("#loginface").html("<div class='margin text-center'><a href='login.php'> ล็อกอินเข้าระบบ</a></div>");
+							$('#loadDialog').fadeOut();
+					}
 				}else{
-						if(error==1){
-								$("#uploadDialog_process").html("<font color='red'>กรุณากรอกข้อมูลให้ครบ</font>");
-								$('#loadDialog').fadeIn();
+						if(box==2){
+							if(error==1){
+									$("#loadDialogpic").html("<font color='red'>กรุณาเลือกภาพ</font>");
+							}
+							if(error==2){
+									$("#loadDialogpic").html("<font color='red'>ชนิดภาพไม่ถูกต้อง</font>");
+							}
+							if(error==3){
+									$("#loadDialogpic").html("<font color='red'>อัพโหลดไฟล์ไม่สมบูรณ์</font>");
+							}
+						}else{
+							if(error==1){
+									$("#uploadDialog_process").html("<font color='red'>กรุณากรอกข้อมูลให้ครบ</font>");
+							}
 						}
 				}
 		return true;

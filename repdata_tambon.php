@@ -1,7 +1,7 @@
 <?php
 	session_start();
 	include('config/config.php');
-	
+
 	if($_POST["status"]==""){$_POST["status"]=0;}else{$_POST["status"]=1;}
 
 
@@ -75,7 +75,7 @@
 		}else{
 						echo "<table class='table table-hover'>";
 						echo "<tr>";
-							echo "<th>กลุ่มเกษตรกรลับแลจังหวัดอุตรดิตถ์</th>";
+							echo "<th>กลุ่มเกษตรกร</th>";
 						echo "</tr>";
 						echo "<tr>";
 						echo "<td>";

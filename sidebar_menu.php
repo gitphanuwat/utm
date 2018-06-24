@@ -163,10 +163,10 @@
 				}
 				echo "><a href='stat_farmer.php'><i class='fa fa-angle-double-right'></i> สถิติเกษตรกร</a></li>";
 				echo "<li";
-				if($subpageName=="durian"){
+				if($subpageName=="product"){
 					echo " class='active'";
 				}
-				echo "><a href='stat_durian.php'><i class='fa fa-angle-double-right'></i> สรุปผลผลิตการเกษตร</a></li>";
+				echo "><a href='stat_product.php'><i class='fa fa-angle-double-right'></i> สรุปผลผลิตการเกษตร</a></li>";
 
 				echo "<li";
 				if($subpageName=="ability"){
@@ -242,7 +242,7 @@
 					echo " class='active'";
 				}
 				echo ">";
-				echo "<a href='../duriantag/find_user.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
+				echo "<a href='qrmng.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
 				echo "</li>";
             echo "</ul>";
         echo "</li>";
@@ -347,10 +347,10 @@
 				}
 				echo "><a href='stat_farmer.php'><i class='fa fa-angle-double-right'></i> สถิติเกษตรกร</a></li>";
 				echo "<li";
-				if($subpageName=="durian"){
+				if($subpageName=="product"){
 					echo " class='active'";
 				}
-				echo "><a href='stat_durian.php'><i class='fa fa-angle-double-right'></i> สรุปผลผลิตการเกษตร</a></li>";
+				echo "><a href='stat_product.php'><i class='fa fa-angle-double-right'></i> สรุปผลผลิตการเกษตร</a></li>";
 
 				echo "<li";
 				if($subpageName=="ability"){
@@ -425,7 +425,7 @@
 					echo " class='active'";
 				}
 				echo ">";
-				echo "<a href='../duriantag/find_user.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
+				echo "<a href='qrmng.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
 				echo "</li>";
             echo "</ul>";
         echo "</li>";
@@ -530,10 +530,10 @@
 				}
 				echo "><a href='stat_farmer.php'><i class='fa fa-angle-double-right'></i> สถิติเกษตรกร</a></li>";
         echo "<li";
-				if($subpageName=="durian"){
+				if($subpageName=="product"){
 					echo " class='active'";
 				}
-				echo "><a href='stat_durian.php'><i class='fa fa-angle-double-right'></i> สรุปผลผลิตการเกษตร</a></li>";
+				echo "><a href='stat_product.php'><i class='fa fa-angle-double-right'></i> สรุปผลผลิตการเกษตร</a></li>";
 
 				echo "<li";
 				if($subpageName=="ability"){
@@ -590,7 +590,7 @@
 					echo " class='active'";
 				}
 				echo ">";
-				echo "<a href='../duriantag/view_user.php?id_user=".$_SESSION["DUR_USER_ID"]."'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
+				echo "<a href='qrmng.php?id_user=".$_SESSION["DUR_USER_ID"]."'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
 				echo "</li>";
             echo "</ul>";
         echo "</li>";
@@ -631,10 +631,10 @@
 				}
 				echo "><a href='stat_farmer.php'><i class='fa fa-angle-double-right'></i> สถิติเกษตรกร</a></li>";
 				echo "<li";
-				if($subpageName=="durian"){
+				if($subpageName=="product"){
 					echo " class='active'";
 				}
-				echo "><a href='stat_durian.php'><i class='fa fa-angle-double-right'></i> ผลผลิตสับปะรด</a></li>";
+				echo "><a href='stat_product.php'><i class='fa fa-angle-double-right'></i> ผลผลิตสับปะรด</a></li>";
 
 				echo "<li";
 				if($subpageName=="ability"){

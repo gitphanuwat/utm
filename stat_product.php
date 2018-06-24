@@ -4,7 +4,7 @@
 
 
 	$pageName="stat";
-	$subpageName="durian";
+	$subpageName="product";
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -154,18 +154,18 @@
 
         <script type="text/javascript">
 			$(document).ready(function(){
-				$("#showyear").load("stat_durian_data.php?action=loadyear");
-				$("#showData").load("stat_durian_data.php?action=loadamp");
+				$("#showyear").load("stat_product_data.php?action=loadyear");
+				$("#showData").load("stat_product_data.php?action=loadamp");
 				//จบ function read
-				$("#showperson").load("stat_durian_data.php?action=loadperson" ,function(){
+				$("#showperson").load("stat_product_data.php?action=loadperson" ,function(){
 					$("#loadperson").fadeOut();
 				});
 			});
 			$(document).on('change','#select_year_id', function() {
 				var optionSelected = $("option:selected", this);
   				var idyear = this.value;
-				$("#showData").load("stat_durian_data.php?action=loadamp",{idyear:idyear});
-				$("#showperson").load("stat_durian_data.php?action=loadperson",{idyear:idyear});
+				$("#showData").load("stat_product_data.php?action=loadamp",{idyear:idyear});
+				$("#showperson").load("stat_product_data.php?action=loadperson",{idyear:idyear});
 				$("#box1").hide();
 				$("#box2").hide()
 			});
@@ -175,7 +175,7 @@
 				idamphur = idamphur.replace("#","");
 				var idyear = $("#select_year_id").val();
 				$("#box1").show();
-				$("#box1").load("stat_durian_data.php?action=loadmainwork",{id:idamphur,idyear:idyear});
+				$("#box1").load("stat_product_data.php?action=loadmainwork",{id:idamphur,idyear:idyear});
 			});
 
 			$(document).on('click','.getuserwork', function() {
@@ -183,7 +183,7 @@
 				idtambon = idtambon.replace("#","");
 				var idyear = $("#select_year_id").val();
 				$("#box2").show();
-				$("#box2").load("stat_durian_data.php?action=loaduserwork",{id:idtambon,idyear:idyear});
+				$("#box2").load("stat_product_data.php?action=loaduserwork",{id:idtambon,idyear:idyear});
 			});
 
 		</script>

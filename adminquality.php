@@ -107,6 +107,9 @@
                         	<div class="box">
                             	<div class="box-header">
                                     <h3 class="box-title">รายการข้อมูลคุณภาพ</h3>
+                                    <form class="navbar-form navbar-right" role="search">
+									  <button type="button" id="butNew" class="btn btn-primary">เพิ่มรายการ</button>
+									</form>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
                                	  <div id="showData" style="margin:auto;padding:10px;"></div>
@@ -150,15 +153,23 @@
         <script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
         <script type="text/javascript">
 			$(document).ready(function(){
-					$("#dialog").dialog({
-	            autoOpen: false,
-	        });
-	        $("#boxView").hide();
-					//$("#showData").load("quality_data.php?action=getData",function(){
-					$("#showData").load("quality_data.php?action=getUser",function(){
-	            $("#loadBar").fadeOut();
-	        });
-					//จบ function read
+
+				$("#dialog").dialog({
+                    autoOpen: false,
+                });
+
+                $("#boxView").hide();
+                $("#showData").load("quality_data.php?action=getData",function(){
+                    $("#loadBar").fadeOut();
+                });
+
+                $("#butNew").click(function(){
+                    $("#dialog-from").load("quality_data.php?action=getForm",function(){
+                        $("#dialog").dialog( "option", "width", 450 );
+                        $( "#dialog" ).dialog( "open" );
+                    });
+                });
+				//จบ function read
 			});
 
             function clickuploadDoc(){
@@ -176,9 +187,8 @@
                     $("#loadForm").fadeOut();
                     if(success ==1){
                         $("#loadBar").fadeIn();
-                        $("#showData").load("quality_data.php?action=getData&id="+id,function(){
+                        $("#showData").load("quality_data.php?action=getData",function(){
                             $("#loadBar").fadeOut();
-														$("#boxView").hide();
                             $("#dialog").dialog( "close" );
                         });
                     }else{
@@ -207,16 +217,6 @@
                 return true;
             }
 
-						$(document).on('click',".butNew",function(){
-							var id = $(this).attr("href");
-							idu = id.replace("#","");
-							//alert(idu);
-		            $("#dialog-from").load("quality_data.php?action=getForm&idu="+idu,function(){
-		                $("#dialog").dialog( "option", "width", 450 );
-		                $( "#dialog" ).dialog( "open" );
-		            });
-		        });
-
             $(document).on('click',".delItemsDoc",function(){
                 var id = $(this).attr("href");
                 id = id.replace("#","");
@@ -233,8 +233,7 @@
             $(document).on('click',".editItem",function(){
                 var id = $(this).attr("href");
                 id = id.replace("#","");
-								yid=id.split("|");
-                $("#dialog-from").load("quality_data.php?action=getForm&id="+yid[0]+"&idu="+yid[1],function(){
+                $("#dialog-from").load("quality_data.php?action=getForm&id="+id,function(){
                     $("#dialog").dialog( "option", "width", 450 );
                     $( "#dialog" ).dialog( "open" );
                 });
@@ -243,12 +242,11 @@
             $(document).on("click",".delItem",function(){
                 var id = $(this).attr("href");
                 id = id.replace("#","");
-								yid=id.split("|");
                 if(confirm("ท่านต้องการลบรายการนี้หรือไม่ ?")){
                     $("#loadBar").fadeIn();
-                    $.post("quality_data.php?action=delete",{id:yid[0]},function(){
-                        $("#showData").load("quality_data.php?action=getData&id="+yid[1],function(){
-                          $("#loadBar").fadeOut();
+                    $.post("quality_data.php?action=delete",{id:id},function(){
+                        $("#showData").load("quality_data.php?action=getData",function(){
+                            $("#loadBar").fadeOut();
                         });
                     });
                 }
@@ -276,28 +274,4 @@
                 $("#dialog").dialog( "close" );
             });
 
-						$(document).on('click','.viewQuality',function(){
-                var id=$(this).attr("href");
-                id=id.replace("#","");
-                $("#showData").load("quality_data.php?action=getData&id="+id,function(){
-										$("#loadBar").fadeOut();
-                });
-            });
-
-						$(document).on('click',".butCanceldoc",function(){
-							var id=$(this).attr("href");
-							id=id.replace("#","");
-                $("#dialog").dialog( "close" );
-								$("#showData").load("quality_data.php?action=getData&id="+id,function(){
-										$("#loadBar").fadeOut();
-								});
-            });
-
-				$(document).on('click',"#butCancelplot",function(){
-						$("#showData").load("quality_data.php?action=getUser",function(){
-								$("#loadBar").fadeOut();
-						});
-				});
-
-
-</script>
+		</script>

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost:3306
--- Generation Time: Jun 19, 2018 at 04:21 PM
+-- Generation Time: Jun 24, 2018 at 05:54 PM
 -- Server version: 5.5.42
 -- PHP Version: 5.6.10
 
@@ -78,7 +78,7 @@ CREATE TABLE `tb_amphur` (
   `amp_facebook` varchar(45) DEFAULT NULL,
   `status` int(1) DEFAULT NULL,
   `amphur_shrt` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_amphur`
@@ -97,7 +97,7 @@ CREATE TABLE `tb_counter` (
   `id` int(11) NOT NULL,
   `day` date NOT NULL,
   `total` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_counter`
@@ -141,7 +141,10 @@ INSERT INTO `tb_counter` (`id`, `day`, `total`) VALUES
 (35, '2018-06-14', 1),
 (36, '2018-06-15', 5),
 (37, '2018-06-17', 5),
-(38, '2018-06-19', 2);
+(38, '2018-06-19', 2),
+(39, '2018-06-20', 13),
+(40, '2018-06-23', 15),
+(41, '2018-06-24', 18);
 
 -- --------------------------------------------------------
 
@@ -159,7 +162,14 @@ CREATE TABLE `tb_durian` (
   `product_durian` varchar(11) DEFAULT NULL,
   `sale_durian` varchar(11) DEFAULT NULL,
   `etc` varchar(100) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_durian`
+--
+
+INSERT INTO `tb_durian` (`iddurian`, `idyear`, `idtype`, `idplot`, `b_trunk`, `e_trunk`, `product_durian`, `sale_durian`, `etc`) VALUES
+(1, 6, 1, 73, '70', '50', '5', '10', NULL);
 
 -- --------------------------------------------------------
 
@@ -276,8 +286,7 @@ CREATE TABLE `tb_news` (
 
 INSERT INTO `tb_news` (`news_id`, `day_in`, `title`, `detail`, `count_view`) VALUES
 (2, '2016-03-14', 'ช่วงนำเข้าข้อมูลระบบ', 'สำรวจและนำเข้าข้อมูลเกษตรกร พื้นที่เพาะปลูก และผลผลิตทุเรียน', 8),
-(3, '2018-02-22', 'อัพเดทระบบสมาชิก', 'ระบบฐานข้อมูลได้อัพเดทระบบสมาชิก โดยสามารถเชื่อมโยงกับบัญชีเฟสบุ๊คได้ เพื่อความสะดวกในการเข้าใช้ระบบของสมาชิกรายบุคคล', 7),
-(4, '2018-06-17', 'แผปฉผปฉ()ฉ()แ', 'ฟหกฟหdฟหกฟหก', 0);
+(3, '2018-02-22', 'อัพเดทระบบสมาชิก', 'ระบบฐานข้อมูลได้อัพเดทระบบสมาชิก โดยสามารถเชื่อมโยงกับบัญชีเฟสบุ๊คได้ เพื่อความสะดวกในการเข้าใช้ระบบของสมาชิกรายบุคคล', 8);
 
 -- --------------------------------------------------------
 
@@ -312,22 +321,36 @@ CREATE TABLE `tb_plot` (
   `idplot` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `codeplot` varchar(10) DEFAULT NULL,
-  `arear` varchar(200) DEFAULT NULL,
+  `area` varchar(200) DEFAULT NULL,
   `water` varchar(100) DEFAULT NULL,
   `lat` double DEFAULT NULL,
   `lng` double DEFAULT NULL,
   `zm` int(11) DEFAULT NULL,
-  `picture` varchar(20) DEFAULT NULL,
+  `icon` varchar(20) DEFAULT NULL,
   `comment` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=67 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=87 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_plot`
 --
 
-INSERT INTO `tb_plot` (`idplot`, `iduser`, `codeplot`, `arear`, `water`, `lat`, `lng`, `zm`, `picture`, `comment`) VALUES
-(65, 65, 'PN65-1', 'ภูเขา', 'ห้วย', 17.833325, 100.9597057, 12, 'icon1.png', ''),
-(66, 67, 'PN67-1', 'ลาบลุ่ม', 'บาดาล', 17.6316672, 100.1106332, 14, 'icon2.png', '');
+INSERT INTO `tb_plot` (`idplot`, `iduser`, `codeplot`, `area`, `water`, `lat`, `lng`, `zm`, `icon`, `comment`) VALUES
+(66, 67, 'PN67-1', '45', 'บาดาล', 17.78054302, 100.9241, 14, 'chart1.png', ''),
+(72, 68, 'PN68-1', '', NULL, 17.464905, 100.560263, 14, 'chart1.png', ''),
+(73, 70, 'PN70-1', '', NULL, 17.809984, 100.947158, 14, 'chart1.png', ''),
+(74, 71, 'PN71-1', '', NULL, 17.495135, 100.554417, 14, 'chart1.png', ''),
+(75, 83, 'PN83-1', '10', NULL, 17.79759902, 100.954045, 14, 'chart1.png', ''),
+(76, 84, 'PN84-1', '5', NULL, 17.74964296, 100.939685, 0, 'chart1.png', ''),
+(77, 85, 'PN85-1', '40', NULL, 17.494179, 100.580331, 14, 'chart1.png', ''),
+(78, 86, 'PN86-1', '', NULL, 17.490098, 100.563966, 0, 'chart1.png', ''),
+(79, 87, 'PN87-1', '20', NULL, 17.752494, 100.940523, 14, 'chart1.png', ''),
+(80, 88, 'PN88-1', '15', NULL, 17.77399499, 100.919824, 14, 'chart1.png', ''),
+(81, 89, 'PN89-1', '', NULL, 17.49358, 100.553048, 14, 'chart1.png', ''),
+(82, 90, 'PN90-1', '17', NULL, 17.7575154, 100.9494331, 14, 'chart1.png', ''),
+(83, 91, 'PN91-1', '', NULL, 17.485643, 100.561283, 14, 'chart1.png', ''),
+(84, 92, 'PN92-1', '', NULL, 17.794105, 100.928547, 0, 'chart1.png', ''),
+(85, 65, 'PN65-1', '', NULL, 17.6282663, 100.03452600000003, 14, 'chart1.png', ''),
+(86, 97, 'PN97-1', '', NULL, 17.67167667446595, 100.30888368037108, 8, 'chart1.png', '');
 
 -- --------------------------------------------------------
 
@@ -348,10 +371,10 @@ CREATE TABLE `tb_poll` (
 --
 
 INSERT INTO `tb_poll` (`idpoll`, `idyear`, `pollname`, `detail`, `up_date`) VALUES
-(12, 6, 'อายุต้นทุเรียนหลงลับแล', '', '2018-02-28 05:16:52'),
+(12, 6, 'อายุต้นสับปะรด', '', '2018-06-23 16:18:20'),
 (13, 6, 'รอบการออกดอกต่อปี', '', '2018-02-28 05:17:44'),
 (14, 6, 'รอบการตัดขายต่อปี', '', '2018-02-28 05:17:44'),
-(15, 6, 'ทุเรียนที่กำลังจะให้ผลผลิต', '', '2018-02-28 05:17:44'),
+(15, 6, 'สับปะรดที่กำลังจะให้ผลผลิต', '', '2018-06-23 16:18:20'),
 (16, 6, 'ช่องทางการจัดจำหน่าย', '', '2018-02-28 05:17:44');
 
 -- --------------------------------------------------------
@@ -366,7 +389,18 @@ CREATE TABLE `tb_polluser` (
   `idtopic` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `idyear` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=256 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_polluser`
+--
+
+INSERT INTO `tb_polluser` (`idpolluser`, `idpoll`, `idtopic`, `iduser`, `idyear`) VALUES
+(1, 12, 24, 70, 6),
+(2, 14, 31, 70, 6),
+(3, 16, 38, 70, 6),
+(4, 13, 28, 70, 6),
+(5, 15, 34, 70, 6);
 
 -- --------------------------------------------------------
 
@@ -379,7 +413,14 @@ CREATE TABLE `tb_problem` (
   `idyear` int(11) NOT NULL,
   `iduser` int(11) NOT NULL,
   `problem` text NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_problem`
+--
+
+INSERT INTO `tb_problem` (`idproblem`, `idyear`, `iduser`, `problem`) VALUES
+(1, 6, 70, 'ไม่มี');
 
 -- --------------------------------------------------------
 
@@ -389,20 +430,30 @@ CREATE TABLE `tb_problem` (
 
 CREATE TABLE `tb_quality` (
   `quality_id` int(11) NOT NULL,
+  `userid` int(11) DEFAULT NULL,
   `day_in` date NOT NULL,
   `title` varchar(250) NOT NULL,
   `detail` mediumtext NOT NULL,
   `count_view` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_quality`
 --
 
-INSERT INTO `tb_quality` (`quality_id`, `day_in`, `title`, `detail`, `count_view`) VALUES
-(1, '2016-03-14', 'คุณภาพสับปะรด', 'ตรวจคุณภาพสับปะรด', 8),
-(3, '2018-02-22', 'สิ่งบ่งชี้ทางภูมิศาสตร์ (GI) ', '<p>สินค้าสับปะรดห้วยมุ่นภายใต้โครงการสิ่งบ่งชี้ทางภูมิศาสตร์ (GI) ไทยเข้มแข็งสู่สากล</p>\r\n<p><b>“</b><b>สับปะรดห้วยมุ่น</b><b>” </b><b>เป็นสับปะรดสับปะรดพันธุ์ปัตตาเวียที่ถูกนำเข้ามาปลูกมากกว่า</b><b> </b><b>๕๐</b><b> </b><b>ปีมาแล้ว</b><b> </b><b>ในพื้นที่ตำบลห้วยมุ่น</b><b> </b><b>อำเภอน้ำปาด</b><b> </b><b>จังหวัดอุตรดิตถ์</b><b> </b><b>จนกลายเป็นพันธุ์ท้องถิ่น</b><b> </b><b>ด้วยสภาพภูมิประเทศเป็นหุบเขา</b><b> </b><b>อากาศที่หนาวเย็น</b><b> </b><b>ประกอบกับดินมีธาตุโพแทสเซียม</b><b> </b><b>และกำมะถันที่สับปะรดต้องการในระดับสูง</b><b> </b><b>ส่งผลให้สับปะรดมีลักษณะผิวบาง</b><b> </b><b>ตาตื้น</b><b> </b><b>เนื้อหนา</b><b> </b><b>สีเหมือนน้ำผึ้ง</b><b> </b><b>รสชาติหอมหวานแบบธรรมชาติ</b><b> </b><b>ฉ่ำน้ำ</b><b> </b><b>ไม่ระคายลิ้น</b><b> </b><b>และมีลักษณะรูปทรงกลม</b><b> </b><b>น้ำหนักผลระหว่าง</b><b> </b><b>๑</b><b>.</b><b>๕</b><b>-</b><b>๓</b><b>.</b><b>๕</b><b> </b><b>กิโลกรัม</b><b> </b><b>เปลือกผิวบาง</b><b> </b><b>ตาตื้น</b><b> </b><b>ผลดิบจะสีเขียวคล้ำ</b><b> </b><b>ผลแก่เต็มที่จะเปลี่ยนเป็นสีเหลืองอมส้ม</b></p>', 6),
-(4, '2018-06-17', 'daหกฟหdฟหกฟห121212', 'sdafasdfasdfasdf112121<br><ol><li>sdfasdfasdfasfas</li><li>asdfsad</li><li>fasdf</li><li>asdfasdfdsaf</li></ol>', 0);
+INSERT INTO `tb_quality` (`quality_id`, `userid`, `day_in`, `title`, `detail`, `count_view`) VALUES
+(1, 65, '2016-03-14', 'คุณภาพสับปะรด', 'ตรวจคุณภาพสับปะรด', 8),
+(3, 65, '2018-02-22', 'สิ่งบ่งชี้ทางภูมิศาสตร์ (GI) ', '<span><div><a target="_blank" rel="nofollow" href="https://1.bp.blogspot.com/-nvt0dcnFcwc/WaD9OICq4eI/AAAAAAAAAMg/iyRImcpy8s41E_FCUCsV0JLNUVi19cJzQCLcBGAs/s1600/S__4170692_resize.jpg"><img alt="" src="https://1.bp.blogspot.com/-nvt0dcnFcwc/WaD9OICq4eI/AAAAAAAAAMg/iyRImcpy8s41E_FCUCsV0JLNUVi19cJzQCLcBGAs/s1600/S__4170692_resize.jpg"></a></div><div></div></span><br><p>สินค้าสับปะรดห้วยมุ่นภายใต้โครงการสิ่งบ่งชี้ทางภูมิศาสตร์ (GI) ไทยเข้มแข็งสู่สากล</p>\r\n<p><b>“</b><b>สับปะรดห้วยมุ่น</b><b>” </b><b>เป็นสับปะรดสับปะรดพันธุ์ปัตตาเวียที่ถูกนำเข้ามาปลูกมากกว่า</b><b> </b><b>๕๐</b><b> </b><b>ปีมาแล้ว</b><b> </b><b>ในพื้นที่ตำบลห้วยมุ่น</b><b> </b><b>อำเภอน้ำปาด</b><b> </b><b>จังหวัดอุตรดิตถ์</b><b> </b><b>จนกลายเป็นพันธุ์ท้องถิ่น</b><b> </b><b>ด้วยสภาพภูมิประเทศเป็นหุบเขา</b><b> </b><b>อากาศที่หนาวเย็น</b><b> </b><b>ประกอบกับดินมีธาตุโพแทสเซียม</b><b> </b><b>และกำมะถันที่สับปะรดต้องการในระดับสูง</b><b> </b><b>ส่งผลให้สับปะรดมีลักษณะผิวบาง</b><b> </b><b>ตาตื้น</b><b> </b><b>เนื้อหนา</b><b> </b><b>สีเหมือนน้ำผึ้ง</b><b> </b><b>รสชาติหอมหวานแบบธรรมชาติ</b><b> </b><b>ฉ่ำน้ำ</b><b> </b><b>ไม่ระคายลิ้น</b><b> </b><b>และมีลักษณะรูปทรงกลม</b><b> </b><b>น้ำหนักผลระหว่าง</b><b> </b><b>๑</b><b>.</b><b>๕</b><b>-</b><b>๓</b><b>.</b><b>๕</b><b> </b><b>กิโลกรัม</b><b> </b><b>เปลือกผิวบาง</b><b> </b><b>ตาตื้น</b><b> </b><b>ผลดิบจะสีเขียวคล้ำ</b><b> </b><b>ผลแก่เต็มที่จะเปลี่ยนเป็นสีเหลืองอมส้ม</b></p><span><br><span><div></div><div></div><div><a target="_blank" rel="nofollow" href="https://4.bp.blogspot.com/-pk0wCcBgvkI/WL_APoRQUyI/AAAAAAAAAN4/glD1t0ghyzMG-TU88jbnY-FQxeCHbfiNACLcB/s1600/S__4063365.jpg"><img width="95" alt="" src="https://4.bp.blogspot.com/-pk0wCcBgvkI/WL_APoRQUyI/AAAAAAAAAN4/glD1t0ghyzMG-TU88jbnY-FQxeCHbfiNACLcB/s200/S__4063365.jpg"></a><img alt="" src="http://chart.apis.google.com/chart?chs=100x100&cht=qr&chld=L|0&chl=http%3A%2F%2Fhuaymun.blogspot.com%2Fp%2Fbualoi.html"></div></span></span>', 6),
+(4, 67, '2018-06-24', 'sfddsfsad', 'fsadfasdfsadf', 0),
+(5, 68, '2018-06-24', 'sdafsadfsda', 'fsadfsadfsdaf', 0),
+(6, 68, '2018-06-24', 'fsdafsdafsda', 'fsdafsadfdsaf', 0),
+(7, 70, '2018-06-24', 'fasf', 'sadfasdf', 0),
+(8, 70, '2018-06-24', 'dsafds', 'dsafasdf', 0),
+(9, 71, '2018-06-24', 'fasdf', 'asdfasdfasdf', 0),
+(10, 83, '2018-06-24', 'sadfasdf', 'dsafasdfads', 0),
+(11, 84, '2018-06-24', 'fasdfas', 'sadfasdfsadf', 0),
+(12, 84, '2018-06-24', 'safsadfdsa', 'fasdfsadfasdf', 0),
+(16, 65, '2018-06-24', 'asfasdf', 'sfasdfasfsadfsdf', 0);
 
 -- --------------------------------------------------------
 
@@ -415,7 +466,23 @@ CREATE TABLE `tb_quality_item` (
   `quality_id` int(11) NOT NULL,
   `file_name` varchar(250) NOT NULL,
   `file_value` varchar(250) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `tb_quality_item`
+--
+
+INSERT INTO `tb_quality_item` (`autoid`, `quality_id`, `file_name`, `file_value`) VALUES
+(1, 5, 'cdfsf', 'quality_6V1YnN52SV.pdf'),
+(2, 12, 'sdfsdf', 'quality_5bridvSyz0.pdf'),
+(3, 12, 'dsfsadf', 'quality_7Da7HvzMer.pdf'),
+(4, 11, 'ssss', 'quality_NZXfhq8rie.pdf'),
+(5, 1, 'กดหฟกด', 'quality_waiib8G3nF.pdf'),
+(6, 3, 'fadsfadsf', 'quality_8JD1NVDRdn.pdf'),
+(7, 3, 'gggg', 'quality_WiyH6omsqS.pdf'),
+(8, 3, 'ssdfsadf', 'quality_AEG5EgZPr8.pdf'),
+(9, 3, 'dddd', 'quality_uTqcjuF3AJ.pdf'),
+(10, 14, 'sdfsadf', 'quality_ijfTLGqe7x.pdf');
 
 -- --------------------------------------------------------
 
@@ -428,7 +495,7 @@ CREATE TABLE `tb_search` (
   `keyword` varchar(200) CHARACTER SET utf8 NOT NULL,
   `sdate` varchar(20) CHARACTER SET utf8 DEFAULT NULL,
   `etc` varchar(100) CHARACTER SET utf8 DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=100 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -548,17 +615,34 @@ CREATE TABLE `tb_user` (
   `update_time` datetime DEFAULT NULL,
   `cf_userlevel` varchar(1) DEFAULT NULL,
   `cf_slevel` int(1) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=69 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `tb_user`
 --
 
 INSERT INTO `tb_user` (`iduser`, `code`, `prefix`, `cf_aca_position`, `firstname`, `lastname`, `hnumber`, `cardnumber`, `birtdate`, `address`, `postcode`, `tel`, `mobile`, `fax`, `email`, `picture`, `idmoo`, `idtambon`, `idamphur`, `idgroup`, `facebook`, `permit`, `username`, `password`, `status`, `update_time`, `cf_userlevel`, `cf_slevel`) VALUES
-(65, NULL, '1', NULL, 'ภานุวัฒน์', 'ขันจา', '27', NULL, NULL, NULL, NULL, '0862004911', NULL, NULL, 'mr.phanuwat@gmail.com', NULL, '8', '2', '1', '4', NULL, NULL, 'phai', '1534', NULL, NULL, '1', NULL),
-(66, NULL, 'mr.', NULL, 'Phanuwat Khanja', '(FB)', '111', NULL, NULL, NULL, NULL, '-', NULL, NULL, 'mr.phanuwat@hotmail.com', NULL, '11', '3', '1', '4', '1684254494953700', '1', 'ff', 'ff', NULL, '2018-06-15 05:45:34', '3', NULL),
-(67, NULL, '2', NULL, 'เลิด  ', 'อินดวง', '17/11 ม.2', NULL, NULL, NULL, NULL, '093-6946323', NULL, NULL, '', NULL, '9', '2', '1', '1', NULL, NULL, 'aa', 'aa', NULL, NULL, '3', NULL),
-(68, NULL, '2', NULL, 'เกษมศรี', ' ฟองใหญ่', '61/4 ม.2', NULL, NULL, NULL, NULL, '061-2352258', NULL, NULL, '', NULL, '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL);
+(65, NULL, '1', NULL, 'ภานุวัฒน์', 'ขันจา', '27', NULL, NULL, NULL, NULL, '0862004911', NULL, NULL, 'mr.phanuwat@gmail.com', 'pic_Z9XLtEbC9D.png', '8', '2', '1', '4', NULL, NULL, 'phai', '1534', NULL, NULL, '1', NULL),
+(67, NULL, '2', NULL, 'เลิด  ', 'อินดวง', '17/11 ม.2', NULL, NULL, NULL, NULL, '093-6946323', NULL, NULL, '', 'pic_A1Lnjjmv0G.JPG', '9', '2', '1', '1', NULL, NULL, 'u67', 'p68', NULL, NULL, '3', NULL),
+(68, NULL, '2', NULL, 'เกษมศรี', ' ฟองใหญ่', '61/4 ม.2', NULL, NULL, NULL, NULL, '061-2352258', NULL, NULL, '', 'pic_ikB4LPUTqi.JPG', '9', '2', '1', '1', NULL, NULL, 'u68', 'p68', NULL, NULL, '3', NULL),
+(70, NULL, '2', NULL, 'ฑัณฑิกา', 'บุญมี', '12/1', NULL, NULL, NULL, NULL, '087-8119304', NULL, NULL, '-', 'pic_ZBa64s0gqV.JPG', '9', '2', '1', '1', NULL, NULL, 'u70', 'p70', NULL, NULL, '3', NULL),
+(71, NULL, '2', NULL, 'ลัดดา', 'ปันบุ่ง', '50/4', NULL, NULL, NULL, NULL, '081-0392781', NULL, NULL, '', 'pic_HYYAVjulW7.jpg', '9', '2', '1', '1', NULL, NULL, 'u70', 'p70', NULL, NULL, '3', NULL),
+(83, NULL, '2', NULL, 'ละออง', 'สุวรรณขัน', '34/1', NULL, NULL, NULL, NULL, '086-0958106', NULL, NULL, '', 'pic_2JSC7RC3a1.png', '9', '2', '1', '1', NULL, NULL, 'u83', 'p83', NULL, NULL, '3', NULL),
+(84, NULL, '2', NULL, 'ชญานิศ', 'หลานคำ', '10/16', NULL, NULL, NULL, NULL, '063-7490442', NULL, NULL, '', 'pic_i3LWmDbbAx.jpg', '23', '2', '1', '1', NULL, NULL, 'u84', 'p84', NULL, NULL, '3', NULL),
+(85, NULL, '3', NULL, 'เขมิกา', 'พิบูลย์สวัสดิ์', '1/8', NULL, NULL, NULL, NULL, '087-0553481', NULL, NULL, '', 'pic_Xaymm1CRmd.png', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(86, NULL, '3', NULL, 'นันทิตา', 'พิมพ์อุป', '11/1', NULL, NULL, NULL, NULL, '098-7800483', NULL, NULL, '', 'pic_gvLmYJYkVF.JPG', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(87, NULL, '2', NULL, 'ประจบ', 'นิดแสวง', '110/15', NULL, NULL, NULL, NULL, '082-2025284', NULL, NULL, '', 'pic_F4dzDEJ18i.JPG', '23', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(88, NULL, '3', NULL, 'เอราวัณ', 'มูลสิงห์', '26/6', NULL, NULL, NULL, NULL, '093-1411536', NULL, NULL, '', 'pic_5Ts0ddepcE.JPG', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(89, NULL, '2', NULL, 'หยาดฟ้า', 'พามา', '20/11', NULL, NULL, NULL, NULL, '', NULL, NULL, '', 'pic_zYJw9olM49.jpg', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(90, NULL, '2', NULL, 'ชบา', 'แจ่มใน', '51/4', NULL, NULL, NULL, NULL, '084-4919001', NULL, NULL, '', 'pic_oEgqorKEk2.JPG', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(91, NULL, '3', NULL, 'ปาริชาต', 'พุฒแพง', '10/3', NULL, NULL, NULL, NULL, '089-9597904', NULL, NULL, '', 'pic_ambWCWTGpb.JPG', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(92, NULL, '2', NULL, 'บัวลอย', 'จูมจันทร์', '45/5', NULL, NULL, NULL, NULL, '089-0439802', NULL, NULL, '', 'pic_RC7KnDNR1a.JPG', '9', '2', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(97, NULL, NULL, NULL, 'Phanuwat Khanja', '(FB)', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'mr.phanuwat@hotmail.com', 'pic_SrP0Mp6u7r.JPG', NULL, NULL, NULL, NULL, '1684254494953700', '1', NULL, NULL, NULL, '2018-06-24 12:44:17', '3', NULL),
+(98, NULL, '1', NULL, 'asdfasf', 'sadfasdf', '21313', NULL, NULL, NULL, NULL, '', NULL, NULL, '', '', '11', '3', '1', '2', NULL, NULL, 'rerer', 'rerer', NULL, NULL, '3', NULL),
+(99, NULL, '1', NULL, 'asdfasf', 'sadfasdf', '21313', NULL, NULL, NULL, NULL, '', NULL, NULL, '', '', '11', '3', '1', '2', NULL, NULL, 'rerer', 'rerer', NULL, NULL, '3', NULL),
+(100, NULL, '1', NULL, 'asdfasf', 'sadfasdf', '21313', NULL, NULL, NULL, NULL, '', NULL, NULL, '', '', '11', '3', '1', '2', NULL, NULL, 'rerer', 'rerer', NULL, NULL, '3', NULL),
+(101, NULL, '2', NULL, 'ฟหกดฟห', 'ฟหกดฟหกด', '321321', NULL, NULL, NULL, NULL, 'sadsdf', NULL, NULL, '', '', '7', '3', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL),
+(102, NULL, '2', NULL, 'asdf', 'asdfaf', '123', NULL, NULL, NULL, NULL, 'safasf', NULL, NULL, '', 'pic_WZ1RFl4u1V.JPG', '11', '3', '1', '1', NULL, NULL, '', '', NULL, NULL, '3', NULL);
 
 -- --------------------------------------------------------
 
@@ -576,7 +660,7 @@ CREATE TABLE `tb_userwork` (
   `work4` varchar(20) DEFAULT NULL,
   `work5` varchar(20) DEFAULT NULL,
   `work6` varchar(200) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=52 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- --------------------------------------------------------
 
@@ -777,17 +861,17 @@ ALTER TABLE `tbl_event`
 -- AUTO_INCREMENT for table `tb_amphur`
 --
 ALTER TABLE `tb_amphur`
-  MODIFY `idamphur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+  MODIFY `idamphur` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_counter`
 --
 ALTER TABLE `tb_counter`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=42;
 --
 -- AUTO_INCREMENT for table `tb_durian`
 --
 ALTER TABLE `tb_durian`
-  MODIFY `iddurian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+  MODIFY `iddurian` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_group`
 --
@@ -822,7 +906,7 @@ ALTER TABLE `tb_news_item`
 -- AUTO_INCREMENT for table `tb_plot`
 --
 ALTER TABLE `tb_plot`
-  MODIFY `idplot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=67;
+  MODIFY `idplot` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=87;
 --
 -- AUTO_INCREMENT for table `tb_poll`
 --
@@ -832,27 +916,27 @@ ALTER TABLE `tb_poll`
 -- AUTO_INCREMENT for table `tb_polluser`
 --
 ALTER TABLE `tb_polluser`
-  MODIFY `idpolluser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=256;
+  MODIFY `idpolluser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `tb_problem`
 --
 ALTER TABLE `tb_problem`
-  MODIFY `idproblem` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=4;
+  MODIFY `idproblem` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `tb_quality`
 --
 ALTER TABLE `tb_quality`
-  MODIFY `quality_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `quality_id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `tb_quality_item`
 --
 ALTER TABLE `tb_quality_item`
-  MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+  MODIFY `autoid` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `tb_search`
 --
 ALTER TABLE `tb_search`
-  MODIFY `idsearch` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=100;
+  MODIFY `idsearch` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tb_tambon`
 --
@@ -872,12 +956,12 @@ ALTER TABLE `tb_type`
 -- AUTO_INCREMENT for table `tb_user`
 --
 ALTER TABLE `tb_user`
-  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=69;
+  MODIFY `iduser` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=103;
 --
 -- AUTO_INCREMENT for table `tb_userwork`
 --
 ALTER TABLE `tb_userwork`
-  MODIFY `iduserwork` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=52;
+  MODIFY `iduserwork` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `tb_year`
 --

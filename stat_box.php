@@ -42,7 +42,7 @@
                                 	echo "<div class='icon'>";
                                     	echo "<i class='ion ion-ios7-alarm-outline'></i>";
                                 	echo "</div>";
-                                	echo "<a href='stat_durian.php' class='small-box-footer'>";
+                                	echo "<a href='stat_product.php' class='small-box-footer'>";
                                     	echo "รายละเอียด <i class='fa fa-arrow-circle-right'></i>";
                                 	echo "</a>";
                             	echo "</div>";

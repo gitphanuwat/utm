@@ -47,7 +47,7 @@ if($_GET["action"]=="loadpoll"){
                     	<div class="col-xs-6">
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">อายุต้นสับปะรดหลงลับแล</h3>
+                                    <h3 class="box-title">อายุต้นสับปะรด</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-condensed">
@@ -239,7 +239,7 @@ if($_GET["action"]=="loadpoll"){
                                 </div><!-- /.box-body -->
                      		</div>
                         </div>
-                    	
+
                     </div>
 
                         	<div class="box">
