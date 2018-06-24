@@ -11,6 +11,7 @@
 		$result=mysqli_query($connect,$sql);
 		@$row=mysqli_fetch_array($result);
 
+		$idu=$row["iduser"];
 		$db_prefix=$row["prefix"];
 		$db_firstname=$row["firstname"];
 		$db_lastname=$row["lastname"];
@@ -82,9 +83,10 @@
 			echo "</div>";
 		echo "</div>";
 		echo "<div class='row invoice-info'>";
-			echo "<div class='col-xs-1'>";
+			echo "<div class='col-xs-3'>";
+			echo "<img src='$img' class='img-thumbnail' width='150' height='150'><br>";
 			echo "</div>";
-			echo "<div class='col-xs-7'>";
+			echo "<div class='col-xs-6'>";
 				echo "<b>ชื่อ - สกุล :</b> $name<br/>";
 				echo "<b>บ้านเลขที่ :</b> $db_hnumber<br/>";
 				echo "<b>หมู่บ้าน :</b> $db_moo<br/>";
@@ -93,8 +95,8 @@
 				echo "<b>จังหวัด :</b> อุตรดิตถ์<br/>";
 				echo "<b>กลุ่ม/เครือข่าย :</b> $db_groupname<br/>";
 			echo "</div>";
-			echo "<div class='col-xs-4'>";
-				echo "<img src='$img' class='img-thumbnail' width='150' height='150'><br>";
+			echo "<div class='col-xs-3'>";
+			echo '<img src="https://chart.googleapis.com/chart?cht=qr&chs=100x100&chl=https://www.uttaraditmart.com/profile.php?id='.$idu.'&chld=L|0" alt="">';
 			echo "</div>";
 		echo "</div>";
 
