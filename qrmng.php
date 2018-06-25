@@ -1,8 +1,9 @@
 <?php
 	session_start();
 	include('config/config.php');
+
 	$pageName="guestReport";
-  $subpageName="staff";
+    $subpageName="staff";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -81,14 +82,12 @@
                              <!-- ส่วนของการแสดงผล -->
                              <div id="boxDisplay">
 															 <?php
-
-															 		$uid=$_GET["id"];
+															 		$uid=$_SESSION["DUR_USER_ID"];
 
 															 		$sql="select * from tb_user where iduser=$uid";
 															 		$result=mysqli_query($connect,$sql);
 															 		@$row=mysqli_fetch_array($result);
 
-															 		$idu=$row["iduser"];
 															 		$db_prefix=$row["prefix"];
 															 		$db_firstname=$row["firstname"];
 															 		$db_lastname=$row["lastname"];
@@ -161,8 +160,9 @@
 															 		echo "</div>";
 															 		echo "<div class='row invoice-info'>";
 															 			echo "<div class='col-xs-6'>";
-															 			echo "<img src='$img' class='img-thumbnail' width='130'>";
+															 			echo "<img src='$img' class='img-thumbnail' width='130' height='130'>";
 															 			echo '<img src="https://chart.googleapis.com/chart?cht=qr&chs=130x130&chl=https://www.uttaraditmart.com/profile.php?id='.$uid.'&chld=L|0" alt="">';
+
 															 			echo "</div>";
 															 			echo "<div class='col-xs-6'>";
 															 				echo "<b>ชื่อ - สกุล :</b> $name<br/>";
@@ -175,7 +175,7 @@
 															 			echo "</div>";
 															 		echo "</div>";
 
-															 		$sqlp="select * from tb_plot where iduser=".$idu;
+																	$sqlp="select * from tb_plot where iduser=".$uid;
 															 		$resultp=mysqli_query($connect,$sqlp);
 															 		$rowp=mysqli_fetch_array($resultp);
 															 		echo "<div class='row'>";
@@ -212,7 +212,7 @@
 															     		$sql=$sql . " order by tb_durian.iddurian";
 															     		$i=1;
 															     		$result=mysqli_query($connect,$sql);
-															 				while(@$row=mysqli_fetch_array($result)){
+															 			while(@$row=mysqli_fetch_array($result)){
 															 				echo "<tr>";
 															 					echo "<td>$i</td>";
 															 					//HTTP://202.29.52.232/map/longlin/index.php?parcel_id=รหัสแปลง
@@ -259,7 +259,6 @@
 															 			echo "</div>";
 															 		echo "</div>";
 															 ?>
-
                              </div>
                              <div class="row no-print">
                                 <div class="col-xs-12">
@@ -278,8 +277,8 @@
             </aside><!-- /.right-side -->
         </div><!-- ./wrapper -->
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="js/utmmap_u.js"></script>
+				<script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+				<script src="js/utmmap_u.js"></script>
 
 </body>
 </html>
@@ -312,9 +311,9 @@
         <!-- AdminLTE App -->
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
 
-				<script type="text/javascript">
-				    $(document).ready(function(){
+<script type="text/javascript">
+    $(document).ready(function(){
 
-				            $("#loadBox").fadeOut();
-				    });
-				</script>
+            $("#loadBox").fadeOut();
+    });
+</script>
