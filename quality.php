@@ -299,5 +299,13 @@
 						});
 				});
 
+				$(document).on('click','.naviPN', function() {
+					var url=$(this).attr("href");
+					$("#loadBar").fadeIn();
+					$("#showData").load(url + "&action=getUser" ,function(){
+						$("#loadBar").fadeOut();
+					});
+					return false;
+				});
 
 </script>

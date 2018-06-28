@@ -40,9 +40,8 @@
 		}
 		if($_SESSION["DUR_USER_STATE"]=="USER"){
 				$ugroup=$_SESSION["DUR_USER_GROUP"];
-							$sql="select tb_user.iduser , tb_user.prefix , tb_user.firstname , tb_user.lastname , tb_user.hnumber,'','','', tb_user.idgroup, tb_user.cf_userlevel ";
-							$sql=$sql . " from tb_user ";
-
+				$sql="select tb_user.iduser , tb_user.prefix , tb_user.firstname , tb_user.lastname , tb_user.hnumber,'','','', tb_user.idgroup, tb_user.cf_userlevel ";
+				$sql=$sql . " from tb_user ";
 				$sql=$sql . " where  tb_user.iduser = $iuser ";
 				 if($search !=""){
 								$sql=$sql . "and (tb_user.firstname like '%$search%' ";
@@ -62,6 +61,7 @@
 				}
 				$sql=$sql . " LIMIT " . $_GET['s_page'] . " , $e_page";
 				$result=mysqli_query($connect,$sql);
+
 				if(mysqli_num_rows($result)>=1){
 					$plus_p=($chk_page*$e_page)+mysqli_num_rows($result);
 				}else{
@@ -107,7 +107,7 @@
 				echo "<div class='box-footer clearfix'>";
 					echo "<div calss='browse_page'>";
 						echo "<ul class='pagination pagination-sm no-margin pull-right'>";
-							$urlfile="adminDataMember.php?url=url";
+							$urlfile="quality_data.php?url=url";
 							page_navigator($urlfile , $before_p,$plus_p,$total,$total_p,$chk_page);
 						echo "</ul>";
 					echo "</div>";

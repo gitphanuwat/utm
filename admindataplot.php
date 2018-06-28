@@ -103,17 +103,17 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 		$_GET['s_page']=0;
 	}else{
 		$chk_page=$_GET['s_page'];
-		$_GET['s_page']=$_GET['s_page']*$e_page;
+		@$_GET['s_page']=$_GET['s_page']*$e_page;
 	}
 	$sql=$sql . " LIMIT " . $_GET['s_page'] . " , $e_page";
 	$result=mysqli_query($connect,$sql);
 	if(@mysqli_num_rows($result)>=1){
-		$plus_p=($chk_page*$e_page)+mysqli_num_rows($result);
+		@$plus_p=($chk_page*$e_page)+mysqli_num_rows($result);
 	}else{
-		$plus_p=($chk_page*$e_page);
+		@$plus_p=($chk_page*$e_page);
 	}
-	$total_p=ceil($total/$e_page);
-	$before_p=($chk_page*$e_page)+1;
+	@$total_p=ceil($total/$e_page);
+	@$before_p=($chk_page*$e_page)+1;
 
 						$i=$before_p;
 
