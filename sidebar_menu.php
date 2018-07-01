@@ -236,16 +236,26 @@
                 echo "<span>จัดการข้อมูลการขาย</span>";
                 echo "<i class='fa fa-angle-left pull-right'></i>";
             echo "</a>";
-            echo "<ul class='treeview-menu'>";
-            	echo "<li";
-				if($subpageName=="gentag"){
-					echo " class='active'";
-				}
-				echo ">";
-				echo "<a href='qrmng.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
-				echo "</li>";
-            echo "</ul>";
+
+        echo "<ul class='treeview-menu'>";
+	        echo "<li";
+					if($subpageName=="gentag"){
+						echo " class='active'";
+					}
+					echo ">";
+					echo "<a href='qrmng.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
+					echo "</li>";
+					echo "<li";
+					if($subpageName=="printtag"){
+						echo " class='active'";
+					}
+					echo ">";
+					echo "<a href='qrprint.php'><i class='fa fa-angle-double-right'></i> พิมพ์ฉลาก QR Code</a>";
+					echo "</li>";
+        echo "</ul>";
+
         echo "</li>";
+
 				echo "<li>";
 						echo "<a href='signout.php'>";
 				echo "<i class='glyphicon glyphicon-log-out'></i>";
@@ -427,6 +437,13 @@
 				echo ">";
 				echo "<a href='qrmng.php'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
 				echo "</li>";
+				echo "<li";
+				if($subpageName=="printtag"){
+					echo " class='active'";
+				}
+				echo ">";
+				echo "<a href='qrptint.php'><i class='fa fa-angle-double-right'></i> พิมพ์ฉลาก QR Code</a>";
+				echo "</li>";
             echo "</ul>";
         echo "</li>";
 				echo "<li>";
@@ -584,6 +601,7 @@
                 echo "<span>จัดการข้อมูลการขาย</span>";
                 echo "<i class='fa fa-angle-left pull-right'></i>";
             echo "</a>";
+
             echo "<ul class='treeview-menu'>";
             	echo "<li";
 				if($subpageName=="gentag"){
@@ -592,7 +610,15 @@
 				echo ">";
 				echo "<a href='qrmng.php?id_user=".$_SESSION["DUR_USER_ID"]."'><i class='fa fa-angle-double-right'></i> จัดการ QR Code</a>";
 				echo "</li>";
+				echo "<li";
+				if($subpageName=="printtag"){
+					echo " class='active'";
+				}
+				echo ">";
+				echo "<a href='qrprint.php?id_user=".$_SESSION["DUR_USER_ID"]."'><i class='fa fa-angle-double-right'></i> พิมพ์ฉลาก QR Code</a>";
+				echo "</li>";
             echo "</ul>";
+
         echo "</li>";
 				echo "<li>";
 						echo "<a href='signout.php'>";

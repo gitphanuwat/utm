@@ -216,7 +216,8 @@
 															 				echo "<tr>";
 															 					echo "<td>$i</td>";
 															 					//HTTP://202.29.52.232/map/longlin/index.php?parcel_id=รหัสแปลง
-															 					echo '<td><a href=\'../map/longlin/index.php?parcel_id='.$row["codeplot"].'\' title=\'แสดงพื้นที่เพาะปลูก\' >'.$row["codeplot"].'</a></td>';
+																				echo '<td>'.$row["codeplot"].'</td>';
+															 					//echo '<td><a href=\'../map/longlin/index.php?parcel_id='.$row["codeplot"].'\' title=\'แสดงพื้นที่เพาะปลูก\' >'.$row["codeplot"].'</a></td>';
 															 					echo "<td>". $cf_type[$row["idtype"]] . "</td>";
 															 					echo "<td>" . $row["b_trunk"] . "</td>";
 															 					echo "<td>" . $row["e_trunk"] . "</td>";
@@ -235,27 +236,41 @@
 															 		echo "<div class='row'>";
 															 			echo "<div class='col-xs-12'>";
 															 				echo "<h4>คุณภาพสินค้า</h4>";
-															 			echo "<table class='table table-hover'>";
-															 				echo "<tr>";
-															 	    		echo "<th width='50'>ลำดับ</th>";
-															 					echo "<th>รายการคุณภาพสินค้า</th>";
-															 					echo "<th>วันที่</th>";
-															 					echo "<th>เอกสาร</th>";
-															     		echo "</tr>";
+																			echo "<table class='table table-hover'>";
+																 				echo "<tr>";
+																 	    		echo "<td>";
 
-															     		$sql="select * from tb_quality where iduser=$uid";
-															     		$i=1;
-															     		$result=mysqli_query($connect,$sql);
-															 			while(@$row=mysqli_fetch_array($result)){
-															 				echo "<tr>";
-															 					echo "<td>$i</td>";
-															 					echo '<td>'.$row["title"].'</td>';
-															 					echo '<td>'.$row["day_in"].'</td>';
-															 					echo '<td>'.$row["userid"].'</td>';
-															 				echo "</tr>";
-															 				$i++;
-															 			}
-															 			echo "</table>";
+																     		$sql="select * from tb_quality where userid=$uid";
+																     		$i=1;
+																     		$result=mysqli_query($connect,$sql);
+																 			while(@$row=mysqli_fetch_array($result)){
+
+																				$id=$row["quality_id"];
+																				$title=$row["title"];
+																        $detail=$row["detail"];
+																        $day_in=$row["day_in"];
+
+																        echo "<div class='box-header'>";
+																            echo "<h3 class='box-title'>$title</h3>";
+																        echo "</div>";
+																        echo "<div class='box-body'>";
+																            echo "<p>วันที่บันทึก : $day_in</p>";
+																            echo "<p>$detail</p>";
+																            $sqlf="select * from tb_quality_item where quality_id = $id order by autoid";
+																            $resultf=mysqli_query($connect,$sqlf);
+																            $nRow=mysqli_num_rows($resultf);
+																            if($nRow !=0){
+																                echo "<br><p><b>เอกสาร</b></p>";
+																                while($rowf=mysqli_fetch_array($resultf)){
+																                    echo "<p>&nbsp&nbsp<a href='user/quality/$rowf[3]' target='_blank'>$rowf[2]</a></p>";
+																                }
+																            }
+																        echo "</div>";
+																 				echo "<hr>";
+																 			}
+																			echo "</td>";
+																			echo "</tr>";
+																			echo "</table>";
 															 			echo "</div>";
 															 		echo "</div>";
 															 ?>

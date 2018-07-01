@@ -3,7 +3,7 @@
 	include('config/config.php');
 
 	$pageName="tag";
-    $subpageName="gentag";
+    $subpageName="printtag";
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -63,12 +63,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        แสดงข้อมูลเกษตรกร
-                        <small>ข้อมูลเกษตรกรผู้ผลิตสับปะรด</small>
+                      	จัดการข้อมูลการขาย
+                        <small>พิมพ์ ฉลาก QR Code</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
-                        <li class=\"active\">แสดงข้อมูลเกษตรกร</li>
+                        <li class=\"active\">ฉลาก QR Code</li>
                     </ol>
                 </section>
 
@@ -88,7 +88,8 @@
 															 		$result=mysqli_query($connect,$sql);
 															 		@$row=mysqli_fetch_array($result);
 
-															 		$db_prefix=$row["prefix"];
+																	$dbiduser=$row["iduser"];
+																	$db_prefix=$row["prefix"];
 															 		$db_firstname=$row["firstname"];
 															 		$db_lastname=$row["lastname"];
 															 		$b_picture=$row["picture"];
@@ -154,125 +155,68 @@
 															 		echo "<div class='row'>";
 															 			echo "<div class='col-xs-12'>";
 															 				echo "<h2 class='page-header'>";
-															 					echo "ข้อมูลเกษตรกร";
+															 					echo "ฉลากสินค้า QR Code";
 															 				echo "</h2>";
 															 			echo "</div>";
 															 		echo "</div>";
-															 		echo "<div class='row invoice-info'>";
-															 			echo "<div class='col-xs-6'>";
-															 			echo "<img src='$img' class='img-thumbnail' width='130' height='130'>";
-															 			echo '<img src="https://chart.googleapis.com/chart?cht=qr&chs=130x130&chl=https://www.uttaraditmart.com/profile.php?id='.$uid.'&chld=L|0" alt="">';
 
-															 			echo "</div>";
-															 			echo "<div class='col-xs-6'>";
-															 				echo "<b>ชื่อ - สกุล :</b> $name<br/>";
-															 				echo "<b>บ้านเลขที่ :</b> $db_hnumber<br/>";
+															 		echo "<div class='row invoice-info no-print'>";
+																		echo "<div class='col-xs-12'>";
+																			echo "<b>ชื่อ - สกุล :</b> $name ";
+															 				echo "<b>บ้านเลขที่ :</b> $db_hnumber ";
 															 				echo "<b>หมู่บ้าน :</b> $db_moo<br/>";
-															 				echo "<b>ตำบล :</b> $db_tambon<br/>";
-															 				echo "<b>อำเภอ :</b> $db_amphur<br/>";
-															 				echo "<b>จังหวัด :</b> อุตรดิตถ์<br/>";
-															 				echo "<b>กลุ่ม/เครือข่าย :</b> $db_groupname<br/>";
-															 			echo "</div>";
+															 				echo "<b>ตำบล :</b> $db_tambon ";
+															 				echo "<b>อำเภอ :</b> $db_amphur ";
+															 				echo "<b>จังหวัด :</b> อุตรดิตถ์ ";
+															 				echo "<b>กลุ่ม :</b> $db_groupname<br/>";
+																			echo "<hr>";
+																			echo "</div>";
 															 		echo "</div>";
 
-																	$sqlp="select * from tb_plot where iduser=".$uid;
-															 		$resultp=mysqli_query($connect,$sqlp);
-															 		$rowp=mysqli_fetch_array($resultp);
-															 		echo "<div class='row'>";
-															 			echo "<div class='col-xs-12'>";
-															 				echo "<h4>";
-															 					echo "พื้นที่การเกษตร";
-															 				echo "</h4>";
-															 			echo "</div>";
-															 		echo "</div>";
-															 		echo "<div class='row invoice-info'>";
-															 			echo "<div class='col-xs-12'>";
-															 			echo '<div id="map_canvas" style="width: 100%; height: 200px"><div align="center"><img src="img/ajax-loader.gif" align="absmiddle"><br>Map Loading...</div></div>';
-															 			echo '<input type="hidden" class="form-control" id="lat" name="lat" value="'.$rowp[5].'">
-															 						<input type="hidden" class="form-control" id="lng" name="lng" value="'.$rowp[6].'">';
 
-															 			echo "</div>";
-															 		echo "</div>";
-
-															 		echo "<div class='row'>";
-															 			echo "<div class='col-xs-12'>";
-															 				echo "<h4>ประวัติผลผลิต</h4>";
-															 			echo "<table class='table table-hover'>";
-															 				echo "<tr>";
-															     			echo "<th width='50'>ลำดับ</th>";
-															 				echo "<th>แปลงปลูก</th>";
-															     			echo "<th>ชนิดสับปะรด(พันธุ์)</th>";
-															 				echo "<th>ต้นที่ปลูก</th>";
-															 				echo "<th>ต้นที่ให้ผลผลิต</th>";
-															 				echo "<th>ผลผลิต(ลูก)</th>";
-															 				echo "<th>ปี พ.ศ.</th>";
-															     		echo "</tr>";
-
-															     		$sql="select tb_durian.*, tb_plot.codeplot from tb_durian, tb_plot where tb_durian.idplot=tb_plot.idplot and tb_plot.iduser=$uid";
-															     		$sql=$sql . " order by tb_durian.iddurian";
-															     		$i=1;
-															     		$result=mysqli_query($connect,$sql);
-															 			while(@$row=mysqli_fetch_array($result)){
-															 				echo "<tr>";
-															 					echo "<td>$i</td>";
-															 					//HTTP://202.29.52.232/map/longlin/index.php?parcel_id=รหัสแปลง
-																				echo '<td>'.$row["codeplot"].'</td>';
-															 					//echo '<td><a href=\'../map/longlin/index.php?parcel_id='.$row["codeplot"].'\' title=\'แสดงพื้นที่เพาะปลูก\' >'.$row["codeplot"].'</a></td>';
-															 					echo "<td>". $cf_type[$row["idtype"]] . "</td>";
-															 					echo "<td>" . $row["b_trunk"] . "</td>";
-															 					echo "<td>" . $row["e_trunk"] . "</td>";
-															 					echo "<td>" . $row["product_durian"] . "</td>";
-															 						$sql1="select nameyear from tb_year where idyear=".$row["idyear"];
-															 						$result1=mysqli_query($connect,$sql1);
-															 						$row1=mysqli_fetch_array($result1);
-															 						echo "<td>" . $row1[0] . "</td>";
-															 				echo "</tr>";
-															 				$i++;
-															 			}
-															 			echo "</table>";
-															 			echo "</div>";
+																	echo "<div class='row'>";
+																	for ($i=0; $i < 15; $i++) {
+																		echo "<div class='col-xs-4'>";
+																			 				echo '<img src="https://chart.googleapis.com/chart?cht=qr&chs=130x130&chl=https://www.uttaraditmart.com/profile.php?id='.$uid.'&chld=L|0" alt="">';
+																							$sqlpn="select codeplot from tb_plot where iduser=$dbiduser";
+																							$resultpn=mysqli_query($connect,$sqlpn);
+																							$rowpn=mysqli_fetch_array($resultpn);
+																							if($rowpn[0]!=''){
+																								echo '<br><i class="fa fa-map-marker"></i>';
+																								echo $rowpn[0];
+																							}
+																							$sqlqa="select qatype from tb_quality where userid=$dbiduser";
+																							$resultqa=mysqli_query($connect,$sqlqa);
+																							while ($rowqa=mysqli_fetch_array($resultqa)) {
+																								if($rowqa[0]==1){
+																									echo "GI";
+																								}
+																								if($rowqa[0]==2){
+																									echo "QA";
+																								}
+																								if($rowqa[0]==3){
+																									echo "ET";
+																								}
+																							}
+																							//echo 'u='.$dbiduser;
+																							$sqly="select tb_durian.idyear from tb_durian,tb_plot where tb_plot.iduser=$dbiduser
+																							and tb_durian.idplot=tb_plot.idplot order by tb_durian.idyear desc";
+																							$resulty=mysqli_query($connect,$sqly);
+																							$rowy=mysqli_fetch_array($resulty);
+																							//echo 'y='.$rowy[0];
+																							$sqlyn="select nameyear from tb_year where idyear=$rowy[0]";
+																							$resultyn=mysqli_query($connect,$sqlyn);
+																							@$rowyn=mysqli_fetch_array($resultyn);
+																							//echo 'yn='.$rowyn[0];
+																							if($rowyn[0]!=''){
+																								echo $rowyn[0];
+																							}
+																							echo '<hr>';
+																				echo "</div>";
+																	}
 															 		echo "</div>";
 
-															 		echo "<div class='row'>";
-															 			echo "<div class='col-xs-12'>";
-															 				echo "<h4>คุณภาพสินค้า</h4>";
-															 			echo "<table class='table table-hover'>";
-															 				echo "<tr>";
-															 	    		echo "<td>";
 
-															     		$sql="select * from tb_quality where userid=$uid";
-															     		$i=1;
-															     		$result=mysqli_query($connect,$sql);
-															 			while(@$row=mysqli_fetch_array($result)){
-
-																			$id=$row["quality_id"];
-																			$title=$row["title"];
-															        $detail=$row["detail"];
-															        $day_in=$row["day_in"];
-
-															        echo "<div class='box-header'>";
-															            echo "<h3 class='box-title'>$title</h3>";
-															        echo "</div>";
-															        echo "<div class='box-body'>";
-															            echo "<p>วันที่บันทึก : $day_in</p>";
-															            echo "<p>$detail</p>";
-															            $sqlf="select * from tb_quality_item where quality_id = $id order by autoid";
-															            $resultf=mysqli_query($connect,$sqlf);
-															            $nRow=mysqli_num_rows($resultf);
-															            if($nRow !=0){
-															                echo "<br><p><b>เอกสาร</b></p>";
-															                while($rowf=mysqli_fetch_array($resultf)){
-															                    echo "<p>&nbsp&nbsp<a href='user/quality/$rowf[3]' target='_blank'>$rowf[2]</a></p>";
-															                }
-															            }
-															        echo "</div>";
-															 				echo "<hr>";
-															 			}
-																		echo "</td>";
-																		echo "</tr>";
-																		echo "</table>";
-															 			echo "</div>";
-															 		echo "</div>";
 															 ?>
                              </div>
                              <div class="row no-print">
