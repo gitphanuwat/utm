@@ -29,7 +29,7 @@
     <link href="css/iCheck/minimal/blue.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
 
 		<link rel="icon" href="user/profile_pic/icon.ico">
 

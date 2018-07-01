@@ -50,7 +50,7 @@
                 echo "</div>";
 
             	echo "<div class='form-group'>";
-            		echo "<label>ผลผลิตสับปะรด (ลูก/ต้น)</label>";
+            		echo "<label>ผลผลิตสับปะรด (ลูก)</label>";
                     echo "<input type='text' class='form-control' id='product_durian' name='product_durian' >";
                 echo "</div>";
 

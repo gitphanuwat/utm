@@ -31,7 +31,7 @@ error_reporting(0);
                 <div class="body bg-gray">
                 	<div  id="add_err"></div>
                     				<div class="form-group">
-                        			<input type="text" id="userid" name="userid" class="form-control" placeholder="E-mail" />
+                        			<input type="text" id="userid" name="userid" class="form-control" placeholder="User" />
                   				  </div>
                    			 		<div class="form-group">
                        				 <input type="password" id="password" name="password" class="form-control" placeholder="Password" />

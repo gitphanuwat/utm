@@ -133,10 +133,12 @@ if($_SESSION["DUR_USER_STATE"]=="MANAGER"){
 }
 if($_SESSION["DUR_USER_STATE"]=="USER"){
 			$ugroup=$_SESSION["DUR_USER_GROUP"];
-            $sql="select tb_user.iduser , tb_user.prefix , tb_user.firstname , tb_user.lastname , tb_user.hnumber,'','','', tb_user.idgroup, tb_user.cf_userlevel ";
-            $sql=$sql . " from tb_user ";
-
-			$sql=$sql . " where  tb_user.iduser = $iuser ";
+			$sql="select tb_user.iduser , tb_user.prefix , tb_user.firstname , tb_user.lastname , tb_user.hnumber, tb_moo.moo, tb_tambon.tambon, tb_amphur.amphur, tb_user.idgroup, tb_user.cf_userlevel ";
+			$sql=$sql . " from tb_user, tb_moo, tb_tambon, tb_amphur ";
+			$sql=$sql . " where  tb_user.idmoo = tb_moo.idmoo ";
+			$sql=$sql . " and  tb_user.idtambon = tb_tambon.idtambon ";
+			$sql=$sql . " and  tb_user.idamphur = tb_amphur.idamphur ";
+			$sql=$sql . " and  tb_user.iduser = $iuser ";
 			 if($search !=""){
             	$sql=$sql . "and (tb_user.firstname like '%$search%' ";
             	$sql=$sql . " or tb_user.lastname like '%$search%' )";

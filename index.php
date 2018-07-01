@@ -24,6 +24,8 @@
 	<link href="css/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css" rel="stylesheet" type="text/css" />
 	<!-- Theme style -->
 	<link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
+
 	<link rel="icon" href="user/profile_pic/icon.ico">
 
 </head>
@@ -259,6 +261,10 @@
 					$( "#dialog" ).dialog( "open" );
 					$("#loadDialog").fadeOut();
 			});
+	});
+
+	$(document).on('click','#butCancel',function(){
+			$("#dialog").dialog( "close" );
 	});
 
 	function stopUpload(success , error){

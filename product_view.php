@@ -110,17 +110,17 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 		$_GET['s_page']=0;
 	}else{
 		$chk_page=$_GET['s_page'];
-		$_GET['s_page']=$_GET['s_page']*$e_page;
+		@$_GET['s_page']=$_GET['s_page']*$e_page;
 	}
 	$sql=$sql . " LIMIT " . $_GET['s_page'] . " , $e_page";
 	$result=mysqli_query($connect,$sql);
 	if(mysqli_num_rows($result)>=1){
-		$plus_p=($chk_page*$e_page)+mysqli_num_rows($result);
+		@$plus_p=($chk_page*$e_page)+mysqli_num_rows($result);
 	}else{
-		$plus_p=($chk_page*$e_page);
+		@$plus_p=($chk_page*$e_page);
 	}
-	$total_p=ceil($total/$e_page);
-	$before_p=($chk_page*$e_page)+1;
+	@$total_p=ceil($total/$e_page);
+	@$before_p=($chk_page*$e_page)+1;
 
 						$i=$before_p;
 
@@ -146,12 +146,12 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 								$e_trunk=0;
 								$product=0;
 								$sumproduct=0;
-								while($rowc=mysqli_fetch_array($resultc)){
+								while(@$rowc=mysqli_fetch_array($resultc)){
 									$plot++;
 									$b_trunk=$b_trunk+$rowc['b_trunk'];
 									$e_trunk=$e_trunk+$rowc['e_trunk'];
 									$product=$product+$rowc['product_durian'];
-									$sumproduct=$sumproduct+($rowc['e_trunk']*$rowc['product_durian']);
+									$sumproduct=$sumproduct+$rowc['product_durian'];
 								}
 
     			echo "<tr>";
@@ -212,7 +212,7 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 					echo "<h5>ที่อยู่ : " .$row[4]. " หมู่บ้าน.". $row[5]. " ต.". $row[6]. " อ.". $row[7] ." จ.อุตรดิตถ์</h5>";
 					$sqlp= "select groupname from tb_group where idgroup = $idposition ";
 					$resultp=mysqli_query($connect,$sqlp);
-					$rowp=mysqli_fetch_array($resultp);
+					$rowp=@mysqli_fetch_array($resultp);
 					echo "<h5>กลุ่ม : " . $rowp[0] . "</h5><hr>";
 
 

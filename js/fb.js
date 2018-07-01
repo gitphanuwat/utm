@@ -5,8 +5,8 @@ var fbEmail = "";
 
 window.fbAsyncInit = function() {
   FB.init({
-    appId      : '1496188763803694',//fortest
-    //appId      : '229042934292145',// Online
+    //appId      : '1496188763803694',//fortest
+    appId      : '1376912239120229',// Online
     cookie     : true,
     xfbml      : true,
     version    : 'v2.8'

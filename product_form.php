@@ -6,8 +6,8 @@
 								<td>แปลงปลูก</td>
 								<td>จำนวนต้นที่ปลูก</td>
 								<td>จำนวนต้นที่ให้ผลผลิต</td>
-								<td>ผลผลิต(ลูก/ต้น)</td>
-                                <td>ราคาขาย(บาท/กิโลกรัม)</td>
+								<td>ผลผลิต(ลูก)</td>
+                <td>ราคาขาย(บาท/กิโลกรัม)</td>
 							  </tr>
 <?php
 			 $iduser=$_GET["id"];
@@ -64,12 +64,12 @@
 
 	$sqlpoll="select * from tb_poll where idyear=".$_SESSION['DUR_POLL_YEAR']." order by idpoll ASC";
 	$resultpoll=mysqli_query($connect,$sqlpoll);
-	$total=mysqli_num_rows($resultpoll);
+	$total=@mysqli_num_rows($resultpoll);
 
 ?>
 <div class="row">
 		 <?php
-			while($rowpoll=mysqli_fetch_array($resultpoll)){
+			while($rowpoll=@mysqli_fetch_array($resultpoll)){
 				$sqltopic="select * from tb_topic where idpoll = " . $rowpoll[0];
 				$resulttopic=mysqli_query($connect,$sqltopic);
 				@$nrow=mysqli_num_rows($resulttopic);

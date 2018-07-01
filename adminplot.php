@@ -40,7 +40,7 @@
     <link href="css/iCheck/all.css" rel="stylesheet" type="text/css" />
     <!-- Theme style -->
     <link href="css/AdminLTE.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="https://code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.1/themes/black-tie/jquery-ui.css">
 
 		<link rel="icon" href="user/profile_pic/icon.ico">
 
@@ -154,7 +154,7 @@
                              <!-- ส่วนของการแสดงผล -->
                              <div class="box" id="boxSearch">
                                 <div class="box-header">
-                                    <h3 class="box-title">ข้อมูลพื้นที่การเกษตรของเกษตรกร</h3>
+                                    <h3 class="box-title">ข้อมูลพื้นที่การเกษตร</h3>
                                 </div>
                                 <div class="box-body table-responsive no-padding">
                                 <iframe id="upload_target" name="upload_target" src="#" style="display:none;"></iframe>

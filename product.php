@@ -91,7 +91,7 @@
                     <!-- Main row -->
                     <div class="row">
                         <div class="col-xs-12">
-
+													<?php if($_SESSION["DUR_USER_STATE"]!="USER"){?>
                             <!-- ส่วนของงานหลัก  -->
                             <div class="box box-solid box-primary">
                                 <div class="box-header">
@@ -133,7 +133,7 @@
                                             </div>
                                     </div>
                            		<?php }?>
-                                <?php if($_SESSION["DUR_USER_STATE"]=="MANAGER" or "USER"){?>
+                                <?php if($_SESSION["DUR_USER_STATE"]=="MANAGER"){?>
                                     <div class="form-group">
                                         <label>คำค้น</label>
                                         <input type="hidden" id="idyear" value="<?php echo $yearID;?>">
@@ -143,11 +143,15 @@
                                     </div>
                                     </div>
                                 </div><!-- /.box-body-->
+
                                 <div class="box-footer no-border">
                                     <button class="btn btn-success" type="button" id="butSearch">ค้นหา</button>
                                     <button class="btn btn-default" type="button" id="butCancel">ยกเลิก</button>
                                 </div>
                             </div>
+													<?php }else{?>
+														<input type="hidden" id="idyear" value="<?php echo $yearID;?>">
+													<?php }?>
                              <!-- จบส่วนงานหลัก -->
                              <!-- ส่วนของการแสดงผล -->
                              <div class="box" id="boxSearch">
@@ -296,14 +300,14 @@
 				$("#showmoo").load("product_view.php?action=loadmoo&id=" + idtambon );
 			});
 
-            $(document).on('click','.editItemRegistered',function(){
-				var gyear = $("#idyear").val();
-                var id=$(this).attr("href");
-				var s_page = $("#s_page").val();
-                id=id.replace("#","");
-                $("#showData").load("product_view.php?action=addProduct&id="+id+ "&idyear=" + gyear+ "&s_page=" + s_page ,function(){
-                });
-            });
+        $(document).on('click','.editItemRegistered',function(){
+						var gyear = $("#idyear").val();
+	          var id=$(this).attr("href");
+						var s_page = $("#s_page").val();
+	          id=id.replace("#","");
+	          	$("#showData").load("product_view.php?action=addProduct&id="+id+ "&idyear=" + gyear+ "&s_page=" + s_page ,function(){
+	          });
+        });
 
 			$(document).on('click',"#butCancelProduct",function(){
 				var gyear = $("#idyear").val();
@@ -312,7 +316,8 @@
 					var tam_id = $("#select_tam_id").val();
 					var moo_id = $("#select_moo_id").val();
 					var s_page = $("#s_page").val();
-				    $("#showData").load("product_view.php?action=getView&search=" + Search + "&amp_id=" + amp_id+"&tam_id=" + tam_id+"&moo_id=" + moo_id+"&year=" + gyear+"&s_page=" + s_page,function(){
+						$("#showData").load("product_view.php?action=getView&year="+gyear,function(){
+				    //$("#showData").load("product_view.php?action=getView&search=" + Search + "&amp_id=" + amp_id+"&tam_id=" + tam_id+"&moo_id=" + moo_id+"&year=" + gyear+"&s_page=" + s_page,function(){
                         $("#load").fadeOut();
                     });
             });
@@ -372,35 +377,37 @@
                 $("#dialog").dialog( "close" );
             });
 
-            function stopUpload(success , error){
-					var guser = $("#iduser").val();
-					var gyear = $("#idyear").val();
-
-                    if(success ==1){
-                        $("#dialog").dialog( "close" );
-                		$("#showData").load("product_view.php?action=addProduct&id="+guser+ "&idyear=" + gyear ,function(){
-							$("#load").fadeOut();
-						});
-                    }else{
-                        if(error==1){
-                            $("#uploadDialog_process").html("<font color='red'>กรุณากรอกข้อมูลให้ครบด้วย</font>");
-                        }
-                        if(error==2){
-                            $("#uploadDialog_process").html("<font color='red'>ข้อมูลรูปภาพไม่ถูกต้อง</font>");
-                        }
-                    }
-                    if(success ==2){
+          function stopUpload(success , error){
+						var guser = $("#iduser").val();
 						var gyear = $("#idyear").val();
-						var Search = $("#txtSearch").val();
+            if(success ==1){
+                $("#dialog").dialog( "close" );
+	        			$("#showData").load("product_view.php?action=addProduct&id="+guser+ "&idyear=" + gyear ,function(){
+									$("#load").fadeOut();
+								});
+            }else{
+                if(error==1){
+                    $("#uploadDialog_process").html("<font color='red'>กรุณากรอกข้อมูลให้ครบด้วย</font>");
+                }
+                if(error==2){
+                    $("#uploadDialog_process").html("<font color='red'>ข้อมูลรูปภาพไม่ถูกต้อง</font>");
+                }
+            }
+            if(success ==2){
+							var guser = $("#iduser").val();
+							var gyear = $("#idyear").val();
+							var Search = $("#txtSearch").val();
 							var amp_id = $("#select_amp_id").val();
 							var tam_id = $("#select_tam_id").val();
 							var moo_id = $("#select_moo_id").val();
 							var s_page = $("#s_page").val();
-							$("#showData").load("product_view.php?action=getView&search=" + Search + "&amp_id=" + amp_id+"&tam_id=" + tam_id+"&moo_id=" + moo_id+"&year=" + gyear+"&s_page=" + s_page,function(){
+							$("#showData").load("product_view.php?action=getView&year="+gyear,function(){
+							//$("#showData").load("product_view.php?action=getView&id="+guser+"&idyear="+ gyear ,function(){
+							//$("#showData").load("product_view.php?action=getView&amp_id="+amp_id+"&tam_id="+tam_id+"&moo_id="+moo_id+"&id="+guser+"&idyear="+gyear+"&s_page="+s_page,function(){
 								$("#load").fadeOut();
 							});
-                    }
-	                return true;
             }
+            return true;
+          }
 
 </script>

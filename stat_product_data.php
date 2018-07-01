@@ -18,7 +18,7 @@ if($_GET["action"]=="loadamp"){
 <table class="table table-bordered" >
 							  <tr>
 								<td>ลำดับ</td>
-                                <td>อำเภอ</td>
+                <td>อำเภอ</td>
 								<td>จำนวนแปลงปลูก</td>
 								<td>ต้นที่ปลูก</td>
 								<td>ต้นที่ให้ผล</td>
@@ -63,7 +63,7 @@ if($_GET["action"]=="loadamp"){
 						$plot++;
 						$b_trunk=$b_trunk+$row2[4];
 						$e_trunk=$e_trunk+$row2[5];
-						$product_durian=$product_durian+($row2[5]*$row2[6]);
+						$product_durian=$product_durian+$row2[6];
 						$sale_durian=$sale_durian+$row2[7];
 						if ($row2[7]!=0){++$csale_durian;}
 
@@ -78,14 +78,13 @@ if($_GET["action"]=="loadamp"){
 
 ?>
 							  <tr>
-                              	<td><?php echo $cr++;?></td>
-								<td><?php echo '<a href=\'#'.$row[0].'\' title=\'แสดงรายละเอียดข้อมูล\' class=\'getmainwork\'>'.$row[1].'</a>';?></td>
-
-								<td><?php echo $plot;?></td>
-                                <td><?php echo $b_trunk;?></td>
-                                <td><?php echo $e_trunk;?></td>
-								<td><?php echo $product_durian;?></td>
-								<td><?php echo @number_format(($sale_durian/$csale_durian),2);?></td>
+	                <td><?php echo $cr++;?></td>
+									<td><?php echo '<a href=\'#'.$row[0].'\' title=\'แสดงรายละเอียดข้อมูล\' class=\'getmainwork\'>'.$row[1].'</a>';?></td>
+									<td><?php echo $plot;?></td>
+	                <td><?php echo $b_trunk;?></td>
+	                <td><?php echo $e_trunk;?></td>
+									<td><?php echo $product_durian;?></td>
+									<td><?php echo @number_format(($sale_durian/$csale_durian),2);?></td>
 							  </tr>
 <?php }?>
 							  <tr>
@@ -140,7 +139,7 @@ if($_GET["action"]=="loadamp"){
 					while(@$row2=mysqli_fetch_array($result2)){
 						$plot++;
 						$e_trunk=$e_trunk+$row2[5];
-						$product_durian=$product_durian+($row2[5]*$row2[6]);
+						$product_durian=$product_durian+$row2[6];
 						$b_trunk=$b_trunk+$row2[4];
 						$sale_durian=$sale_durian+$row2[7];
 						if ($row2[7]!=0){++$csale_durian;}
@@ -186,16 +185,15 @@ if($_GET["action"]=="loadamp"){
 		$idyear=$_POST["idyear"];
 ?>
 <table class="table table-bordered" >
-							  <tr>
+					<tr>
 								<td>ลำดับ</td>
-                                <td>เกษตรกร</td>
+                <td>เกษตรกร</td>
 								<td>จำนวนแปลงปลูก</td>
 								<td>ต้นที่ปลูก</td>
 								<td>ต้นที่ให้ผล</td>
 								<td>ผลผลิต(ลูก)</td>
-                                <td>ผลผลิตเฉลี่ยต่อต้น</td>
 								<td>ราคาขายเฉลี่ย(บาท/กก.)</td>
-							  </tr>
+					</tr>
 <?php
 			$sumplot=0;
 			$sume_trunk=0;
@@ -223,7 +221,7 @@ if($_GET["action"]=="loadamp"){
 					while(@$row2=mysqli_fetch_array($result2)){
 						$plot++;
 						$e_trunk=$e_trunk+$row2[5];
-						$product_durian=$product_durian+($row2[5]*$row2[6]);
+						$product_durian=$product_durian+$row2[6];
 						if ($row2[6]!=0){
 							$product_unit=$product_unit+$row2[6];
 							++$cproduct_unit;
@@ -253,7 +251,6 @@ if($_GET["action"]=="loadamp"){
                                 <td><?php echo $b_trunk;?></td>
                                 <td><?php echo $e_trunk;?></td>
 								<td><?php echo $product_durian;?></td>
-                                <td><?php echo @number_format(($product_unit/$cproduct_unit),2);?></td>
 								<td><?php echo @number_format(($sale_durian/$csale_durian),2);?></td>
 							  </tr>
 <?php }?>
@@ -263,7 +260,6 @@ if($_GET["action"]=="loadamp"){
                                 <td><?php echo $sumb_trunk;?></td>
                                 <td><?php echo $sume_trunk;?></td>
 								<td><?php echo $sumproduct_durian;?></td>
-                                <td><?php echo "เฉลี่ย ".@number_format(($sumproduct_unit/$sumcproduct_unit),2);?></td>
 								<td><?php echo "เฉลี่ย ".@number_format(($sumsale_durian/$sumcsale_durian),2);?></td>
 							  </tr>
 </table>
