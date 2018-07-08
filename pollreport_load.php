@@ -53,12 +53,17 @@ if($_GET["action"]=="loadpoll"){
 	$total_p=ceil($total/$e_page);
 	$before_p=($chk_page*$e_page)+1;
 ?>
-<div class="row">
+
 		 <?php
+		 $r='end';
 			while($row=mysqli_fetch_array($result)){
 				$sqltopic="select * from tb_topic where idpoll = " . $row[0];
 				$resulttopic=mysqli_query($connect,$sqltopic);
 				@$nrow=mysqli_num_rows($resulttopic);
+				if($r=='end'){
+					echo '<div class="row">';
+					//$r='start';
+				}
 				echo '<div class="col-xs-6">';
 				echo '<div class="box">
 						  <div class="box-header">
@@ -107,6 +112,11 @@ if($_GET["action"]=="loadpoll"){
 				echo "</div>";
 				echo "</div>";
 				echo "</div>";
+				if($r!='end'){
+					echo "</div>";
+					$r='end';
+				}else{$r='start';}
+
 		}
 		?>
 		<div class="col-xs-12">'

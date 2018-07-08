@@ -86,9 +86,7 @@
                                     </dl>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
-                        </div><!-- ./col -->
-                        <div class="col-md-6">
-                            <div class="box box-solid">
+														<div class="box box-solid">
                                 <div class="box-header">
                                     <i class="fa fa-text-width"></i>
                                     <h3 class="box-title">เป้าหมาย</h3>
@@ -107,6 +105,9 @@
                                     </dl>
                                 </div><!-- /.box-body -->
                             </div><!-- /.box -->
+														
+                        </div><!-- ./col -->
+                        <div class="col-md-6">
                             <div class="box box-solid bg-gray">
  <div class="row">
            	<div class="box-header">
@@ -151,6 +152,27 @@
             </div><!-- /.lockscreen-item -->
             <br/>
 </div>
+<div class="row">
+					 <!-- START LOCK SCREEN ITEM -->
+					 <div class="lockscreen-name" align="center">ผู้สนับสนุนโครงการ</div>
+					 <div class="lockscreen-item" >
+							 <!-- lockscreen image -->
+							 <div class="lockscreen-image">
+									 <img  src="user/profile_pic/logosci.png" alt="user image"/>
+							 </div>
+							 <!-- /.lockscreen-image -->
+
+							 <!-- lockscreen credentials (contains the form) -->
+							 <div class="lockscreen-credentials">
+									 <div class="input-group">
+											 <h5><span style="color:#5C5C5C">กระทรวงวิทยาศาสตร์และเทคโนโลยี</span></h5>
+									 </div>
+							 </div><!-- /.lockscreen credentials -->
+
+					 </div><!-- /.lockscreen-item -->
+					 <br/>
+</div>
+
 
 						 	</div>
                         </div><!-- ./col -->

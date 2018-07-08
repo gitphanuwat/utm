@@ -189,6 +189,7 @@
 																							$resultqa=mysqli_query($connect,$sqlqa);
 																							while ($rowqa=mysqli_fetch_array($resultqa)) {
 																								if($rowqa[0]==1){
+																									echo "|";
 																									echo "GI";
 																								}
 																								if($rowqa[0]==2){

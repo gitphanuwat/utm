@@ -30,14 +30,8 @@ $rs=@mysqli_fetch_array($qr);
     <?php if($rs['comment']!=""){?>
     <a href='<?php echo $rs['comment'];?>' title='ลิงค์ไปยังเฟสบุ๊ค' target="_blank"><span class="label label-primary">Facebook</span></a>
     <?php }?>
-	<?php if($rs['zm']!=""){?>
-	<a href='<?php echo $rs['zm'];?>' title='ลิงค์ไปยังเว็บไซต์' target="_blank"><span class="label label-success">Website</span></a>
-    <?php }?>
+	<a href='profile.php?id=<?php echo $rs['iduser'];?>' title='ข้อมูลเกษตรกร' target="_blank"><span class="label label-success">รายละเอียด</span></a>
     </td>
   </tr>
-  <tr>
-    <td align="right">
-    <a href='#<?php echo $rs['idplot'];?>' title='แสดงข้อมูล' class='showdetail'><span class="label label-info">รายละเอียด</span></a>
-    </td>
-  </tr>
+
 </table>
