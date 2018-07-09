@@ -240,11 +240,11 @@
             	echo "<div class='form-group'>";
 				echo "<div class=\"row\">";
 					echo "<div class=\"col-xs-6\">";
-								echo "<label >ชื่อล็อกอิน(ถ้ามี)</label>";
+								echo "<label >ชื่อล็อกอิน<font color='red'>*</font></label>";
 								echo "<input type='text' class='form-control' name='txtusername' value='$db_username'>";
 					echo "</div>";
 					echo "<div class=\"col-xs-6\">";
-								echo "<label >รหัสผ่าน(ถ้ามี)</label>";
+								echo "<label >รหัสผ่าน<font color='red'>*</font></label>";
 								echo "<input type='text' class='form-control' name='txtpassword' value='$db_password'>";
 					echo "</div>";
 				echo "</div>";
