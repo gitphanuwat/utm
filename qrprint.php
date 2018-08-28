@@ -175,14 +175,14 @@
 
 
 																	echo "<div class='row'>";
-																	for ($i=0; $i < 15; $i++) {
-																		echo "<div class='col-xs-4'>";
+																	for ($i=0; $i < 36; $i++) {
+																		echo "<div class='col-xs-2'>";
 																			 				echo '<img src="https://chart.googleapis.com/chart?cht=qr&chs=130x130&chl=https://www.uttaraditmart.com/profile.php?id='.$uid.'&chld=L|0" alt="">';
 																							$sqlpn="select codeplot from tb_plot where iduser=$dbiduser";
 																							$resultpn=mysqli_query($connect,$sqlpn);
 																							$rowpn=mysqli_fetch_array($resultpn);
 																							if($rowpn[0]!=''){
-																								echo '<br><i class="fa fa-map-marker"></i>';
+																								echo '<br><div style="font-size: 10px; text-align:center;"><i class="fa fa-map-marker"></i>';
 																								echo $rowpn[0];
 																							}
 																							$sqlqa="select qatype from tb_quality where userid=$dbiduser";
@@ -212,7 +212,7 @@
 																							if($rowyn[0]!=''){
 																								echo $rowyn[0];
 																							}
-																							echo '<hr>';
+																							echo '</div><hr>';
 																				echo "</div>";
 																	}
 															 		echo "</div>";
