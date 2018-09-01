@@ -189,8 +189,8 @@ if($_GET["action"]=="loadyear"){
 						$result2=mysqli_query($connect,$sql2);
 						while($row2=mysqli_fetch_array($result2)){
 							//$summoo=$summoo+$qmoo;
-							$b_trunk = $b_trunk+$row2[1];
-							$e_trunk = $e_trunk+$row2[2];
+							@$b_trunk = $b_trunk+$row2[1];
+							@$e_trunk = $e_trunk+$row2[2];
 						}//durian
 					}//user
 					$sumb_trunk = $sumb_trunk+$b_trunk;

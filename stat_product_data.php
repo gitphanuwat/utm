@@ -61,20 +61,20 @@ if($_GET["action"]=="loadamp"){
 					$result2=mysqli_query($connect,$sql2);
 					while(@$row2=mysqli_fetch_array($result2)){
 						$plot++;
-						$b_trunk=$b_trunk+$row2[4];
-						$e_trunk=$e_trunk+$row2[5];
-						$product_durian=$product_durian+$row2[6];
-						$sale_durian=$sale_durian+$row2[7];
+						@$b_trunk=$b_trunk+$row2[4];
+						@$e_trunk=$e_trunk+$row2[5];
+						@$product_durian=$product_durian+$row2[6];
+						@$sale_durian=$sale_durian+$row2[7];
 						if ($row2[7]!=0){++$csale_durian;}
 
 					}
 				}
-				$sumplot=$sumplot+$plot;
-				$sume_trunk=$sume_trunk+$e_trunk;
-				$sumproduct_durian=$sumproduct_durian+$product_durian;
-				$sumb_trunk=$sumb_trunk+$b_trunk;
-				$sumsale_durian=$sumsale_durian+$sale_durian;
-					$sumcsale_durian=$sumcsale_durian+$csale_durian;
+				@$sumplot=$sumplot+$plot;
+				@$sume_trunk=$sume_trunk+$e_trunk;
+				@$sumproduct_durian=$sumproduct_durian+$product_durian;
+				@$sumb_trunk=$sumb_trunk+$b_trunk;
+				@$sumsale_durian=$sumsale_durian+$sale_durian;
+					@$sumcsale_durian=$sumcsale_durian+$csale_durian;
 
 ?>
 							  <tr>
@@ -138,20 +138,20 @@ if($_GET["action"]=="loadamp"){
 					$result2=mysqli_query($connect,$sql2);
 					while(@$row2=mysqli_fetch_array($result2)){
 						$plot++;
-						$e_trunk=$e_trunk+$row2[5];
-						$product_durian=$product_durian+$row2[6];
-						$b_trunk=$b_trunk+$row2[4];
-						$sale_durian=$sale_durian+$row2[7];
+						@$e_trunk=$e_trunk+$row2[5];
+						@$product_durian=$product_durian+$row2[6];
+						@$b_trunk=$b_trunk+$row2[4];
+						@$sale_durian=$sale_durian+$row2[7];
 						if ($row2[7]!=0){++$csale_durian;}
 
 					}
 				}
-				$sumplot=$sumplot+$plot;
-				$sume_trunk=$sume_trunk+$e_trunk;
-				$sumproduct_durian=$sumproduct_durian+$product_durian;
-				$sumb_trunk=$sumb_trunk+$b_trunk;
-				$sumsale_durian=$sumsale_durian+$sale_durian;
-					$sumcsale_durian=$sumcsale_durian+$csale_durian;
+				@$sumplot=$sumplot+$plot;
+				@$sume_trunk=$sume_trunk+$e_trunk;
+				@$sumproduct_durian=$sumproduct_durian+$product_durian;
+				@$sumb_trunk=$sumb_trunk+$b_trunk;
+				@$sumsale_durian=$sumsale_durian+$sale_durian;
+				@$sumcsale_durian=$sumcsale_durian+$csale_durian;
 
 ?>
 							  <tr>
@@ -220,26 +220,26 @@ if($_GET["action"]=="loadamp"){
 					$result2=mysqli_query($connect,$sql2);
 					while(@$row2=mysqli_fetch_array($result2)){
 						$plot++;
-						$e_trunk=$e_trunk+$row2[5];
-						$product_durian=$product_durian+$row2[6];
+						@$e_trunk=$e_trunk+$row2[5];
+						@$product_durian=$product_durian+$row2[6];
 						if ($row2[6]!=0){
-							$product_unit=$product_unit+$row2[6];
+							@$product_unit=$product_unit+$row2[6];
 							++$cproduct_unit;
 						}
-						$b_trunk=$b_trunk+$row2[4];
-						$sale_durian=$sale_durian+$row2[7];
+						@$b_trunk=$b_trunk+$row2[4];
+						@$sale_durian=$sale_durian+$row2[7];
 						if ($row2[7]!=0){++$csale_durian;}
 
 					}
 
-				$sumplot=$sumplot+$plot;
-				$sume_trunk=$sume_trunk+$e_trunk;
-				$sumproduct_durian=$sumproduct_durian+$product_durian;
-				$sumproduct_unit=$sumproduct_unit+$product_unit;
-				$sumb_trunk=$sumb_trunk+$b_trunk;
-				$sumsale_durian=$sumsale_durian+$sale_durian;
-					$sumcsale_durian=$sumcsale_durian+$csale_durian;
-					$sumcproduct_unit=$sumcproduct_unit+$cproduct_unit;
+				@$sumplot=$sumplot+$plot;
+				@$sume_trunk=$sume_trunk+$e_trunk;
+				@$sumproduct_durian=$sumproduct_durian+$product_durian;
+				@$sumproduct_unit=$sumproduct_unit+$product_unit;
+				@$sumb_trunk=$sumb_trunk+$b_trunk;
+				@$sumsale_durian=$sumsale_durian+$sale_durian;
+					@$sumcsale_durian=$sumcsale_durian+$csale_durian;
+					@$sumcproduct_unit=$sumcproduct_unit+$cproduct_unit;
 
 
 ?>
@@ -301,8 +301,8 @@ if($_GET["action"]=="loadamp"){
 						$result2=mysqli_query($connect,$sql2);
 						while($row2=mysqli_fetch_array($result2)){
 							//$summoo=$summoo+$qmoo;
-							$b_trunk = $b_trunk+$row2[1];
-							$e_trunk = $e_trunk+$row2[2];
+							@$b_trunk = $b_trunk+$row2[1];
+							@$e_trunk = $e_trunk+$row2[2];
 						}//durian
 					}//user
 					$sumb_trunk = $sumb_trunk+$b_trunk;
