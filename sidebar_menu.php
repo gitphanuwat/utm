@@ -203,6 +203,12 @@
 					echo " class='active'";
 				}
 				echo "><a href='rep_moo.php'><i class='fa fa-angle-double-right'></i> เกษตรกรแยกตามหมู่บ้าน</a></li>";
+				echo "<li";
+				if($subpageName=="summary"){
+					echo " class='active'";
+				}
+				echo "><a href='summary.php'><i class='fa fa-angle-double-right'></i> ทวนสอบข้อมูลเกษตรกร</a></li>";
+								
             echo "</ul>";
         echo "</li>";
 
