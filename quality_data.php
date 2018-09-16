@@ -187,7 +187,8 @@
             $sql="select * from tb_quality where quality_id = $id";
             $result=mysqli_query($connect,$sql);
             $row=mysqli_fetch_array($result);
-            $title=$row["title"];
+						$title=$row["title"];
+						$qatype=$row["qatype"];
             $detail=$row["detail"];
             $day_in=strtotime($row["day_in"]);
             $day_in=date("m/d/Y",$day_in);
@@ -205,6 +206,22 @@
                     echo "<label >วันที่</label>";
                     echo "<input type='text' id='datepicker' name='datepicker' class='form-control' value='$day_in'>";
                 echo "</div>";
+
+								echo "<div class='form-group'>";
+									echo "<label>กลุ่มคุณภาพ<font color=\"red\">*</font></label>";
+	                echo "<select class='form-control' id='qatype' name='qatype'>";
+									echo "<option value='1' ";
+									if($qatype==1){echo "selected";}
+									echo ">สิ่งบ่งชี้ทางภูมิศาสตร์(GI)</option>";
+									echo "<option value='2' ";
+									if($qatype==2){echo "selected";}
+									echo ">การตรวจคุณภาพทางวิทยาศาสตร์</option>";
+									echo "<option value='3' ";
+									if($qatype==3){echo "selected";}
+									echo ">คุณภาพด้านอื่นๆ</option>";
+	                echo "</select>";
+								echo "</div>";
+
                 echo "<div class='form-group'>";
                     echo "<label >รายละเอียดข้อมูลคุณภาพ</label>";
                     echo "<textarea name='txtDetail' class='textarea' style='width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;''>$detail</textarea>";
@@ -414,7 +431,8 @@
 
 				$datepicker=$_POST["datepicker"];
         $txtTitle=$_POST["txtTitle"];
-        $txtDetail=$_POST["txtDetail"];
+				$qatype=$_POST["qatype"];
+				$txtDetail=$_POST["txtDetail"];
 
         if($txtTitle ==""){
             $msgerror=1;
@@ -428,10 +446,10 @@
 
             if($id !=""){
                 $sql="update tb_quality set day_in='$day_in' , title='$txtTitle' ";
-                $sql=$sql . " , detail='$txtDetail' where quality_id=$id ";
+                $sql=$sql . " , qatype='$qatype', detail='$txtDetail' where quality_id=$id ";
             }else{
-                $sql="insert into tb_quality(userid, day_in , title , detail , count_view ) ";
-                $sql=$sql . " value('$userid' , '$day_in' , '$txtTitle' , '$txtDetail'  , 0 )";
+                $sql="insert into tb_quality(userid, day_in , title , qatype, detail , count_view ) ";
+                $sql=$sql . " value('$userid' , '$day_in' , '$txtTitle' , '$qatype' , '$txtDetail'  , 0 )";
             }
             $result=mysqli_query($connect,$sql);
             $msgsuccess=1;

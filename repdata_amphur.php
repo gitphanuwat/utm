@@ -61,7 +61,7 @@
 									$prefix=$prefix . CreatePrefix($row2[7]);
 									echo "<tr>";
 										echo "<td>$j</td>";
-										echo "<td style=\"width:300px\"><a href='profile.php?id=$row2[2]' target='_blank' > $prefix$row2[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$row2[5]</a></td>";
+										echo "<td style=\"width:300px\"><a href='profile.php?url=$url&id=$row2[2]' target='_blank' > $prefix$row2[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$row2[5]</a></td>";
 										echo "<td>";
 									echo "</tr>";
 									$j++;
@@ -133,7 +133,7 @@
 									}
 									echo "<tr>";
 										echo "<td style=\"width:50px\">$j</td>";
-										echo "<td style=\"width:300px\"><a href='profile.php?id=$row2[2]' target='_blank' >$prefix$row2[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$row2[5]</a></td>";
+										echo "<td style=\"width:300px\"><a href='profile.php?url=$url&id=$row2[2]' target='_blank' >$prefix$row2[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$row2[5]</a></td>";
 										echo "<td>";
 									echo "</tr>";
 									$j++;

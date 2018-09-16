@@ -212,7 +212,7 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 					echo "<h5>ที่อยู่ : " .$row[4]. " หมู่บ้าน.". $row[5]. " ต.". $row[6]. " อ.". $row[7] ." จ.อุตรดิตถ์</h5>";
 					$sqlp= "select groupname from tb_group where idgroup = $idposition ";
 					$resultp=mysqli_query($connect,$sqlp);
-					$rowp=@mysqli_fetch_array($resultp);
+					$rowp=mysqli_fetch_array($resultp);
 					echo "<h5>กลุ่ม : " . $rowp[0] . "</h5><hr>";
 
 
