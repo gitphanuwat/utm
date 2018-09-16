@@ -363,6 +363,21 @@
 				}
 			});
 
+			//แก้ไขข้อมูล
+			$(document).on('click','.editProduct',function(){
+					var id=$(this).attr("href");
+					var idproduct=id.replace("#","");
+//alert(idproduct);
+					//var guser = $("#iduser").val();
+					//var gyear = $("#idyear").val();
+					$("#dialog-from").load("product_dataform.php?action=getFromEdit&idproduct="+idproduct ,function(){
+						$("#dialog").dialog( "option", "width", 420 );
+						$( "#dialog" ).dialog( "open" );
+						$("#loadDialog").fadeOut();
+					});
+
+			});
+			
 			$(document).on('click','#butNewdurian', function() {
 				var guser = $("#iduser").val();
 				var gyear = $("#idyear").val();

@@ -21,8 +21,9 @@
 ?>
 							  <tr>
 								<td><?php
-								echo "&nbsp;&nbsp;&nbsp;<a href='#$rowu[0]' title='ลบข้อมูล' class='delItemdurian'><img src='img/del.png'></a>
-								".$ci++."
+								echo $ci++."&nbsp;&nbsp;&nbsp;<a href='#$rowu[0]' title='ลบข้อมูล' class='delItemdurian'><img src='img/del.png'></a>
+								&nbsp;&nbsp;&nbsp;<a href='#$rowu[0]' title='แก้ไข' class='editProduct'><img src='img/edit.png'></a>
+								"."
 								</td>";
 								$cr++;
 ?></td>

@@ -83,6 +83,91 @@
 		exit();
 	}
 
+	if($_GET["action"]=="getFromEdit"){
+		 $idproduct=$_GET["idproduct"];
+		 //$idyear=$_GET["idyear"];
+
+		 $sql="select * from tb_durian where iddurian = $idproduct";
+		 $result=mysqli_query($connect,$sql);
+		 $row=mysqli_fetch_array($result);
+		 $idplot = $row['idplot'];
+
+	echo " <form action='product_dataform.php?action=updateplot' method='post' target='upload_target' onsubmit='clickSave();' >";
+
+            echo "<div class='box-body'>";
+            	echo "<div class='form-group'>";
+
+				 echo "<input type='text' class='form-control' id='iduser' name='iduser' value=\"$row[0]\">";
+
+            		echo "<label>พันธุ์สับปะรด<font color=\"red\">*</font></label>";
+                            echo "<select class='form-control' id='idtype' name='idtype'>";
+								echo "<option value=''>==เลือกพันธุ์สับปะรด==</option>";
+                            	foreach ($cf_type as $key=>$value) {
+																if($key>0){
+                            			echo "<option value='$key' ";
+																	if($key==$row['idtype']){
+																		echo " selected='selected' ";
+																	}
+                            			echo ">$value</option>";
+																}
+                            	}
+                            echo "</select>";
+                echo "</div>";
+            	echo "<div class='form-group'>";
+            		echo "<label>แปลงปลูก</label>";
+            		echo "<select class='form-control' name='idplot' id='idplot'>";
+            			$sql="select idplot , codeplot from tb_plot where idplot=$idplot";
+            			$result=mysqli_query($connect,$sql);
+									$row2=mysqli_fetch_array($result);
+                        	echo "<option value='$row2[0]' ";
+                        	echo ">$row2[1]</option>";
+            		echo "</select>";
+                echo "</div>";
+
+            	echo "<div class='form-group'>";
+            		echo "<label>จำนวนต้นที่ปลูก</label>";
+                    echo "<input type='text' class='form-control' id='b_trunk' name='b_trunk' value='$row[4]'>";
+                echo "</div>";
+
+            	echo "<div class='form-group'>";
+            		echo "<label>จำนวนต้นที่ให้ผลผลิต</label>";
+                    echo "<input type='text' class='form-control' id='e_trunk' name='e_trunk' value='$row[5]'>";
+                echo "</div>";
+
+            	echo "<div class='form-group'>";
+            		echo "<label>ผลผลิตสับปะรด (ลูก)</label>";
+                    echo "<input type='text' class='form-control' id='product_durian' name='product_durian' value='$row[6]'>";
+                echo "</div>";
+
+            	echo "<div class='form-group'>";
+            		echo "<label>ราคาขาย (บาท/กิโลกรัม)</label>";
+                    echo "<input type='text' class='form-control' id='sale_durian' name='sale_durian' value='$row[7]'>";
+                echo "</div>";
+
+            echo "</div>";
+
+            echo "<div class='box-footer'>";
+            	echo "<button type='submit' class='btn btn-primary' >Save</button>&nbsp;";
+                echo "<button type='button' class='btn btn-danger' id='butCancel'>Cancel</button>";
+				echo "<div id='uploadDialog_process' align='center'></div>";
+				echo "<div id='loadDialog' align='center'>";
+					echo "<img src='img/ajax-loader.gif' align='absmiddle' />";
+				echo "</div>";
+            echo "</div>";
+
+		echo "</form>";
+
+		echo "<script type='text/javascript'>
+
+			function clickSave(){
+                $('#loadDialog').fadeIn();
+                return true;
+            }
+
+		</script>";
+		exit();
+	}
+
 	if($_GET["action"]=="gettambonItems"){
 		$idamphur=$_GET["idamphur"];
 
@@ -147,6 +232,26 @@
 			$result=mysqli_query($connect,$sql);
 			$msgsuccess=1;
 		}
+	}
+
+	if($_GET["action"]=="updateplot"){
+		$msgsuccess=0;
+		$msgerror=0;
+
+		$idplot=$_POST["idplot"];
+		$idtype=$_POST["idtype"];
+		$b_trunk=$_POST["b_trunk"];
+		$e_trunk=$_POST["e_trunk"];
+		$product_durian=$_POST["product_durian"];
+		$sale_durian=$_POST["sale_durian"];
+
+
+		$sql="update tb_durian set idtype='$idtype' , b_trunk='$b_trunk', e_trunk='$e_trunk' , product_durian='$product_durian' ";
+		$sql=$sql . " , sale_durian='$sale_durian' where idplot='$idplot'";
+
+	$result=mysqli_query($connect,$sql);
+	$msgsuccess=1;
+
 	}
 
 	mysqli_close($connect);
