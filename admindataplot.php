@@ -44,6 +44,7 @@
 
 		//$yearID=$_GET["year"];
 		//echo "yearid=$yearID";
+		$search = $_GET["search"];
 		if($search!=""){
 			$today = date("Y-m-d");
 			$sqli="insert into tb_search(keyword , sdate) ";

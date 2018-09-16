@@ -134,6 +134,10 @@
                                             </select>
                                             </div>
                                     </div>
+																		<div class="box-footer no-border">
+																				<button class="btn btn-success" type="button" id="butSearch">ค้นหา</button>
+																				<button class="btn btn-default" type="button" id="butCancel">ยกเลิก</button>
+																		</div>
           <?php }?>
 			<?php if($_SESSION["DUR_USER_STATE"]=="MANAGER"){ ?>
                                     <div class="form-group">
@@ -212,6 +216,7 @@
 				$("#showamphur").load("admindataplot.php?action=loadamphur");
 
         $("#butSearch").click(function(){
+					//alert(1);
 				var gyear = $("#idyear").val();
         var Search = $("#txtSearch").val();
 					var amp_id = $("#select_amp_id").val();
