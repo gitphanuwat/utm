@@ -122,17 +122,8 @@
         <script src="js/AdminLTE/app.js" type="text/javascript"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="js/AdminLTE/demo.js" type="text/javascript"></script>
-        <!-- Bootstrap WYSIHTML5 -->
-        <script src="js/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js" type="text/javascript"></script>
-        <!-- iCheck -->
-       <script src="js/plugins/iCheck/icheck.min.js" type="text/javascript"></script>
         <script src="//code.jquery.com/ui/1.11.1/jquery-ui.min.js" type="text/javascript"></script>
 
-        <script type="text/javascript">
-            $(function() {
-                $(".textarea").wysihtml5();
-            });
-        </script>
 
 		<script type="text/javascript">
 			$(document).ready(function(){

@@ -36,33 +36,54 @@
 						//ตารางรายบุคคล
 							echo "<table class='table table-bordered'>";
 							echo "<tr>";
-								echo "<th style=\"width:50px\">ลำดับ</th>";
-								echo "<th style=\"width:300px\">ชื่อ-สกุล</th>";
-								echo "<th></th>";
+							echo "<th style=\"width:50px\">ลำดับ</th>";
+							echo "<th>คำนำหน้า</th>";
+							echo "<th>ชื่อ</th>";
+								echo "<th>สกุล</th>";
+								echo "<th>บ้านเลขที่</th>";
+								echo "<th>หมู่ที่</th>";
+								echo "<th>ตำบล</th>";
+								echo "<th>อำเภอ</th>";
+								echo "<th>จังหวัด</th>";
+								echo "<th>เบอร์โทร</th>";
 							echo "</tr>";
-						$sql2="select
-						tb_tambon.tambon, tb_moo.moo,
-						tb_user.iduser, tb_user.prefix, tb_user.firstname, tb_user.lastname
-						,tb_user.cf_aca_position , 	tb_user.cf_slevel
-						from tb_tambon, tb_moo, tb_user
-						where tb_tambon.idtambon = tb_moo.idtambon
-						and tb_moo.idmoo = tb_user.idmoo
-						and tb_tambon.idamphur =" . $_GET["id"] . " order by tb_user.firstname";
-						$result2=mysqli_query($connect,$sql2);
+							$sql="select tb_user.iduser , tb_user.prefix , tb_user.firstname , tb_user.lastname
+							, tb_user.hnumber, tb_moo.moo, tb_tambon.tambon, tb_amphur.amphur, tb_user.idgroup
+							, tb_user.tel ";
+	            $sql=$sql . " from tb_user, tb_moo, tb_tambon, tb_amphur ";
+							$sql=$sql . " where  tb_user.idmoo = tb_moo.idmoo ";
+							$sql=$sql . " and  tb_user.idtambon = tb_tambon.idtambon ";
+							$sql=$sql . " and  tb_user.idamphur = tb_amphur.idamphur ";
+
+						$result2=mysqli_query($connect,$sql);
 						$j=1;
 							if(mysqli_num_rows($result2)==0){
 								echo "<tr>";
 								echo "<td colspan='3'><font color='red'> ยังไม่มีข้อมูล </font></td>";
 								echo "</tr>";
 							}else{
-								while($row2=mysqli_fetch_array($result2)){
+								while($row=mysqli_fetch_array($result2)){
 
-									$prefix=$cf_aca_position[$row2[6]];
-									$prefix=$prefix . CreatePrefix($row2[7]);
+									if(is_numeric($row["prefix"])){
+										$prefix=$cf_prefix[$row["prefix"]];
+									}else{
+										$prefix=$row["prefix"];
+									}
+									$name=$prefix . $row[2] . " " . $row[3];
+
 									echo "<tr>";
 										echo "<td>$j</td>";
-										echo "<td style=\"width:300px\"><a href='profile.php?url=$url&id=$row2[2]' target='_blank' > $prefix$row2[4]&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;$row2[5]</a></td>";
-										echo "<td>";
+										echo "<td>$prefix</td>";
+										echo "<td><a href='profile.php?id=$row[0]' target='_blank' > $row[2]</a></td>";
+										echo "<td>$row[3]</td>";
+										echo "<td>$row[4]</td>";
+										echo "<td>$row[5]</td>";
+										echo "<td>$row[6]</td>";
+										echo "<td>$row[7]</td>";
+										echo "<td>อุตรดิตถ์</td>";
+										//echo "<td>" .$prefix$row2[6]. " ". $prefix$row2[1]. " ต.". $prefix$row2[0]. " อ.". $prefix$row2[7] ." จ.อุตรดิตถ์". "</td>";
+										//echo "<td>" .$row[4]. " ". $row[5]. " ต.". $row[6]. " อ.". $row[7] ." จ.อุตรดิตถ์". "</td>";
+										echo "<td>$row[9]</td>";
 									echo "</tr>";
 									$j++;
 								}
