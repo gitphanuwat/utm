@@ -94,12 +94,12 @@
 			$i=1;
     		$sql="select tb_user.iduser, tb_user.prefix , tb_user.firstname , tb_user.lastname , tb_moo.moo, tb_tambon.tambon, tb_amphur.amphur";
     		$sql=$sql . " ,tb_user.cf_aca_position , tb_user.cf_slevel ";
-            $sql=$sql . " from tb_user left join tb_moo on tb_user.idmoo=tb_moo.idmoo";
+        $sql=$sql . " from tb_user left join tb_moo on tb_user.idmoo=tb_moo.idmoo";
 
 			$sql=$sql . " left join tb_tambon on tb_moo.idtambon=tb_tambon.idtambon";
 			$sql=$sql . " left join tb_amphur on tb_tambon.idamphur=tb_amphur.idamphur";
 
-			$sql=$sql . " where (tb_user.firstname like '%$search%' or tb_user.lastname like '%$search%')";
+			$sql=$sql . " where (tb_user.firstname like '%$search%' or tb_user.lastname like '%$search%' ) and tb_user.prefix !=0";
 
     		//$sql="select iduser , prefix , firstname , lastname ,cf_aca_position , email , `status`";
     		//$sql=$sql . " from tb_user where firstname like '%$search%' or lastname like '%$search%' ";

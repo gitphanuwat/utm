@@ -12,7 +12,7 @@ if(!$_SESSION["DUR_USER_PIC"]){
         <img src="<?php echo $userPic ?>" alt="User Image"/>
     </div>
     <div class="pull-left info" style="font-size:14px">
-        ระบบฐานข้อมูล<p>ผู้ผลิตสับปะรด
+        ระบบฐานข้อมูล<p>ผลผลิตทางการเกษตร
     </div>
 		<?php
 		}else{

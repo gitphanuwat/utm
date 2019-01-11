@@ -60,7 +60,7 @@
 			$sql=$sql . " left join tb_tambon on tb_moo.idtambon=tb_tambon.idtambon";
 			$sql=$sql . " left join tb_amphur on tb_tambon.idamphur=tb_amphur.idamphur";
 
-			$sql=$sql . " where (tb_user.firstname like '%$search%' or tb_user.lastname like '%$search%')";
+			$sql=$sql . " where (tb_user.firstname like '%$search%' or tb_user.lastname like '%$search%') and tb_user.prefix !=0";
 
 			$fac_id=$_GET["fac_id"];
 			if($fac_id>0){$sql=$sql . " and tb_amphur.idamphur=$fac_id";}

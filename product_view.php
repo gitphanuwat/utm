@@ -304,7 +304,7 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 	}
 
 
-	//ลบข้อมูลสับปะรด
+	//ลบข้อมูลผลผลิต
 	if($_GET["action"]=="deldurian"){
 		$id=$_POST["id"];
 		$sql="delete from tb_durian where iddurian=$id";

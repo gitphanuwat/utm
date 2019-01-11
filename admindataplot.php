@@ -217,7 +217,7 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 
 		exit();
 	}
-	//ลบข้อมูลสับปะรด
+	//ลบข้อมูล
 	if($_GET["action"]=="delplot"){
 		$id=$_POST["id"];
 		$sql="delete from tb_plot where idplot=$id";

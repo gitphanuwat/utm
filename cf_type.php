@@ -66,12 +66,12 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ประเภทสินค้าเกษตร (พันธุ์สับปะรด)
-                        <small>บริหารจัดการพันธุ์สับปะรด</small>                   </h1>
+                        ประเภทสินค้าเกษตร (พันธุ์พืช)
+                        <small>บริหารจัดการพันธุ์พืช</small>                   </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
                         <li ><a href="#">จัดการระบบ</a></li>
-                        <li class="active">พันธุ์สับปะรด</li>
+                        <li class="active">พันธุ์พืช</li>
                     </ol>
               	</section>
 
@@ -81,7 +81,7 @@
                     	<div class="col-xs-12">
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">รายการพันธุ์สับปะรดทั้งหมด</h3>
+                                    <h3 class="box-title">รายการพันธุ์พืชทั้งหมด</h3>
 
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
@@ -91,14 +91,14 @@
                                     <form action="cfdata_type.php?action=insert" method="post" enctype="multipart/form-data" name="form_package"  id="form_package"  target="upload_target" onsubmit="clickupload();" >
                                      <div class="box box-primary">
                                        <div class="box-header">
-                                        	<h3 class="box-title">เพิ่มข้อมูลพันธุ์สับปะรด</h3>
+                                        	<h3 class="box-title">เพิ่มข้อมูลพันธุ์พืช</h3>
                                     	</div><!-- /.box-header -->
 
                                         <div class="box-body">
                                         	<div id="box1">
                                             	<div class="form-group">
-                                                    <label >ชื่อพันธุ์สับปะรด</label>
-                                                    <input type="text" class="form-control" id="nametype" name="nametype" placeholder="ชื่อพันธุ์สับปะรด">
+                                                    <label >ชื่อพันธุ์</label>
+                                                    <input type="text" class="form-control" id="nametype" name="nametype" placeholder="ชื่อพันธุ์/ชนิดพันธ์">
                                                     <span id="errtype" class="error"></span>
                                                 </div>
                                             </div>  <!-- /end box1 -->
@@ -192,7 +192,7 @@
 				$("#nametype").keyup(function(){
 					$("#errtype").hide();
 					if($("#nametype").val()==""){
-						$("#errtype").html("<font color='red'>กรุณากรอกชื่อพันธ์สับปะรดด้วย</font>").show().fadeIn(2000);
+						$("#errtype").html("<font color='red'>กรุณากรอกชื่อพันธ์ด้วย</font>").show().fadeIn(2000);
 						return false;
 					}
 				});

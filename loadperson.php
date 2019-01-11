@@ -202,11 +202,6 @@ if($_GET["action"]=="loadyear"){
 						echo "<td><center>$e_trunk</center></td>";
 					echo "</tr>";
 			}
-					echo "<tr>";
-						echo "<td>รวม</td>";
-						echo "<td><center>$sumb_trunk ต้น</center></td>";
-						echo "<td><center>$sume_trunk ต้น</center></td>";
-					echo "</tr>";
     	echo "</table>";
 		exit();
 	}

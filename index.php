@@ -71,8 +71,8 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ระบบฐานข้อมูลศักยภาพเกษตรกร
-                        <small>ผลผลิตสับปะรด จังหวัดอุตรดิตถ์</small>
+                        ระบบฐานข้อมูลผลผลิตทางการเกษตร
+                        <small> จังหวัดอุตรดิตถ์</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> หน้าหลัก</a></li>
@@ -157,7 +157,7 @@
                           <div class="box box-solid bg-gray">
                                <div class="box-header" style="color:#666">
                                   <i class="fa fa-th"></i>
-                                  <h3 class="box-title">ผลผลิตสับปะรด</h3>
+                                  <h3 class="box-title">ผลผลิตการเกษตร</h3>
                               </div>
                               <div class="box-body border-radius-none">
                                	<div id="showyear" style="margin:auto;padding:10px;"></div>

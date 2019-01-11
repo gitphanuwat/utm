@@ -1,4 +1,4 @@
-<?php 
+<?php
 	session_start();
 	include('config/config.php');
 	$pageName="home";
@@ -61,7 +61,7 @@
                 <!-- Content Header (Page header) -->
                 <section class="content-header">
                     <h1>
-                        ระบบฐานข้อมูลสับปะรด
+                        ระบบฐานข้อมูลการเกษตร
                         <small>จังหวัดอุตรดิตถ์</small>
                     </h1>
                     <ol class="breadcrumb">

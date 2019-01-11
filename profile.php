@@ -63,7 +63,7 @@
                 <section class="content-header">
                     <h1>
                         แสดงข้อมูลเกษตรกร
-                        <small>ข้อมูลเกษตรกรผู้ผลิตสับปะรด</small>
+                        <small>ข้อมูลเกษตรกรผู้ผลิต</small>
                     </h1>
                     <ol class="breadcrumb">
                         <li><a href="index.php"><i class="fa fa-dashboard"></i> Home</a></li>
@@ -201,7 +201,7 @@
 															 				echo "<tr>";
 															     			echo "<th width='50'>ลำดับ</th>";
 															 				echo "<th>แปลงปลูก</th>";
-															     			echo "<th>ชนิดสับปะรด(พันธุ์)</th>";
+															     			echo "<th>ชนิด(พันธุ์)</th>";
 															 				echo "<th>ต้นที่ปลูก</th>";
 															 				echo "<th>ต้นที่ให้ผลผลิต</th>";
 															 				echo "<th>ผลผลิต(ลูก)</th>";

@@ -138,7 +138,7 @@ if($_GET["action"]=="loadtype"){
 	echo '<table class="table table-hover">
     	<tr>
     		<th>ลำดับ</th>
-    		<th>ชื่อพันธุ์สับปะรด</th>
+    		<th>ชื่อพืช</th>
     		<th>รูปภาพ</th>
         <th>Tools</th>
     	</tr>';

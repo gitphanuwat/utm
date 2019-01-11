@@ -76,7 +76,7 @@
                             <div class="box box-solid">
                                 <div class="box-header">
                                 <i class="fa fa-bar-chart-o"></i>
-                                    <h3 class="box-title">สรุปผลผลิตสับปะรด</h3>
+                                    <h3 class="box-title">สรุปผลผลิต</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body">
                                 <div id="showyear" style="margin:auto;padding:10px;"></div>
@@ -89,7 +89,7 @@
                             </div><!-- /.box -->
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">สรุปผลผลิตสับปะรด</h3>
+                                    <h3 class="box-title">สรุปผลผลิต</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
                                	  <div id="showData" style="margin:auto;padding:10px;"></div>

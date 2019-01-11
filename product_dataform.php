@@ -14,10 +14,10 @@
 				 echo "<input type='hidden' class='form-control' id='iduser' name='iduser' value=\"$iduser\">";
 				 echo "<input type='hidden' class='form-control' id='idyear' name='idyear' value=\"$idyear\">";
 
-            		echo "<label>พันธุ์สับปะรด<font color=\"red\">*</font></label>";
+            		echo "<label>พันธุ์พืช<font color=\"red\">*</font></label>";
                             echo "<select class='form-control' id='idtype' name='idtype'>";
                             	$i=0;
-								echo "<option value=''>==เลือกพันธุ์สับปะรด==</option>";
+								echo "<option value=''>==เลือกพันธุ์พืช==</option>";
                             	foreach ($cf_type as &$value) {
 									if($i>0){
                             			echo "<option value='$i' ";
@@ -50,7 +50,7 @@
                 echo "</div>";
 
             	echo "<div class='form-group'>";
-            		echo "<label>ผลผลิตสับปะรด (ลูก)</label>";
+            		echo "<label>ผลผลิต (ลูก)</label>";
                     echo "<input type='text' class='form-control' id='product_durian' name='product_durian' >";
                 echo "</div>";
 
@@ -99,9 +99,9 @@
 
 				 echo "<input type='hidden' class='form-control' id='iduser' name='iduser' value=\"$row[0]\">";
 
-            		echo "<label>พันธุ์สับปะรด<font color=\"red\">*</font></label>";
+            		echo "<label>พันธุ์พืช<font color=\"red\">*</font></label>";
                             echo "<select class='form-control' id='idtype' name='idtype'>";
-								echo "<option value=''>==เลือกพันธุ์สับปะรด==</option>";
+								echo "<option value=''>==เลือกพันธุ์พืช==</option>";
                             	foreach ($cf_type as $key=>$value) {
 																if($key>0){
                             			echo "<option value='$key' ";
@@ -135,7 +135,7 @@
                 echo "</div>";
 
             	echo "<div class='form-group'>";
-            		echo "<label>ผลผลิตสับปะรด (ลูก)</label>";
+            		echo "<label>ผลผลิต (ลูก)</label>";
                     echo "<input type='text' class='form-control' id='product_durian' name='product_durian' value='$row[6]'>";
                 echo "</div>";
 

@@ -26,7 +26,7 @@
 				if($subpageName=="type"){
 					echo " class='active'";
 				}
-				echo "><a href='cf_type.php'><i class='fa fa-angle-double-right'></i> พันธุ์สับปะรด</a></li>";
+				echo "><a href='cf_type.php'><i class='fa fa-angle-double-right'></i> ชนิดพืช/พันธุ์พืช</a></li>";
 							echo "<li";
 				if($subpageName=="year"){
 					echo " class='active'";
@@ -208,7 +208,7 @@
 					echo " class='active'";
 				}
 				echo "><a href='summary.php'><i class='fa fa-angle-double-right'></i> ทวนสอบข้อมูลเกษตรกร</a></li>";
-								
+
             echo "</ul>";
         echo "</li>";
 
@@ -511,7 +511,7 @@
 		echo "'>";
 			echo "<a href='#'>";
             	echo "<i class='fa fa-suitcase'></i>";
-                echo "<span>บันทึกผลผลิตสับปะรด</span>";
+                echo "<span>บันทึกผลผลิต</span>";
                 echo "<i class='fa fa-angle-left pull-right'></i>";
             echo "</a>";
 			echo "<ul class='treeview-menu'>";
@@ -666,7 +666,7 @@
 				if($subpageName=="product"){
 					echo " class='active'";
 				}
-				echo "><a href='stat_product.php'><i class='fa fa-angle-double-right'></i> ผลผลิตสับปะรด</a></li>";
+				echo "><a href='stat_product.php'><i class='fa fa-angle-double-right'></i> ผลผลิต</a></li>";
 
 				echo "<li";
 				if($subpageName=="ability"){

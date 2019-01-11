@@ -1,4 +1,4 @@
-พื้นที่การเพาะปลูกสับปะรด<br>
+พื้นที่การเพาะปลูก<br>
 <table class="table table-bordered" >
 							  <tr>
 								<td width="20">ลำดับ</td>

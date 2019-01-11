@@ -278,7 +278,7 @@ if($_SESSION["DUR_USER_STATE"]=="USER"){
 						echo "<table class='table table-hover'>";
 							echo "<tr>";
                                 echo "<th>พ.ศ.</th>";
-                                echo "<th>พันธ์สับปะรด</th>";
+                                echo "<th>ชนิดพืช/พันธุ์พืช</th>";
                                 echo "<th>ผลผลิต(ตัน)</th>";
                             echo "</tr>";
                             $sqlw="select * from tb_userwork where iduser=$id order by iduserwork";

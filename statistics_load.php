@@ -44,7 +44,7 @@ if($_GET["action"]=="loadstat"){
                     	<div class="col-xs-6">
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">อายุต้นสับปะรดห้วยมุ่น</h3>
+                                    <h3 class="box-title">อายุพืช</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-condensed">
@@ -239,7 +239,7 @@ if($_GET["action"]=="loadstat"){
                     	<div class="col-xs-6">
                         	<div class="box">
                             	<div class="box-header">
-                                    <h3 class="box-title">สับปะรดที่กำลังจะให้ผลผลิต</h3>
+                                    <h3 class="box-title">ต้นที่กำลังจะให้ผลผลิต</h3>
                                 </div><!-- /.box-header -->
                                 <div class="box-body table-responsive no-padding">
                                     <table class="table table-condensed">
